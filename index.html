@@ -1024,6 +1024,135 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* === APPLE STYLE OVERRIDES === */
+        body {
+            background: #f5f5f7 !important;
+            color: #1d1d1f !important;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+        }
+
+        .logo {
+            background: linear-gradient(135deg, #1d1d1f, #06c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.06);
+            color: #1d1d1f !important;
+        }
+
+        .product-brand {
+            color: #86868b !important;
+        }
+
+        .product-name {
+            color: #1d1d1f !important;
+        }
+
+        .spec-label {
+            color: #86868b !important;
+        }
+
+        .spec-value {
+            color: #1d1d1f !important;
+        }
+
+        .price {
+            color: #1d1d1f !important;
+        }
+
+        .offers-section {
+            background: #ffffff !important;
+            border-radius: 20px;
+        }
+
+        .filters-section {
+            background: #ffffff !important;
+            color: #1d1d1f !important;
+        }
+
+        .filter-label {
+            color: #1d1d1f !important;
+        }
+
+        .filter-btn {
+            background: #f5f5f7 !important;
+            color: #1d1d1f !important;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #1d1d1f !important;
+            color: #ffffff !important;
+        }
+
+        .btn-primary {
+            background: #06c !important;
+        }
+
+        .footer {
+            background: #f5f5f7 !important;
+            color: #1d1d1f !important;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .footer-logo {
+            background: linear-gradient(135deg, #1d1d1f, #06c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cart-modal {
+            background: rgba(0,0,0,0.6) !important;
+        }
+
+        .cart-content {
+            background: #ffffff !important;
+            color: #1d1d1f !important;
+        }
+
+        .cart-item {
+            background: #f5f5f7 !important;
+        }
+
+        .cart-item-name {
+            color: #1d1d1f !important;
+        }
+
+        .cart-total {
+            color: #1d1d1f !important;
+        }
+
+        .offers-banner {
+            background: linear-gradient(135deg, #06c, #1d1d1f) !important;
+        }
+
+        .product-modal-content {
+            background: #ffffff !important;
+            color: #1d1d1f !important;
+        }
+
+        .modal-product-name {
+            color: #1d1d1f !important;
+        }
+
+        .modal-spec-label {
+            color: #86868b !important;
+        }
+
+        .modal-spec-value {
+            color: #1d1d1f !important;
+        }
     </style>
 </head>
 <body>
@@ -1033,7 +1162,6 @@
             <div class="logo">
                 <span class="logo-icon">📱</span>
                 <span>GreyCell Store</span>
-                <span style="font-size: 0.85rem; color: #f77f00; font-weight: 700; margin-left: 0.8rem; align-self: flex-end; margin-bottom: 0.4rem;">Mayoristas</span>
             </div>
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Buscar tu celular ideal...">
@@ -1189,83 +1317,90 @@
     <script>
 const products = [
     // SAMSUNG
-    { brand: "samsung", name: "Galaxy A05", ram: "128/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 470, image: "SAMSUNG_A05.jpeg" },
-    { brand: "samsung", name: "Galaxy A05", ram: "64/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 390, image: "SAMSUNG_A05.jpeg" },
-    { brand: "samsung", name: "Galaxy A05S", ram: "128/6", screen: "6.7\" PLS LCD", camera: "50MP + 2MP + 2MP", battery: "5000 mAh", price: 560, image: "SAMSUNG_A05.jpeg" },
-    { brand: "samsung", name: "Galaxy A06 REGISTRADO", ram: "64/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 420, image: "SAMSUNG_A06.jpeg", registered: true },
-    { brand: "samsung", name: "Galaxy A06", ram: "128/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 490, image: "SAMSUNG_A06.jpeg" },
-    { brand: "samsung", name: "Galaxy A07 REGISTRADO", ram: "64/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 490, image: "SAMSUNG_A07.jpeg", registered: true },
-    { brand: "samsung", name: "Galaxy A07 REGISTRADO", ram: "128/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 540, image: "SAMSUNG_A07.jpeg", registered: true },
-    { brand: "samsung", name: "Galaxy A16", ram: "128/4", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 560, image: "SAMSUNG_A16.jpeg" },
-    { brand: "samsung", name: "Galaxy A16 REGISTRADO", ram: "128/4", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 590, image: "SAMSUNG_A16.jpeg", registered: true },
-    { brand: "samsung", name: "Galaxy A16", ram: "128/6", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 640, image: "SAMSUNG_A16.jpeg" },
-    { brand: "samsung", name: "Galaxy A16", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 770, image: "SAMSUNG_A16.jpeg" },
-    { brand: "samsung", name: "Galaxy A17", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 860, image: "SAMSUNG_A17.jpeg" },
-    { brand: "samsung", name: "Galaxy A26", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 8MP + 5MP", battery: "5000 mAh", price: 860, image: "SAMSUNG_A26.jpeg" },
-    { brand: "samsung", name: "Galaxy A36", ram: "256/8", screen: "6.6\" Super AMOLED", camera: "50MP + 8MP + 5MP", battery: "5000 mAh", price: 1130, image: "SAMSUNG_A36.jpeg" },
-    { brand: "samsung", name: "Galaxy A36", ram: "256/12", screen: "6.6\" Super AMOLED", camera: "50MP + 8MP + 5MP", battery: "5000 mAh", price: 1180, image: "SAMSUNG_A36.jpeg" },
-    { brand: "samsung", name: "Galaxy A56", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 12MP + 5MP", battery: "5000 mAh", price: 1330, image: "SAMSUNG_A56.jpeg" },
-    { brand: "samsung", name: "Galaxy A56", ram: "256/12", screen: "6.7\" Super AMOLED", camera: "50MP + 12MP + 5MP", battery: "5000 mAh", price: 1380, image: "SAMSUNG_A56.jpeg" },
-    { brand: "samsung", name: "Galaxy F17 5G", ram: "128/4", screen: "6.7\" Super AMOLED", camera: "50MP + 2MP", battery: "5000 mAh", price: 680, image: "SAMSUNG_F17.jpeg" },
-    { brand: "samsung", name: "Galaxy S25 ULTRA", ram: "512/12", screen: "6.8\" Dynamic AMOLED 2X", camera: "200MP + 50MP + 12MP + 10MP", battery: "5000 mAh", price: 4060, image: "SAMSUNG_S25.jpeg", flagship: true },
+    { brand: "samsung", name: "Galaxy A05", ram: "128/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 505, image: "SAMSUNG_A05.jpeg" },
+    { brand: "samsung", name: "Galaxy A05", ram: "64/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 425, image: "SAMSUNG_A05.jpeg" },
+    { brand: "samsung", name: "Galaxy A05S", ram: "128/6", screen: "6.7\" PLS LCD", camera: "50MP + 2MP + 2MP", battery: "5000 mAh", price: 595, image: "SAMSUNG_A05.jpeg" },
+    { brand: "samsung", name: "Galaxy A06 REGISTRADO", ram: "64/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 455, image: "SAMSUNG_A06.jpeg", registered: true, offer: true, oldPrice: 510, discount: 11 },
+    { brand: "samsung", name: "Galaxy A06", ram: "128/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 525, image: "SAMSUNG_A06.jpeg" },
+    { brand: "samsung", name: "Galaxy A07 REGISTRADO", ram: "64/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 525, image: "SAMSUNG_A07.jpeg", registered: true },
+    { brand: "samsung", name: "Galaxy A07 REGISTRADO", ram: "128/4", screen: "6.7\" PLS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 575, image: "SAMSUNG_A07.jpeg", registered: true },
+    { brand: "samsung", name: "Galaxy A16", ram: "128/4", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 595, image: "SAMSUNG_A16.jpeg" },
+    { brand: "samsung", name: "Galaxy A16 REGISTRADO", ram: "128/4", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 625, image: "SAMSUNG_A16.jpeg", registered: true },
+    { brand: "samsung", name: "Galaxy A16", ram: "128/6", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 685, image: "SAMSUNG_A16.jpeg" },
+    { brand: "samsung", name: "Galaxy A16", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 815, image: "SAMSUNG_A16.jpeg" },
+    { brand: "samsung", name: "Galaxy A17", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 5MP + 2MP", battery: "5000 mAh", price: 905, image: "SAMSUNG_A17.jpeg" },
+    { brand: "samsung", name: "Galaxy A26", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 8MP + 5MP", battery: "5000 mAh", price: 905, image: "SAMSUNG_A26.jpeg" },
+    { brand: "samsung", name: "Galaxy A36", ram: "256/8", screen: "6.6\" Super AMOLED", camera: "50MP + 8MP + 5MP", battery: "5000 mAh", price: 1195, image: "SAMSUNG_A36.jpeg" },
+    { brand: "samsung", name: "Galaxy A36", ram: "256/12", screen: "6.6\" Super AMOLED", camera: "50MP + 8MP + 5MP", battery: "5000 mAh", price: 1245, image: "SAMSUNG_A36.jpeg" },
+    { brand: "samsung", name: "Galaxy A56", ram: "256/8", screen: "6.7\" Super AMOLED", camera: "50MP + 12MP + 5MP", battery: "5000 mAh", price: 1395, image: "SAMSUNG_A56.jpeg" },
+    { brand: "samsung", name: "Galaxy A56", ram: "256/12", screen: "6.7\" Super AMOLED", camera: "50MP + 12MP + 5MP", battery: "5000 mAh", price: 1445, image: "SAMSUNG_A56.jpeg" },
+    { brand: "samsung", name: "Galaxy F17 5G", ram: "128/4", screen: "6.7\" Super AMOLED", camera: "50MP + 2MP", battery: "5000 mAh", price: 725, image: "SAMSUNG_F17.jpeg" },
+    { brand: "samsung", name: "Galaxy S25 ULTRA", ram: "512/12", screen: "6.8\" Dynamic AMOLED 2X", camera: "200MP + 50MP + 12MP + 10MP", battery: "5000 mAh", price: 4120, image: "SAMSUNG_S25.jpeg", flagship: true },
 
     // REDMI
-    { brand: "redmi", name: "Redmi A5", ram: "64/3", screen: "6.71\" IPS LCD", camera: "8MP", battery: "5000 mAh", price: 350, image: "REDMI_A5.jpeg" },
-    { brand: "redmi", name: "Redmi A5 REGISTRADO", ram: "64/3", screen: "6.71\" IPS LCD", camera: "8MP", battery: "5000 mAh", price: 390, image: "REDMI_A5.jpeg", registered: true },
-    { brand: "redmi", name: "Redmi A5", ram: "128/4", screen: "6.71\" IPS LCD", camera: "8MP", battery: "5000 mAh", price: 390, image: "REDMI_A5.jpeg" },
-    { brand: "redmi", name: "Redmi 9C", ram: "128/4", screen: "6.53\" IPS LCD", camera: "13MP + 2MP + 2MP", battery: "5000 mAh", price: 490, image: "REDMI_9C.jpeg" },
-    { brand: "redmi", name: "Redmi 14C", ram: "128/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 450, image: "REDMI_14C.jpeg" },
-    { brand: "redmi", name: "Redmi 14C", ram: "256/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 480, image: "REDMI_14C.jpeg" },
-    { brand: "redmi", name: "Redmi 14C", ram: "256/8", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 530, image: "REDMI_14C.jpeg" },
-    { brand: "redmi", name: "Redmi 15", ram: "256/8", screen: "6.74\" AMOLED", camera: "50MP + 2MP", battery: "6000 mAh", price: 710, image: "REDMI_15.jpeg" },
-    { brand: "redmi", name: "Redmi 15C", ram: "128/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 490, image: "REDMI_15C.jpeg" },
-    { brand: "redmi", name: "Redmi 15C REGISTRADO", ram: "128/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 540, image: "REDMI_15C.jpeg", registered: true },
-    { brand: "redmi", name: "Redmi 15C", ram: "256/8", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 560, image: "REDMI_15C.jpeg" },
-    { brand: "redmi", name: "Redmi 15C REGISTRADO", ram: "256/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 620, image: "REDMI_15C.jpeg", registered: true },
-    { brand: "redmi", name: "Note 12", ram: "256/8", screen: "6.67\" AMOLED", camera: "50MP + 8MP + 2MP", battery: "5000 mAh", price: 860, image: "REDMI_12.jpeg" },
-    { brand: "redmi", name: "Note 12 PRO PLUS", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5000 mAh", price: 1230, image: "redmi_12 pro.jpeg" },
-    { brand: "redmi", name: "Note 13", ram: "128/6", screen: "6.67\" AMOLED", camera: "108MP + 8MP + 2MP", battery: "5000 mAh", price: 710, image: "redmi_13.jpeg" },
-    { brand: "redmi", name: "Note 13 PRO 5G", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5100 mAh", price: 1220, image: "redmi_13pro.jpeg" },
-    { brand: "redmi", name: "Note 14", ram: "128/6", screen: "6.67\" AMOLED", camera: "50MP + 2MP", battery: "5110 mAh", price: 610, image: "xiaomi-redmi-note-14-pro.jpg", offer: true, oldPrice: 710, discount: 14 },
-    { brand: "redmi", name: "Note 14", ram: "256/8", screen: "6.67\" AMOLED", camera: "50MP + 2MP", battery: "5110 mAh", price: 690, image: "xiaomi-redmi-note-14-pro.jpg" },
-    { brand: "redmi", name: "Note 14S", ram: "256/8", screen: "6.67\" AMOLED", camera: "50MP + 5MP + 2MP", battery: "5110 mAh", price: 860, image: "redmi_14s.jpeg" },
-    { brand: "redmi", name: "Note 14 PRO", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP + 2MP", battery: "5500 mAh", price: 860, image: "redmi_14pro.jpeg", offer: true, oldPrice: 1020, discount: 16 },
-    { brand: "redmi", name: "Note 14 PRO 5G", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5500 mAh", price: 970, image: "redmi_14pro.jpeg" },
-    { brand: "redmi", name: "Note 14 PRO 5G", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5500 mAh", price: 1100, image: "redmi_14pro.jpeg" },
-    { brand: "redmi", name: "Note 14 PRO PLUS", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 50MP + 8MP", battery: "6200 mAh", price: 1230, image: "redmi_note14pro plus.jpeg" },
-    { brand: "redmi", name: "Note 14 PRO PLUS", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 50MP + 8MP", battery: "6200 mAh", price: 1350, image: "redmi_note14pro plus.jpeg" },
+    { brand: "redmi", name: "Redmi A5", ram: "64/3", screen: "6.71\" IPS LCD", camera: "8MP", battery: "5000 mAh", price: 385, image: "REDMI_A5.jpeg" },
+    { brand: "redmi", name: "Redmi A5 REGISTRADO", ram: "64/3", screen: "6.71\" IPS LCD", camera: "8MP", battery: "5000 mAh", price: 425, image: "REDMI_A5.jpeg", registered: true },
+    { brand: "redmi", name: "Redmi A5", ram: "128/4", screen: "6.71\" IPS LCD", camera: "8MP", battery: "5000 mAh", price: 425, image: "REDMI_A5.jpeg" },
+    { brand: "redmi", name: "Redmi 9C", ram: "128/4", screen: "6.53\" IPS LCD", camera: "13MP + 2MP + 2MP", battery: "5000 mAh", price: 525, image: "REDMI_9C.jpeg" },
+    { brand: "redmi", name: "Redmi 14C", ram: "128/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 485, image: "REDMI_14C.jpeg" },
+    { brand: "redmi", name: "Redmi 14C", ram: "256/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 515, image: "REDMI_14C.jpeg" },
+    { brand: "redmi", name: "Redmi 14C", ram: "256/8", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 565, image: "REDMI_14C.jpeg" },
+    { brand: "redmi", name: "Redmi 15", ram: "256/8", screen: "6.74\" AMOLED", camera: "50MP + 2MP", battery: "6000 mAh", price: 755, image: "REDMI_15.jpeg" },
+    { brand: "redmi", name: "Redmi 15C", ram: "128/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 525, image: "REDMI_15C.jpeg" },
+    { brand: "redmi", name: "Redmi 15C REGISTRADO", ram: "128/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 575, image: "REDMI_15C.jpeg", registered: true },
+    { brand: "redmi", name: "Redmi 15C", ram: "256/8", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 595, image: "REDMI_15C.jpeg" },
+    { brand: "redmi", name: "Redmi 15C REGISTRADO", ram: "256/4", screen: "6.88\" IPS LCD", camera: "50MP", battery: "5160 mAh", price: 665, image: "REDMI_15C.jpeg", registered: true },
+    { brand: "redmi", name: "Note 12", ram: "256/8", screen: "6.67\" AMOLED", camera: "50MP + 8MP + 2MP", battery: "5000 mAh", price: 905, image: "REDMI_12.jpeg" },
+    { brand: "redmi", name: "Note 12 PRO PLUS", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5000 mAh", price: 1295, image: "redmi_12 pro.jpeg" },
+    { brand: "redmi", name: "Note 13", ram: "128/6", screen: "6.67\" AMOLED", camera: "108MP + 8MP + 2MP", battery: "5000 mAh", price: 755, image: "redmi_13.jpeg" },
+    { brand: "redmi", name: "Note 13 PRO 5G", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5100 mAh", price: 1285, image: "redmi_13pro.jpeg" },
+    { brand: "redmi", name: "Note 14", ram: "128/6", screen: "6.67\" AMOLED", camera: "50MP + 2MP", battery: "5110 mAh", price: 655, image: "xiaomi-redmi-note-14-pro.jpg", offer: true, oldPrice: 755, discount: 13 },
+    { brand: "redmi", name: "Note 14", ram: "256/8", screen: "6.67\" AMOLED", camera: "50MP + 2MP", battery: "5110 mAh", price: 735, image: "xiaomi-redmi-note-14-pro.jpg" },
+    { brand: "redmi", name: "Note 14S", ram: "256/8", screen: "6.67\" AMOLED", camera: "50MP + 5MP + 2MP", battery: "5110 mAh", price: 905, image: "redmi_14s.jpeg" },
+    { brand: "redmi", name: "Note 14 PRO", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP + 2MP", battery: "5500 mAh", price: 905, image: "redmi_14pro.jpeg", offer: true, oldPrice: 1050, discount: 14 },
+    { brand: "redmi", name: "Note 14 PRO 5G", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5500 mAh", price: 1015, image: "redmi_14pro.jpeg" },
+    { brand: "redmi", name: "Note 14 PRO 5G", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 8MP + 2MP", battery: "5500 mAh", price: 1145, image: "redmi_14pro.jpeg" },
+    { brand: "redmi", name: "Note 14 PRO PLUS", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 50MP + 8MP", battery: "6200 mAh", price: 1295, image: "redmi_note14pro plus.jpeg" },
+    { brand: "redmi", name: "Note 14 PRO PLUS", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "200MP + 50MP + 8MP", battery: "6200 mAh", price: 1415, image: "redmi_note14pro plus.jpeg" },
 
     // POCO
-    { brand: "poco", name: "Poco X5", ram: "256/8", screen: "6.67\" AMOLED", camera: "48MP + 8MP + 2MP", battery: "5000 mAh", price: 1010, image: "poco_x5(2).jpeg" },
-    { brand: "poco", name: "Poco X7 PRO", ram: "256/12", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP + 2MP", battery: "5000 mAh", price: 1200, image: "poco_x7pro.jpeg" },
-    { brand: "poco", name: "Poco X7 PRO", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP + 2MP", battery: "5000 mAh", price: 1350, image: "poco_x7pro.jpeg" },
-    { brand: "poco", name: "Poco M6 PRO", ram: "512/12", screen: "6.67\" AMOLED", camera: "64MP + 8MP + 2MP", battery: "5000 mAh", price: 960, image: "poco_m6pro.jpeg" },
-    { brand: "poco", name: "Poco F7 PRO", ram: "256/8", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP", battery: "5000 mAh", price: 1130, image: "poco_f7pro.jpeg" },
+    { brand: "poco", name: "Poco X5", ram: "256/8", screen: "6.67\" AMOLED", camera: "48MP + 8MP + 2MP", battery: "5000 mAh", price: 1055, image: "poco_x5(2).jpeg" },
+    { brand: "poco", name: "Poco X7 PRO", ram: "256/12", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP + 2MP", battery: "5000 mAh", price: 1265, image: "poco_x7pro.jpeg" },
+    { brand: "poco", name: "Poco X7 PRO", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP + 2MP", battery: "5000 mAh", price: 1415, image: "poco_x7pro.jpeg" },
+    { brand: "poco", name: "Poco M6 PRO", ram: "512/12", screen: "6.67\" AMOLED", camera: "64MP + 8MP + 2MP", battery: "5000 mAh", price: 1005, image: "poco_m6pro.jpeg" },
+    { brand: "poco", name: "Poco F7 PRO", ram: "512/12", screen: "6.67\" AMOLED 120Hz", camera: "50MP + 8MP", battery: "5000 mAh", price: 1845, image: "poco_f7pro.jpeg" },
 
     // REALME
-    { brand: "realme", name: "Realme C21Y", ram: "64/4", screen: "6.5\" IPS LCD", camera: "13MP + 2MP + 2MP", battery: "5000 mAh", price: 510, image: "realme_c21y.jpeg" },
-    { brand: "realme", name: "Realme C61", ram: "256/8", screen: "6.74\" IPS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 630, image: "realme_c61.jpeg" },
+    { brand: "realme", name: "Realme C21Y", ram: "64/4", screen: "6.5\" IPS LCD", camera: "13MP + 2MP + 2MP", battery: "5000 mAh", price: 545, image: "realme_c21y.jpeg" },
+    { brand: "realme", name: "Realme C61", ram: "256/8", screen: "6.74\" IPS LCD", camera: "50MP + 2MP", battery: "5000 mAh", price: 675, image: "realme_c61.jpeg" },
 
     // HONOR
-    { brand: "honor", name: "Honor X5C", ram: "64/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 390, image: "honor_x5c.jpeg" },
-    { brand: "honor", name: "Honor X5C", ram: "128/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 420, image: "honor_x5c.jpeg" },
-    { brand: "honor", name: "Honor X5C REGISTRADO", ram: "64/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 420, image: "honor_x5c.jpeg", registered: true },
-    { brand: "honor", name: "Honor X6B", ram: "128/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 470, image: "honor_x6b.jpeg" },
-    { brand: "honor", name: "Honor X6C", ram: "256/8", screen: "6.77\" IPS LCD", camera: "50MP + 2MP", battery: "5200 mAh", price: 570, image: "honor_x6c.jpeg" },
-    { brand: "honor", name: "Honor X6C REGISTRADO", ram: "256/8", screen: "6.77\" IPS LCD", camera: "50MP + 2MP", battery: "5200 mAh", price: 590, image: "honor_x6c.jpeg", registered: true },
-    { brand: "honor", name: "Honor X7C", ram: "256/8", screen: "6.77\" IPS LCD", camera: "108MP + 2MP", battery: "6000 mAh", price: 670, image: "honor_x7c.jpeg" },
-    { brand: "honor", name: "Honor X7D", ram: "256/8", screen: "6.77\" IPS LCD", camera: "108MP + 2MP", battery: "6000 mAh", price: 670, image: "honor_x7d.jpeg" },
-    { brand: "honor", name: "Honor X8A", ram: "256/8", screen: "6.7\" IPS LCD", camera: "100MP + 2MP + 2MP", battery: "4500 mAh", price: 840, image: "honor_x8a.jpeg" },
-    { brand: "honor", name: "Honor X8C", ram: "256/8", screen: "6.7\" IPS LCD", camera: "108MP + 5MP + 2MP", battery: "5330 mAh", price: 830, image: "honor_x8c.jpeg" },
-    { brand: "honor", name: "Honor 200 LITE", ram: "256/8", screen: "6.7\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "4500 mAh", price: 910, image: "honor_200lite.jpeg" },
-    { brand: "honor", name: "Honor 200", ram: "256/12", screen: "6.7\" AMOLED 120Hz", camera: "50MP + 50MP + 12MP", battery: "5200 mAh", price: 1480, image: "honor_200.jpeg" },
-    { brand: "honor", name: "Honor 400", ram: "12/256", screen: "6.7\" AMOLED", camera: "108MP + 50MP + 2MP", battery: "5200 mAh", price: 1430, image: "honor_400.jpeg" },
-    { brand: "honor", name: "Honor 400", ram: "12/512", screen: "6.7\" AMOLED", camera: "108MP + 50MP + 2MP", battery: "5200 mAh", price: 1530, image: "honor_400.jpeg" },
-    { brand: "honor", name: "Honor 400 LITE", ram: "256/12", screen: "6.7\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "5200 mAh", price: 1010, image: "honor_400lite.jpeg", offer: true, oldPrice: 1260, discount: 20 },
-    { brand: "honor", name: "Honor 400 PRO", ram: "512/12", screen: "6.78\" AMOLED 120Hz", camera: "108MP + 50MP + 12MP", battery: "5200 mAh", price: 2630, image: "honor_400pro.jpeg" },
-    { brand: "honor", name: "Magic 7 LITE", ram: "512/8", screen: "6.78\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "6600 mAh", price: 1230, image: "honor magic 7 lite.jpeg", offer: true, oldPrice: 1480, discount: 17 },
-    { brand: "honor", name: "Magic 7 LITE", ram: "256/8", screen: "6.78\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "6600 mAh", price: 1130, image: "honor magic 7 lite.jpeg" },
-    { brand: "honor", name: "Magic 7 LITE REGISTRADO", ram: "256/8", screen: "6.78\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "6600 mAh", price: 1260, image: "honor magic 7 lite.jpeg", registered: true }
+    { brand: "honor", name: "Honor X5C", ram: "64/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 425, image: "honor_x5c.jpeg" },
+    { brand: "honor", name: "Honor X5C", ram: "128/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 455, image: "honor_x5c.jpeg" },
+    { brand: "honor", name: "Honor X5C REGISTRADO", ram: "64/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 455, image: "honor_x5c.jpeg", registered: true },
+    { brand: "honor", name: "Honor X6B", ram: "128/4", screen: "6.56\" IPS LCD", camera: "50MP", battery: "5200 mAh", price: 505, image: "honor_x6b.jpeg" },
+    { brand: "honor", name: "Honor X6C", ram: "256/8", screen: "6.77\" IPS LCD", camera: "50MP + 2MP", battery: "5200 mAh", price: 605, image: "honor_x6c.jpeg" },
+    { brand: "honor", name: "Honor X6C REGISTRADO", ram: "256/8", screen: "6.77\" IPS LCD", camera: "50MP + 2MP", battery: "5200 mAh", price: 625, image: "honor_x6c.jpeg", registered: true },
+    { brand: "honor", name: "Honor X7C", ram: "256/8", screen: "6.77\" IPS LCD", camera: "108MP + 2MP", battery: "6000 mAh", price: 715, image: "honor_x7c.jpeg" },
+    { brand: "honor", name: "Honor X7D", ram: "256/8", screen: "6.77\" IPS LCD", camera: "108MP + 2MP", battery: "6000 mAh", price: 745, image: "honor_x7d.jpeg" },
+    { brand: "honor", name: "Honor X8A", ram: "256/8", screen: "6.7\" IPS LCD", camera: "100MP + 2MP + 2MP", battery: "4500 mAh", price: 885, image: "honor_x8a.jpeg" },
+    { brand: "honor", name: "Honor X8C", ram: "256/8", screen: "6.7\" IPS LCD", camera: "108MP + 5MP + 2MP", battery: "5330 mAh", price: 875, image: "honor_x8c.jpeg" },
+    { brand: "honor", name: "Honor 200 LITE", ram: "256/8", screen: "6.7\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "4500 mAh", price: 955, image: "honor_200lite.jpeg" },
+    { brand: "honor", name: "Honor 200", ram: "256/12", screen: "6.7\" AMOLED 120Hz", camera: "50MP + 50MP + 12MP", battery: "5200 mAh", price: 1545, image: "honor_200.jpeg" },
+    { brand: "honor", name: "Honor 400", ram: "12/256", screen: "6.7\" AMOLED", camera: "108MP + 50MP + 2MP", battery: "5200 mAh", price: 1495, image: "honor_400.jpeg" },
+    { brand: "honor", name: "Honor 400", ram: "12/512", screen: "6.7\" AMOLED", camera: "108MP + 50MP + 2MP", battery: "5200 mAh", price: 1595, image: "honor_400.jpeg" },
+    { brand: "honor", name: "Honor 400 LITE", ram: "256/12", screen: "6.7\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "5200 mAh", price: 1055, image: "honor_400lite.jpeg", offer: true, oldPrice: 1195, discount: 12 },
+    { brand: "honor", name: "Honor 400 PRO", ram: "512/12", screen: "6.78\" AMOLED 120Hz", camera: "108MP + 50MP + 12MP", battery: "5200 mAh", price: 2695, image: "honor_400pro.jpeg" },
+
+    // MOTOROLA
+    { brand: "motorola", name: "Motorola G04 REGISTRADO", ram: "128/4", screen: "6.6\" IPS LCD", camera: "16MP", battery: "5000 mAh", price: 475, image: "motorola_g04.jpeg", registered: true },
+    { brand: "motorola", name: "Motorola E14 REGISTRADO", ram: "64/2", screen: "6.56\" IPS LCD", camera: "13MP", battery: "5000 mAh", price: 395, image: "motorola_e14.jpeg", registered: true },
+    { brand: "motorola", name: "Motorola E15 REGISTRADO", ram: "64/2", screen: "6.56\" IPS LCD", camera: "13MP", battery: "5000 mAh", price: 425, image: "motorola_e15.jpeg", registered: true },
+
+    // MAGIC
+    { brand: "magic", name: "Magic 7 LITE", ram: "256/8", screen: "6.78\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "6600 mAh", price: 1195, image: "honor magic 7 lite.jpeg", offer: true, oldPrice: 1345, discount: 11 },
+    { brand: "magic", name: "Magic 7 LITE", ram: "512/8", screen: "6.78\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "6600 mAh", price: 1295, image: "honor magic 7 lite.jpeg" },
+    { brand: "magic", name: "Magic 7 LITE REGISTRADO", ram: "256/8", screen: "6.78\" AMOLED", camera: "108MP + 5MP + 2MP", battery: "6600 mAh", price: 1325, image: "honor magic 7 lite.jpeg", registered: true }
 ];
 
 // CART STATE
@@ -1878,4 +2013,3 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
-
