@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreyCell Store - La Mejor Tienda de Tecnología en Perú 🔥</title>
+    <title>⚡ GreyCell Store - La Mejor Tienda de Tecnología</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         
         * {
             margin: 0;
@@ -13,46 +13,26 @@
             box-sizing: border-box;
         }
         
-        :root {
-            --primary: #0066ff;
-            --secondary: #00d9ff;
-            --accent: #ff3b5c;
-            --success: #00ff88;
-            --warning: #ffaa00;
-            --dark: #0a0e27;
-            --light: #ffffff;
-            --gray: #6e7485;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-gaming: linear-gradient(135deg, #ff00cc 0%, #3333ff 100%);
-        }
-        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #ffffff;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f8f9fa;
             color: #1d1d1f;
             line-height: 1.6;
             overflow-x: hidden;
         }
         
-        /* HEADER CON EFECTO GLASS */
+        /* HEADER */
         .header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 9999;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
         
         .header-content {
@@ -67,11 +47,12 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #0066ff;
             cursor: pointer;
             transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .logo:hover {
@@ -93,6 +74,9 @@
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .nav-link::after {
@@ -102,8 +86,9 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: var(--gradient-3);
+            background: linear-gradient(90deg, #0066ff, #00d9ff);
             transition: width 0.3s ease;
+            border-radius: 2px;
         }
         
         .nav-link:hover::after,
@@ -113,29 +98,33 @@
         
         .cart-icon {
             position: relative;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
             padding: 0.8rem;
-            background: var(--gradient-3);
+            background: linear-gradient(135deg, #0066ff, #00d9ff);
             border-radius: 50%;
+            color: white;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .cart-icon:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
         }
         
         .cart-count {
             position: absolute;
             top: -5px;
             right: -5px;
-            background: var(--accent);
+            background: #ff3b5c;
             color: white;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
+            width: 22px;
+            height: 22px;
+            display: none;
             align-items: center;
             justify-content: center;
             font-size: 0.7rem;
@@ -148,13 +137,14 @@
             50% { transform: scale(1.1); }
         }
         
-        /* HERO ESPECTACULAR */
+        /* HERO CON OFERTAS DESTACADAS */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding-top: 100px;
+            padding-bottom: 4rem;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
         }
         
         .hero::before {
@@ -164,38 +154,32 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: backgroundScroll 20s linear infinite;
-        }
-        
-        @keyframes backgroundScroll {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(100px, 100px); }
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
         }
         
         .hero-content {
-            position: relative;
-            z-index: 2;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 3rem;
+            padding: 0 3rem;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
         
         .hero-title {
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 900;
             color: white;
             margin-bottom: 1.5rem;
             line-height: 1.1;
-            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -204,11 +188,11 @@
         }
         
         .hero-subtitle {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 3rem;
             font-weight: 500;
-            animation: fadeInUp 1s ease 0.2s both;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
         
         .hero-cta {
@@ -216,7 +200,7 @@
             gap: 1.5rem;
             justify-content: center;
             margin-bottom: 4rem;
-            animation: fadeInUp 1s ease 0.4s both;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
         
         .cta-btn {
@@ -234,12 +218,12 @@
         .cta-primary {
             background: white;
             color: #667eea;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
         .cta-primary:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
         
         .cta-secondary {
@@ -251,63 +235,47 @@
         .cta-secondary:hover {
             background: white;
             color: #667eea;
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-3px);
         }
         
-        /* OFERTAS DESTACADAS EN HERO */
+        /* OFERTAS EN HERO */
         .hero-offers {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 3rem 4rem 3rem;
-            animation: fadeInUp 1s ease 0.6s both;
+            animation: fadeInUp 0.8s ease 0.6s both;
         }
         
         .offer-card {
             background: white;
             border-radius: 24px;
             padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
         
-        .offer-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
-        }
-        
-        .offer-card:hover::before {
-            left: 100%;
-        }
-        
         .offer-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
         }
         
         .offer-badge {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #ff3b5c, #ff6b6b);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.85rem;
             animation: bounce 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 59, 92, 0.4);
         }
         
         @keyframes bounce {
@@ -316,14 +284,61 @@
         }
         
         .offer-image {
-            font-size: 5rem;
-            text-align: center;
-            margin: 1rem 0 1.5rem 0;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .phone-icon {
+            width: 80px;
+            height: 160px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid #fff;
+        }
+        
+        .phone-screen {
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            right: 8px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            border-radius: 6px;
+        }
+        
+        .phone-notch {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+        }
+        
+        .phone-button {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
         }
         
         .offer-name {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: #1d1d1f;
@@ -331,122 +346,33 @@
         
         .offer-specs {
             font-size: 0.9rem;
-            color: var(--gray);
+            color: #6e7485;
             margin-bottom: 1rem;
         }
         
         .offer-price {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             margin: 1.5rem 0;
         }
         
         .price-old {
-            font-size: 1.2rem;
-            color: var(--gray);
+            font-size: 1.1rem;
+            color: #6e7485;
             text-decoration: line-through;
         }
         
         .price-new {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #0066ff;
         }
         
-        .offer-cta {
+        .offer-actions {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 0.8rem;
-        }
-        
-        /* CATEGORIES */
-        .categories-section {
-            padding: 6rem 3rem;
-            background: #f8f9fa;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.3rem;
-            color: var(--gray);
-            margin-bottom: 4rem;
-        }
-        
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .category-card {
-            background: white;
-            border-radius: 30px;
-            padding: 4rem 3rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-1);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        
-        .category-card:hover::before {
-            opacity: 0.1;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-        
-        .category-icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-            transition: all 0.4s;
-        }
-        
-        .category-card:hover .category-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        .category-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.8rem;
-            position: relative;
-        }
-        
-        .category-desc {
-            font-size: 1.1rem;
-            color: var(--gray);
-            position: relative;
         }
         
         /* SECTIONS */
@@ -459,7 +385,7 @@
         
         section.active {
             display: block;
-            animation: fadeIn 0.6s ease;
+            animation: fadeIn 0.5s ease;
         }
         
         @keyframes fadeIn {
@@ -467,7 +393,26 @@
             to { opacity: 1; }
         }
         
-        /* FILTERS CON ESTILO */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6e7485;
+        }
+        
+        /* FILTERS */
         .filters {
             display: flex;
             justify-content: center;
@@ -477,7 +422,7 @@
         }
         
         .filter-btn {
-            padding: 0.9rem 2rem;
+            padding: 0.8rem 1.8rem;
             background: white;
             border: 2px solid #e0e0e0;
             color: #1d1d1f;
@@ -485,43 +430,39 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         .filter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .filter-btn.active {
-            background: var(--gradient-3);
+            background: linear-gradient(135deg, #0066ff, #00d9ff);
             color: white;
             border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
         }
         
         /* PRODUCTS GRID */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            gap: 2rem;
         }
         
         .product-card {
             background: white;
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             cursor: pointer;
             position: relative;
-            overflow: hidden;
             opacity: 0;
-            animation: slideUp 0.6s ease forwards;
+            animation: slideUp 0.5s ease forwards;
         }
         
         @keyframes slideUp {
@@ -536,72 +477,65 @@
         }
         
         .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         
         .product-badge {
             position: absolute;
             top: 1.5rem;
             left: 1.5rem;
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #ff3b5c, #ff6b6b);
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.75rem;
             z-index: 10;
-            animation: slideInLeft 0.6s ease;
-        }
-        
-        @keyframes slideInLeft {
-            from { transform: translateX(-100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
         }
         
         .badge-registered {
-            background: var(--gradient-3);
-            top: 4rem;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            top: 3.8rem;
         }
         
         .product-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            transition: all 0.4s;
+            transition: all 0.3s ease;
         }
         
         .product-card:hover .product-image {
-            transform: scale(1.1) rotate(3deg);
+            transform: scale(1.05);
         }
         
         .product-brand {
             font-size: 0.85rem;
             font-weight: 700;
-            color: var(--primary);
+            color: #0066ff;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
         
         .product-name {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: #1d1d1f;
         }
         
         .product-specs {
-            margin: 1.5rem 0;
-            padding: 1rem;
             background: #f8f9fa;
             border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
         }
         
         .spec-row {
@@ -612,7 +546,7 @@
         }
         
         .spec-label {
-            color: var(--gray);
+            color: #6e7485;
             font-weight: 500;
         }
         
@@ -622,19 +556,17 @@
         }
         
         .product-price {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
+            color: #0066ff;
             margin: 1.5rem 0;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .old-price {
-            font-size: 1.2rem;
-            color: var(--gray);
+            font-size: 1.1rem;
+            color: #6e7485;
             text-decoration: line-through;
-            margin-right: 0.8rem;
+            margin-right: 0.5rem;
         }
         
         .product-actions {
@@ -644,65 +576,46 @@
         }
         
         .btn {
-            padding: 1rem;
+            padding: 0.9rem;
             border: none;
             border-radius: 12px;
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.3s ease;
         }
         
         .btn-primary {
-            background: var(--gradient-3);
+            background: linear-gradient(135deg, #0066ff, #00d9ff);
             color: white;
-            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 102, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
         }
         
         .btn-secondary {
             background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            color: #0066ff;
+            border: 2px solid #0066ff;
         }
         
         .btn-secondary:hover {
-            background: var(--primary);
+            background: #0066ff;
             color: white;
-            transform: translateY(-3px);
         }
         
-        /* PCS GAMING ESPECIAL */
+        /* PCS GAMING */
         .pc-card {
             background: linear-gradient(135deg, #1e1e2e 0%, #2d1b69 100%);
             color: white;
-            box-shadow: 0 20px 60px rgba(138, 43, 226, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pc-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, transparent 70%);
-            animation: rotate 8s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            box-shadow: 0 15px 50px rgba(138, 43, 226, 0.4);
         }
         
         .pc-card .product-brand {
-            color: var(--secondary);
+            color: #00d9ff;
         }
         
         .pc-card .product-name {
@@ -734,8 +647,8 @@
         }
         
         @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); }
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 255, 0.8); }
         }
         
         /* CART MODAL */
@@ -749,7 +662,6 @@
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             z-index: 100000;
-            animation: fadeIn 0.3s ease;
         }
         
         .cart-content {
@@ -758,36 +670,24 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            border-radius: 30px;
-            padding: 3rem;
+            border-radius: 24px;
+            padding: 2.5rem;
             max-width: 600px;
             width: 90%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
-            animation: slideInScale 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        @keyframes slideInScale {
-            from {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
         }
         
         .close-modal {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: var(--gray);
-            width: 40px;
-            height: 40px;
+            color: #6e7485;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -801,18 +701,18 @@
         }
         
         .cart-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             margin-bottom: 2rem;
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .cart-item {
             background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 16px;
+            padding: 1.2rem;
+            border-radius: 14px;
             margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
@@ -822,23 +722,21 @@
         
         .cart-item:hover {
             transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .cart-item-name {
             font-weight: 700;
-            font-size: 1rem;
             margin-bottom: 0.3rem;
         }
         
         .cart-item-price {
-            color: var(--primary);
+            color: #0066ff;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         .remove-btn {
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #ff3b5c, #ff6b6b);
             color: white;
             border: none;
             padding: 0.6rem 1.2rem;
@@ -849,39 +747,36 @@
         }
         
         .remove-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+            transform: scale(1.05);
         }
         
         .cart-total {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             margin: 2rem 0;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             border-top: 2px solid #f8f9fa;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #0066ff;
         }
         
         .checkout-btn {
             width: 100%;
-            padding: 1.5rem;
+            padding: 1.3rem;
             background: linear-gradient(135deg, #00ff88, #00d9ff);
             color: white;
             border: none;
-            border-radius: 16px;
+            border-radius: 14px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
         }
         
         .checkout-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 255, 136, 0.4);
         }
         
         /* FOOTER */
@@ -897,9 +792,6 @@
             font-size: 2.5rem;
             font-weight: 900;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, #fff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .whatsapp-btn {
@@ -912,28 +804,27 @@
             font-weight: 700;
             font-size: 1.1rem;
             margin: 2rem 0;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
         }
         
         .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+            transform: translateY(-3px) scale(1.05);
         }
         
-        /* NOTIFICACIONES */
+        /* NOTIFICATION */
         .notification {
             position: fixed;
             top: 100px;
             right: 30px;
             background: white;
-            color: #1d1d1f;
-            padding: 1.2rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             z-index: 100001;
-            animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), slideOutRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) 2.6s;
-            border-left: 5px solid;
+            animation: slideInRight 0.4s ease, slideOutRight 0.4s ease 2.6s;
+            border-left: 4px solid;
+            font-weight: 600;
         }
         
         @keyframes slideInRight {
@@ -948,10 +839,6 @@
         }
         
         @keyframes slideOutRight {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
             to {
                 transform: translateX(400px);
                 opacity: 0;
@@ -963,28 +850,14 @@
             .hero-title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1.2rem; }
             .nav { display: none; }
-            .categories-grid { grid-template-columns: 1fr; }
             .products-grid { grid-template-columns: 1fr; }
             .hero-offers { grid-template-columns: 1fr; }
-            .offer-cta { grid-template-columns: 1fr; }
-            .product-actions { grid-template-columns: 1fr; }
-        }
-        
-        /* SCROLL ANIMATIONS */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .offer-actions, .product-actions { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="header" id="header">
+    <div class="header">
         <div class="header-content">
             <div class="logo" onclick="showHome()">⚡ GreyCell</div>
             <nav class="nav">
@@ -994,55 +867,38 @@
             </nav>
             <div class="cart-icon" onclick="toggleCart()">
                 🛒
-                <span class="cart-count" id="cart-count" style="display:none;">0</span>
+                <span class="cart-count" id="cart-count">0</span>
             </div>
         </div>
     </div>
 
     <div class="hero" id="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">La Mejor Tecnología<br>a Tu Alcance 🚀</h1>
-            <p class="hero-subtitle">Celulares premium y PCs Gaming con los mejores precios del mercado</p>
+            <h1 class="hero-title">Tecnología Premium<br>a Tu Alcance 🚀</h1>
+            <p class="hero-subtitle">Los mejores celulares y PCs Gaming con ofertas increíbles</p>
             
             <div class="hero-cta">
-                <button class="cta-btn cta-primary" onclick="showSection('ofertas')">🔥 Ver Ofertas</button>
+                <button class="cta-btn cta-primary" onclick="showSection('ofertas')">🔥 Ver Todas las Ofertas</button>
                 <a href="https://wa.me/51992039149" class="cta-btn cta-secondary" target="_blank">💬 Contactar</a>
             </div>
         </div>
         
-        <div class="hero-offers" id="hero-offers">
-            <!-- Se llenará dinámicamente con las mejores ofertas -->
-        </div>
-    </div>
-
-    <div class="categories-section">
-        <h2 class="section-title fade-in-section">¿Qué estás buscando?</h2>
-        <p class="section-subtitle fade-in-section">Explora nuestras categorías</p>
-        
-        <div class="categories-grid fade-in-section">
-            <div class="category-card" onclick="showSection('celulares')">
-                <span class="category-icon">📱</span>
-                <h3 class="category-title">Celulares</h3>
-                <p class="category-desc">Los mejores smartphones de todas las marcas</p>
-            </div>
-            
-            <div class="category-card" onclick="showSection('pcs')">
-                <span class="category-icon">💻</span>
-                <h3 class="category-title">PCs Gaming</h3>
-                <p class="category-desc">Computadoras de alto rendimiento para gaming</p>
-            </div>
-        </div>
+        <div class="hero-offers" id="hero-offers"></div>
     </div>
 
     <section id="ofertas-section">
-        <h2 class="section-title">🔥 Ofertas Especiales</h2>
-        <p class="section-subtitle">Descuentos increíbles por tiempo limitado</p>
+        <div class="section-header">
+            <h2 class="section-title">🔥 Ofertas Especiales</h2>
+            <p class="section-subtitle">Descuentos por tiempo limitado</p>
+        </div>
         <div class="products-grid" id="ofertas-container"></div>
     </section>
 
     <section id="celulares-section">
-        <h2 class="section-title">📱 Celulares Premium</h2>
-        <p class="section-subtitle">Encuentra tu smartphone ideal</p>
+        <div class="section-header">
+            <h2 class="section-title">📱 Celulares</h2>
+            <p class="section-subtitle">Encuentra tu smartphone ideal</p>
+        </div>
 
         <div class="filters">
             <button class="filter-btn active" data-brand="all">Todos</button>
@@ -1059,8 +915,10 @@
     </section>
 
     <section id="pcs-section">
-        <h2 class="section-title">💻 PCs Gaming</h2>
-        <p class="section-subtitle">Máximo rendimiento para gaming y productividad</p>
+        <div class="section-header">
+            <h2 class="section-title">💻 PCs Gaming</h2>
+            <p class="section-subtitle">Computadoras de alto rendimiento</p>
+        </div>
         <div class="products-grid" id="pcs-container"></div>
     </section>
 
@@ -1077,427 +935,64 @@
     <div class="footer">
         <div class="footer-logo">⚡ GreyCell Store</div>
         <p style="opacity: 0.9; margin-bottom: 1rem; font-size: 1.1rem;">
-            Tu tienda de tecnología de confianza en Perú 🇵🇪
+            Tu tienda de tecnología de confianza 🇵🇪
         </p>
-        <a href="https://wa.me/51992039149?text=Hola!%20Quiero%20información" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/51992039149" class="whatsapp-btn" target="_blank">
             📲 Contáctanos por WhatsApp
         </a>
-        <p style="opacity: 0.7; margin-top: 3rem; font-size: 0.9rem;">
-            © 2025 GreyCell Store. Todos los derechos reservados.
+        <p style="opacity: 0.7; margin-top: 3rem;">
+            © 2025 GreyCell Store
         </p>
     </div>
-
     <script>
-// DATOS DE PRODUCTOS - ACTUALIZADO
-const celulares = [
-    {brand:"samsung",name:"Galaxy A05",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:505},
-    {brand:"samsung",name:"Galaxy A05",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:425},
-    {brand:"samsung",name:"Galaxy A05S",ram:"128/6",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:595},
-    {brand:"samsung",name:"Galaxy A06 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:455,registered:true,offer:true,oldPrice:510},
-    {brand:"samsung",name:"Galaxy A06",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:525},
-    {brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:525,registered:true},
-    {brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:575,registered:true},
-    {brand:"samsung",name:"Galaxy A16",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:595},
-    {brand:"samsung",name:"Galaxy A16 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:625,registered:true},
-    {brand:"samsung",name:"Galaxy A16",ram:"128/6",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:685},
-    {brand:"samsung",name:"Galaxy A16",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:815},
-    {brand:"samsung",name:"Galaxy A17",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:905},
-    {brand:"samsung",name:"Galaxy A26",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:905},
-    {brand:"samsung",name:"Galaxy A36",ram:"256/8",screen:"6.6\"",camera:"50MP",battery:"5000 mAh",price:1195},
-    {brand:"samsung",name:"Galaxy A36",ram:"256/12",screen:"6.6\"",camera:"50MP",battery:"5000 mAh",price:1245},
-    {brand:"samsung",name:"Galaxy A56",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:1395},
-    {brand:"samsung",name:"Galaxy A56",ram:"256/12",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:1445},
-    {brand:"samsung",name:"Galaxy F17 5G",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:725},
-    {brand:"samsung",name:"Galaxy S25 ULTRA",ram:"512/12",screen:"6.8\"",camera:"200MP",battery:"5000 mAh",price:4120},
-    {brand:"redmi",name:"Redmi A5",ram:"64/3",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:385},
-    {brand:"redmi",name:"Redmi A5 REGISTRADO",ram:"64/3",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:425,registered:true},
-    {brand:"redmi",name:"Redmi A5",ram:"128/4",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:425},
-    {brand:"redmi",name:"Redmi 9C",ram:"128/4",screen:"6.53\"",camera:"13MP",battery:"5000 mAh",price:525},
-    {brand:"redmi",name:"Redmi 14C",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:485},
-    {brand:"redmi",name:"Redmi 14C",ram:"256/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:515},
-    {brand:"redmi",name:"Redmi 14C",ram:"256/8",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:565},
-    {brand:"redmi",name:"Redmi 15",ram:"256/8",screen:"6.74\"",camera:"50MP",battery:"6000 mAh",price:755},
-    {brand:"redmi",name:"Redmi 15C",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:525},
-    {brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:575,registered:true},
-    {brand:"redmi",name:"Redmi 15C",ram:"256/8",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:595},
-    {brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"256/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:665,registered:true},
-    {brand:"redmi",name:"Note 12",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:905},
-    {brand:"redmi",name:"Note 12 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5000 mAh",price:1295},
-    {brand:"redmi",name:"Note 13",ram:"128/6",screen:"6.67\"",camera:"108MP",battery:"5000 mAh",price:755},
-    {brand:"redmi",name:"Note 13 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5100 mAh",price:1285},
-    {brand:"redmi",name:"Note 14",ram:"128/6",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:655,offer:true,oldPrice:755},
-    {brand:"redmi",name:"Note 14",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:735},
-    {brand:"redmi",name:"Note 14S",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:905},
-    {brand:"redmi",name:"Note 14 PRO",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5500 mAh",price:905,offer:true,oldPrice:1050},
-    {brand:"redmi",name:"Note 14 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5500 mAh",price:1015},
-    {brand:"redmi",name:"Note 14 PRO 5G",ram:"512/12",screen:"6.67\"",camera:"200MP",battery:"5500 mAh",price:1145},
-    {brand:"redmi",name:"Note 14 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"6200 mAh",price:1295},
-    {brand:"redmi",name:"Note 14 PRO PLUS",ram:"512/12",screen:"6.67\"",camera:"200MP",battery:"6200 mAh",price:1415},
-    {brand:"poco",name:"Poco X5",ram:"256/8",screen:"6.67\"",camera:"48MP",battery:"5000 mAh",price:1055},
-    {brand:"poco",name:"Poco X7 PRO",ram:"256/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1265},
-    {brand:"poco",name:"Poco X7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1415},
-    {brand:"poco",name:"Poco M6 PRO",ram:"512/12",screen:"6.67\"",camera:"64MP",battery:"5000 mAh",price:1005},
-    {brand:"poco",name:"Poco F7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1845},
-    {brand:"realme",name:"Realme C21Y",ram:"64/4",screen:"6.5\"",camera:"13MP",battery:"5000 mAh",price:545},
-    {brand:"realme",name:"Realme C61",ram:"256/8",screen:"6.74\"",camera:"50MP",battery:"5000 mAh",price:675},
-    {brand:"honor",name:"Honor X5C",ram:"64/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:425},
-    {brand:"honor",name:"Honor X5C",ram:"128/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:455},
-    {brand:"honor",name:"Honor X5C REGISTRADO",ram:"64/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:455,registered:true},
-    {brand:"honor",name:"Honor X6B",ram:"128/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:505},
-    {brand:"honor",name:"Honor X6C",ram:"256/8",screen:"6.77\"",camera:"50MP",battery:"5200 mAh",price:605},
-    {brand:"honor",name:"Honor X6C REGISTRADO",ram:"256/8",screen:"6.77\"",camera:"50MP",battery:"5200 mAh",price:625,registered:true},
-    {brand:"honor",name:"Honor X7C",ram:"256/8",screen:"6.77\"",camera:"108MP",battery:"6000 mAh",price:715},
-    {brand:"honor",name:"Honor X7D",ram:"256/8",screen:"6.77\"",camera:"108MP",battery:"6000 mAh",price:745},
-    {brand:"honor",name:"Honor X8A",ram:"256/8",screen:"6.7\"",camera:"100MP",battery:"4500 mAh",price:885},
-    {brand:"honor",name:"Honor X8C",ram:"256/8",screen:"6.7\"",camera:"108MP",battery:"5330 mAh",price:875},
-    {brand:"honor",name:"Honor 200 LITE",ram:"256/8",screen:"6.7\"",camera:"108MP",battery:"4500 mAh",price:955},
-    {brand:"honor",name:"Honor 200",ram:"256/12",screen:"6.7\"",camera:"50MP",battery:"5200 mAh",price:1545},
-    {brand:"honor",name:"Honor 400",ram:"12/256",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1495},
-    {brand:"honor",name:"Honor 400",ram:"12/512",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1595},
-    {brand:"honor",name:"Honor 400 LITE",ram:"256/12",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1055,offer:true,oldPrice:1195},
-    {brand:"honor",name:"Honor 400 PRO",ram:"512/12",screen:"6.78\"",camera:"108MP",battery:"5200 mAh",price:2695},
-    {brand:"motorola",name:"Motorola G04 REGISTRADO",ram:"128/4",screen:"6.6\"",camera:"16MP",battery:"5000 mAh",price:475,registered:true},
-    {brand:"motorola",name:"Motorola E14 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",battery:"5000 mAh",price:395,registered:true},
-    {brand:"motorola",name:"Motorola E15 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",battery:"5000 mAh",price:425,registered:true},
-    {brand:"magic",name:"Magic 7 LITE",ram:"256/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1195,offer:true,oldPrice:1345},
-    {brand:"magic",name:"Magic 7 LITE",ram:"512/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1295},
-    {brand:"magic",name:"Magic 7 LITE REGISTRADO",ram:"256/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1325,registered:true}
-];
+const celulares=[{brand:"samsung",name:"Galaxy A05",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:505},{brand:"samsung",name:"Galaxy A05",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:425},{brand:"samsung",name:"Galaxy A05S",ram:"128/6",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:595},{brand:"samsung",name:"Galaxy A06 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:455,registered:true,offer:true,oldPrice:510},{brand:"samsung",name:"Galaxy A06",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:525},{brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:525,registered:true},{brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:575,registered:true},{brand:"samsung",name:"Galaxy A16",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:595},{brand:"samsung",name:"Galaxy A16 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:625,registered:true},{brand:"samsung",name:"Galaxy A16",ram:"128/6",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:685},{brand:"samsung",name:"Galaxy A16",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:815},{brand:"samsung",name:"Galaxy A17",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:905},{brand:"samsung",name:"Galaxy A26",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:905},{brand:"samsung",name:"Galaxy A36",ram:"256/8",screen:"6.6\"",camera:"50MP",battery:"5000 mAh",price:1195},{brand:"samsung",name:"Galaxy A36",ram:"256/12",screen:"6.6\"",camera:"50MP",battery:"5000 mAh",price:1245},{brand:"samsung",name:"Galaxy A56",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:1395},{brand:"samsung",name:"Galaxy A56",ram:"256/12",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:1445},{brand:"samsung",name:"Galaxy F17 5G",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:725},{brand:"samsung",name:"Galaxy S25 ULTRA",ram:"512/12",screen:"6.8\"",camera:"200MP",battery:"5000 mAh",price:4120},{brand:"redmi",name:"Redmi A5",ram:"64/3",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:385},{brand:"redmi",name:"Redmi A5 REGISTRADO",ram:"64/3",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:425,registered:true},{brand:"redmi",name:"Redmi A5",ram:"128/4",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:425},{brand:"redmi",name:"Redmi 9C",ram:"128/4",screen:"6.53\"",camera:"13MP",battery:"5000 mAh",price:525},{brand:"redmi",name:"Redmi 14C",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:485},{brand:"redmi",name:"Redmi 14C",ram:"256/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:515},{brand:"redmi",name:"Redmi 14C",ram:"256/8",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:565},{brand:"redmi",name:"Redmi 15",ram:"256/8",screen:"6.74\"",camera:"50MP",battery:"6000 mAh",price:755},{brand:"redmi",name:"Redmi 15C",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:525},{brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:575,registered:true},{brand:"redmi",name:"Redmi 15C",ram:"256/8",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:595},{brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"256/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:665,registered:true},{brand:"redmi",name:"Note 12",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:905},{brand:"redmi",name:"Note 12 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5000 mAh",price:1295},{brand:"redmi",name:"Note 13",ram:"128/6",screen:"6.67\"",camera:"108MP",battery:"5000 mAh",price:755},{brand:"redmi",name:"Note 13 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5100 mAh",price:1285},{brand:"redmi",name:"Note 14",ram:"128/6",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:655,offer:true,oldPrice:755},{brand:"redmi",name:"Note 14",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:735},{brand:"redmi",name:"Note 14S",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:905},{brand:"redmi",name:"Note 14 PRO",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5500 mAh",price:905,offer:true,oldPrice:1050},{brand:"redmi",name:"Note 14 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5500 mAh",price:1015},{brand:"redmi",name:"Note 14 PRO 5G",ram:"512/12",screen:"6.67\"",camera:"200MP",battery:"5500 mAh",price:1145},{brand:"redmi",name:"Note 14 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"6200 mAh",price:1295},{brand:"redmi",name:"Note 14 PRO PLUS",ram:"512/12",screen:"6.67\"",camera:"200MP",battery:"6200 mAh",price:1415},{brand:"poco",name:"Poco X5",ram:"256/8",screen:"6.67\"",camera:"48MP",battery:"5000 mAh",price:1055},{brand:"poco",name:"Poco X7 PRO",ram:"256/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1265},{brand:"poco",name:"Poco X7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1415},{brand:"poco",name:"Poco M6 PRO",ram:"512/12",screen:"6.67\"",camera:"64MP",battery:"5000 mAh",price:1005},{brand:"poco",name:"Poco F7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1845},{brand:"realme",name:"Realme C21Y",ram:"64/4",screen:"6.5\"",camera:"13MP",battery:"5000 mAh",price:545},{brand:"realme",name:"Realme C61",ram:"256/8",screen:"6.74\"",camera:"50MP",battery:"5000 mAh",price:675},{brand:"honor",name:"Honor X5C",ram:"64/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:425},{brand:"honor",name:"Honor X5C",ram:"128/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:455},{brand:"honor",name:"Honor X5C REGISTRADO",ram:"64/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:455,registered:true},{brand:"honor",name:"Honor X6B",ram:"128/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:505},{brand:"honor",name:"Honor X6C",ram:"256/8",screen:"6.77\"",camera:"50MP",battery:"5200 mAh",price:605},{brand:"honor",name:"Honor X6C REGISTRADO",ram:"256/8",screen:"6.77\"",camera:"50MP",battery:"5200 mAh",price:625,registered:true},{brand:"honor",name:"Honor X7C",ram:"256/8",screen:"6.77\"",camera:"108MP",battery:"6000 mAh",price:715},{brand:"honor",name:"Honor X7D",ram:"256/8",screen:"6.77\"",camera:"108MP",battery:"6000 mAh",price:745},{brand:"honor",name:"Honor X8A",ram:"256/8",screen:"6.7\"",camera:"100MP",battery:"4500 mAh",price:885},{brand:"honor",name:"Honor X8C",ram:"256/8",screen:"6.7\"",camera:"108MP",battery:"5330 mAh",price:875},{brand:"honor",name:"Honor 200 LITE",ram:"256/8",screen:"6.7\"",camera:"108MP",battery:"4500 mAh",price:955},{brand:"honor",name:"Honor 200",ram:"256/12",screen:"6.7\"",camera:"50MP",battery:"5200 mAh",price:1545},{brand:"honor",name:"Honor 400",ram:"12/256",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1495},{brand:"honor",name:"Honor 400",ram:"12/512",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1595},{brand:"honor",name:"Honor 400 LITE",ram:"256/12",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1055,offer:true,oldPrice:1195},{brand:"honor",name:"Honor 400 PRO",ram:"512/12",screen:"6.78\"",camera:"108MP",battery:"5200 mAh",price:2695},{brand:"motorola",name:"Motorola G04 REGISTRADO",ram:"128/4",screen:"6.6\"",camera:"16MP",battery:"5000 mAh",price:475,registered:true},{brand:"motorola",name:"Motorola E14 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",battery:"5000 mAh",price:395,registered:true},{brand:"motorola",name:"Motorola E15 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",battery:"5000 mAh",price:425,registered:true},{brand:"magic",name:"Magic 7 LITE",ram:"256/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1195,offer:true,oldPrice:1345},{brand:"magic",name:"Magic 7 LITE",ram:"512/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1295},{brand:"magic",name:"Magic 7 LITE REGISTRADO",ram:"256/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1325,registered:true}];
 
-const pcs = [
-    {name:"PC Gaming RGB Elite",cpu:"Intel Core i7-12700K",gpu:"RTX 4060 Ti 8GB",ram:"16GB DDR4",storage:"512GB NVMe SSD",price:3500},
-    {name:"PC Gaming Blanco Premium",cpu:"Intel Core i5-13400F",gpu:"RTX 4060 8GB",ram:"16GB DDR5",storage:"1TB NVMe SSD",price:2900},
-    {name:"PC Gaming Extreme",cpu:"Intel Core i9-13900K",gpu:"RTX 4070 Ti 12GB",ram:"32GB DDR5",storage:"1TB NVMe + 2TB HDD",price:5200},
-    {name:"PC Gaming Starter",cpu:"Intel Core i5-12400F",gpu:"RTX 3060 12GB",ram:"16GB DDR4",storage:"500GB NVMe SSD",price:2300},
-    {name:"PC Workstation Pro",cpu:"AMD Ryzen 9 5950X",gpu:"RTX 4080 16GB",ram:"64GB DDR4",storage:"2TB NVMe SSD",price:6500},
-    {name:"PC Gaming Compact",cpu:"Intel Core i7-13700",gpu:"RTX 4070 12GB",ram:"32GB DDR5",storage:"1TB NVMe SSD",price:4200}
-];
+const pcs=[{name:"PC Gaming RGB Elite",cpu:"Intel Core i7-12700K",gpu:"RTX 4060 Ti 8GB",ram:"16GB DDR4",storage:"512GB NVMe SSD",price:3500},{name:"PC Gaming Blanco Premium",cpu:"Intel Core i5-13400F",gpu:"RTX 4060 8GB",ram:"16GB DDR5",storage:"1TB NVMe SSD",price:2900},{name:"PC Gaming Extreme",cpu:"Intel Core i9-13900K",gpu:"RTX 4070 Ti 12GB",ram:"32GB DDR5",storage:"1TB NVMe + 2TB HDD",price:5200},{name:"PC Gaming Starter",cpu:"Intel Core i5-12400F",gpu:"RTX 3060 12GB",ram:"16GB DDR4",storage:"500GB NVMe SSD",price:2300},{name:"PC Workstation Pro",cpu:"AMD Ryzen 9 5950X",gpu:"RTX 4080 16GB",ram:"64GB DDR4",storage:"2TB NVMe SSD",price:6500},{name:"PC Gaming Compact",cpu:"Intel Core i7-13700",gpu:"RTX 4070 12GB",ram:"32GB DDR5",storage:"1TB NVMe SSD",price:4200}];
 
-let cart = [];
-let currentFilter = 'all';
+let cart=[];
+let currentFilter='all';
 
-// INICIALIZACIÓN
-window.onload = function() {
-    loadCart();
-    renderHeroOffers();
-    renderOfertas();
-    renderCelulares();
-    renderPCs();
-    setupFilters();
-    setupScrollAnimations();
-    setupHeaderScroll();
-};
+window.onload=function(){loadCart();renderHeroOffers();renderOfertas();renderCelulares();renderPCs();setupFilters()};
 
-// SCROLL HEADER
-function setupHeaderScroll() {
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-}
+function showHome(){document.getElementById('hero-section').style.display='block';document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})}
 
-// SCROLL ANIMATIONS
-function setupScrollAnimations() {
-    const sections = document.querySelectorAll('.fade-in-section');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    sections.forEach(section => observer.observe(section));
-}
+function showSection(section){document.getElementById('hero-section').style.display='none';document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(section+'-section').classList.add('active');document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));document.getElementById('nav-'+section)?.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
 
-// NAVEGACIÓN
-function showHome() {
-    document.getElementById('hero-section').style.display = 'block';
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
+function renderHeroOffers(){const container=document.getElementById('hero-offers');const ofertas=celulares.filter(c=>c.offer).slice(0,4);container.innerHTML=ofertas.map(p=>`<div class="offer-card"><span class="offer-badge">-${Math.round(((p.oldPrice-p.price)/p.oldPrice)*100)}%</span><div class="offer-image"><div class="phone-icon"><div class="phone-screen"><div class="phone-notch"></div></div><div class="phone-button"></div></div></div><div class="offer-name">${p.name}</div><div class="offer-specs">${p.ram} GB • ${p.screen}</div><div class="offer-price"><span class="price-old">S/ ${p.oldPrice}</span><span class="price-new">S/ ${p.price}</span></div><div class="offer-actions"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"celular")'>🛒 Agregar</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"celular")'>💬</button></div></div>`).join('')}
 
-function showSection(section) {
-    document.getElementById('hero-section').style.display = 'none';
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(section + '-section').classList.add('active');
-    
-    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-    document.getElementById('nav-' + section)?.classList.add('active');
-    
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
+function renderOfertas(){const container=document.getElementById('ofertas-container');const ofertas=celulares.filter(c=>c.offer);container.innerHTML=ofertas.map(p=>createCelularCard(p)).join('')}
 
-// RENDERIZAR OFERTAS EN HERO
-function renderHeroOffers() {
-    const container = document.getElementById('hero-offers');
-    const ofertas = celulares.filter(c => c.offer).slice(0, 4);
-    
-    container.innerHTML = ofertas.map(p => `
-        <div class="offer-card">
-            <span class="offer-badge">-${Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100)}%</span>
-            <div class="offer-image">📱</div>
-            <div class="offer-name">${p.name}</div>
-            <div class="offer-specs">${p.ram} GB • ${p.screen}</div>
-            <div class="offer-price">
-                <span class="price-old">S/ ${p.oldPrice}</span>
-                <span class="price-new">S/ ${p.price}</span>
-            </div>
-            <div class="offer-cta">
-                <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g, "&quot;")}, "celular")'>🛒 Agregar</button>
-                <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g, "&quot;")}, "celular")'>💬</button>
-            </div>
-        </div>
-    `).join('');
-}
+function renderCelulares(){const container=document.getElementById('celulares-container');let filtered=celulares.filter(c=>!c.offer);if(currentFilter!=='all')filtered=filtered.filter(c=>c.brand===currentFilter);container.innerHTML=filtered.map((p,i)=>{const card=createCelularCard(p);return card.replace('product-card',`product-card" style="animation-delay:${i*0.05}s`)}).join('')}
 
-// RENDERIZAR OFERTAS
-function renderOfertas() {
-    const container = document.getElementById('ofertas-container');
-    const ofertas = celulares.filter(c => c.offer);
-    container.innerHTML = ofertas.map(p => createCelularCard(p)).join('');
-}
+function renderPCs(){const container=document.getElementById('pcs-container');container.innerHTML=pcs.map((pc,i)=>{const card=createPCCard(pc);return card.replace('product-card',`product-card" style="animation-delay:${i*0.1}s`)}).join('')}
 
-// RENDERIZAR CELULARES
-function renderCelulares() {
-    const container = document.getElementById('celulares-container');
-    let filtered = celulares.filter(c => !c.offer);
-    
-    if (currentFilter !== 'all') {
-        filtered = filtered.filter(c => c.brand === currentFilter);
-    }
-    
-    container.innerHTML = filtered.map((p, i) => {
-        const card = createCelularCard(p);
-        return card.replace('product-card', `product-card" style="animation-delay: ${i * 0.05}s`);
-    }).join('');
-}
+function createCelularCard(p){const productStr=JSON.stringify(p).replace(/"/g,'&quot;');return`<div class="product-card">${p.offer?'<span class="product-badge">🔥 OFERTA</span>':''}${p.registered?'<span class="product-badge badge-registered">✅ REGISTRADO</span>':''}<div class="product-image"><div class="phone-icon"><div class="phone-screen"><div class="phone-notch"></div></div><div class="phone-button"></div></div></div><div class="product-brand">${p.brand}</div><div class="product-name">${p.name}</div><div class="product-specs"><div class="spec-row"><span class="spec-label">💾 ROM/RAM</span><span class="spec-value">${p.ram} GB</span></div><div class="spec-row"><span class="spec-label">📱 Pantalla</span><span class="spec-value">${p.screen}</span></div><div class="spec-row"><span class="spec-label">📷 Cámara</span><span class="spec-value">${p.camera}</span></div></div><div class="product-price">${p.offer?`<span class="old-price">S/ ${p.oldPrice}</span>`:''}S/ ${p.price}</div><div class="product-actions"><button class="btn btn-primary" onclick='addToCart(${productStr},"celular")'>🛒 Agregar</button><button class="btn btn-secondary" onclick='consultProduct(${productStr},"celular")'>💬</button></div></div>`}
 
-// RENDERIZAR PCS
-function renderPCs() {
-    const container = document.getElementById('pcs-container');
-    container.innerHTML = pcs.map((pc, i) => {
-        const card = createPCCard(pc);
-        return card.replace('product-card', `product-card" style="animation-delay: ${i * 0.1}s`);
-    }).join('');
-}
+function createPCCard(pc){const pcStr=JSON.stringify(pc).replace(/"/g,'&quot;');return`<div class="product-card pc-card"><span class="product-badge pc-badge">🎮 GAMING</span><div class="product-image" style="background: linear-gradient(135deg, #1e1e2e, #2d1b69); font-size: 5rem;">💻</div><div class="product-brand">PC GAMING</div><div class="product-name">${pc.name}</div><div class="product-specs"><div class="spec-row"><span class="spec-label">🔧 CPU</span><span class="spec-value">${pc.cpu}</span></div><div class="spec-row"><span class="spec-label">🎮 GPU</span><span class="spec-value">${pc.gpu}</span></div><div class="spec-row"><span class="spec-label">💾 RAM</span><span class="spec-value">${pc.ram}</span></div><div class="spec-row"><span class="spec-label">💽 Storage</span><span class="spec-value">${pc.storage}</span></div></div><div class="product-price">S/ ${pc.price.toLocaleString()}</div><div class="product-actions"><button class="btn btn-primary" onclick='addToCart(${pcStr},"pc")'>🛒 Agregar</button><button class="btn btn-secondary" onclick='consultProduct(${pcStr},"pc")'>💬</button></div></div>`}
 
-// CREAR CARD DE CELULAR
-function createCelularCard(p) {
-    const productStr = JSON.stringify(p).replace(/"/g, '&quot;');
-    return `
-        <div class="product-card">
-            ${p.offer ? '<span class="product-badge">🔥 OFERTA</span>' : ''}
-            ${p.registered ? '<span class="product-badge badge-registered">✅ REGISTRADO</span>' : ''}
-            <div class="product-image">📱</div>
-            <div class="product-brand">${p.brand}</div>
-            <div class="product-name">${p.name}</div>
-            <div class="product-specs">
-                <div class="spec-row">
-                    <span class="spec-label">💾 ROM/RAM</span>
-                    <span class="spec-value">${p.ram} GB</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-label">📱 Pantalla</span>
-                    <span class="spec-value">${p.screen}</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-label">📷 Cámara</span>
-                    <span class="spec-value">${p.camera}</span>
-                </div>
-            </div>
-            <div class="product-price">
-                ${p.offer ? `<span class="old-price">S/ ${p.oldPrice}</span>` : ''}
-                S/ ${p.price}
-            </div>
-            <div class="product-actions">
-                <button class="btn btn-primary" onclick='addToCart(${productStr}, "celular")'>🛒 Agregar</button>
-                <button class="btn btn-secondary" onclick='consultProduct(${productStr}, "celular")'>💬</button>
-            </div>
-        </div>
-    `;
-}
+function setupFilters(){document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentFilter=this.dataset.brand;renderCelulares()})})}
 
-// CREAR CARD DE PC
-function createPCCard(pc) {
-    const pcStr = JSON.stringify(pc).replace(/"/g, '&quot;');
-    return `
-        <div class="product-card pc-card">
-            <span class="product-badge pc-badge">🎮 GAMING</span>
-            <div class="product-image">💻</div>
-            <div class="product-brand">PC GAMING</div>
-            <div class="product-name">${pc.name}</div>
-            <div class="product-specs">
-                <div class="spec-row">
-                    <span class="spec-label">🔧 CPU</span>
-                    <span class="spec-value">${pc.cpu}</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-label">🎮 GPU</span>
-                    <span class="spec-value">${pc.gpu}</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-label">💾 RAM</span>
-                    <span class="spec-value">${pc.ram}</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-label">💽 Storage</span>
-                    <span class="spec-value">${pc.storage}</span>
-                </div>
-            </div>
-            <div class="product-price">S/ ${pc.price.toLocaleString()}</div>
-            <div class="product-actions">
-                <button class="btn btn-primary" onclick='addToCart(${pcStr}, "pc")'>🛒 Agregar</button>
-                <button class="btn btn-secondary" onclick='consultProduct(${pcStr}, "pc")'>💬</button>
-            </div>
-        </div>
-    `;
-}
+function addToCart(product,type){cart.push({...product,type});saveCart();updateCartCount();showNotification(`✅ ${product.name} agregado`,'#00ff88')}
 
-// FILTROS
-function setupFilters() {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentFilter = this.dataset.brand;
-            renderCelulares();
-        });
-    });
-}
+function removeFromCart(index){const item=cart[index];cart.splice(index,1);saveCart();updateCartCount();renderCart();showNotification(`❌ ${item.name} eliminado`,'#ff3b5c')}
 
-// CARRITO
-function addToCart(product, type) {
-    cart.push({...product, type});
-    saveCart();
-    updateCartCount();
-    showNotification(`✅ ${product.name} agregado al carrito`, 'success');
-}
+function toggleCart(){const modal=document.getElementById('cart-modal');const isOpen=modal.style.display==='block';modal.style.display=isOpen?'none':'block';if(!isOpen)renderCart()}
 
-function removeFromCart(index) {
-    const item = cart[index];
-    cart.splice(index, 1);
-    saveCart();
-    updateCartCount();
-    renderCart();
-    showNotification(`❌ ${item.name} eliminado`, 'error');
-}
+function closeCartIfOutside(event){if(event.target.id==='cart-modal')toggleCart()}
 
-function toggleCart() {
-    const modal = document.getElementById('cart-modal');
-    const isOpen = modal.style.display === 'block';
-    modal.style.display = isOpen ? 'none' : 'block';
-    if (!isOpen) renderCart();
-}
+function renderCart(){const container=document.getElementById('cart-items');const total=cart.reduce((sum,item)=>sum+item.price,0);if(cart.length===0){container.innerHTML='<div style="text-align:center;padding:3rem;color:#6e7485;">Tu carrito está vacío 🛒</div>'}else{container.innerHTML=cart.map((item,index)=>`<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">${item.name}</div><div class="cart-item-price">S/ ${item.price.toLocaleString()}</div></div><button class="remove-btn" onclick="removeFromCart(${index})">🗑️</button></div>`).join('')}document.getElementById('cart-total').textContent=`Total: S/ ${total.toLocaleString()}`}
 
-function closeCartIfOutside(event) {
-    if (event.target.id === 'cart-modal') toggleCart();
-}
+function updateCartCount(){const count=document.getElementById('cart-count');count.textContent=cart.length;count.style.display=cart.length>0?'flex':'none'}
 
-function renderCart() {
-    const container = document.getElementById('cart-items');
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    
-    if (cart.length === 0) {
-        container.innerHTML = '<div style="text-align: center; padding: 3rem; color: #6e7485;">Tu carrito está vacío 🛒</div>';
-    } else {
-        container.innerHTML = cart.map((item, index) => `
-            <div class="cart-item">
-                <div class="cart-item-info">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">S/ ${item.price.toLocaleString()}</div>
-                </div>
-                <button class="remove-btn" onclick="removeFromCart(${index})">🗑️</button>
-            </div>
-        `).join('');
-    }
-    
-    document.getElementById('cart-total').textContent = `Total: S/ ${total.toLocaleString()}`;
-}
+function saveCart(){localStorage.setItem('greycell_cart',JSON.stringify(cart))}
 
-function updateCartCount() {
-    const count = document.getElementById('cart-count');
-    count.textContent = cart.length;
-    count.style.display = cart.length > 0 ? 'flex' : 'none';
-}
+function loadCart(){const saved=localStorage.getItem('greycell_cart');if(saved){cart=JSON.parse(saved);updateCartCount()}}
 
-function saveCart() {
-    localStorage.setItem('greycell_cart', JSON.stringify(cart));
-}
+function checkout(){if(cart.length===0){showNotification('⚠️ Tu carrito está vacío','#ffaa00');return}let message='🛒 *PEDIDO - GREYCELL STORE*\n\n';cart.forEach((item,index)=>{message+=`${index+1}. *${item.name}*\n`;if(item.type==='pc'){message+=`   💻 ${item.cpu}\n   🎮 ${item.gpu}\n`}else{message+=`   💾 ${item.ram} GB\n`}message+=`   💰 S/ ${item.price}\n\n`});const total=cart.reduce((sum,item)=>sum+item.price,0);message+=`━━━━━━━━━━━━━━━\n*TOTAL: S/ ${total.toLocaleString()}*\n\n¡Quiero confirmar mi pedido! 🎉`;window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`,'_blank')}
 
-function loadCart() {
-    const saved = localStorage.getItem('greycell_cart');
-    if (saved) {
-        cart = JSON.parse(saved);
-        updateCartCount();
-    }
-}
+function consultProduct(product,type){let message=`Hola! 👋\n\nQuiero consultar sobre:\n\n`;if(type==='pc'){message+=`💻 *${product.name}*\n🔧 ${product.cpu}\n🎮 ${product.gpu}\n`}else{message+=`📱 *${product.brand.toUpperCase()} ${product.name}*\n💾 ${product.ram} GB\n`}message+=`\n💰 Precio: S/ ${product.price}\n\n¿Está disponible?`;window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`,'_blank')}
 
-// CHECKOUT
-function checkout() {
-    if (cart.length === 0) {
-        showNotification('⚠️ Tu carrito está vacío', 'warning');
-        return;
-    }
-
-    let message = '🛒 *PEDIDO - GREYCELL STORE*\n\n';
-    
-    cart.forEach((item, index) => {
-        message += `${index + 1}. *${item.name}*\n`;
-        if (item.type === 'pc') {
-            message += `   💻 ${item.cpu}\n   🎮 ${item.gpu}\n`;
-        } else {
-            message += `   💾 ${item.ram} GB\n`;
-        }
-        message += `   💰 S/ ${item.price}\n\n`;
-    });
-    
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    message += `━━━━━━━━━━━━━━━\n*TOTAL: S/ ${total.toLocaleString()}*\n\n¡Quiero confirmar mi pedido! 🎉`;
-    
-    window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`, '_blank');
-}
-
-// CONSULTAR
-function consultProduct(product, type) {
-    let message = `Hola! 👋\n\nQuiero consultar sobre:\n\n`;
-    
-    if (type === 'pc') {
-        message += `💻 *${product.name}*\n🔧 ${product.cpu}\n🎮 ${product.gpu}\n`;
-    } else {
-        message += `📱 *${product.brand.toUpperCase()} ${product.name}*\n💾 ${product.ram} GB\n`;
-    }
-    
-    message += `\n💰 Precio: S/ ${product.price}\n\n¿Está disponible?`;
-    
-    window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`, '_blank');
-}
-
-// NOTIFICACIONES
-function showNotification(message, type = 'success') {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    
-    const colors = {
-        success: '#00ff88',
-        error: '#ff3b5c',
-        warning: '#ffaa00'
-    };
-    
-    notification.style.borderLeftColor = colors[type];
-    document.body.appendChild(notification);
-    
-    setTimeout(() => notification.remove(), 3000);
-}
+function showNotification(message,color){const notification=document.createElement('div');notification.className='notification';notification.textContent=message;notification.style.borderLeftColor=color;document.body.appendChild(notification);setTimeout(()=>notification.remove(),3000)}
     </script>
 </body>
 </html>
