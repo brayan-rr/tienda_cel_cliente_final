@@ -42,7 +42,6 @@
             z-index: 9999;
             border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
         }
         
         .header-content {
@@ -62,9 +61,7 @@
             transition: transform 0.3s ease;
         }
         
-        .logo:hover {
-            transform: scale(1.05);
-        }
+        .logo:hover { transform: scale(1.05); }
         
         .nav {
             display: flex;
@@ -138,7 +135,7 @@
             50% { transform: scale(1.1); }
         }
         
-        /* HERO CON PCS DESTACADAS */
+        /* HERO */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
@@ -161,7 +158,7 @@
         .hero-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 3rem;
+            padding: 0 3rem 3rem 3rem;
             text-align: center;
             position: relative;
             z-index: 2;
@@ -178,14 +175,8 @@
         }
         
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero-subtitle {
@@ -196,41 +187,97 @@
             animation: fadeInUp 0.8s ease 0.2s both;
         }
         
-        /* PCS DESTACADAS */
-        .featured-pcs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 4rem;
             animation: fadeInUp 0.8s ease 0.4s both;
         }
         
-        .pc-featured-card {
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 3px solid white;
+        }
+        
+        .cta-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+        
+        /* OFERTAS GRID (PCS + CELULARES) */
+        .ofertas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        .offer-card {
             background: white;
             border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         
-        .pc-featured-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        .offer-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
         }
         
-        .pc-badge {
+        .offer-badge {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            background: linear-gradient(135deg, #ff00cc, #3333ff);
+            background: linear-gradient(135deg, #ff3b5c, #ff6b6b);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.85rem;
+            animation: bounce 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 59, 92, 0.4);
+            z-index: 10;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .pc-badge {
+            background: linear-gradient(135deg, #ff00cc, #3333ff);
             animation: glow 2s infinite;
         }
         
@@ -239,114 +286,73 @@
             50% { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); }
         }
         
-        .pc-image {
+        .offer-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #1e1e2e, #2d1b69);
+            height: 180px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
             margin-bottom: 1.5rem;
-            position: relative;
             overflow: hidden;
         }
         
-        .pc-image img {
+        .offer-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
         
-        .pc-name {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--dark);
+        .offer-card:hover .offer-image img {
+            transform: scale(1.1);
         }
         
-        .pc-specs {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .pc-spec {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .pc-spec:last-child {
-            border-bottom: none;
-        }
-        
-        .spec-label {
-            color: var(--gray);
-            font-weight: 500;
-        }
-        
-        .spec-value {
+        .offer-name {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .pc-price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        
-        .pc-offers {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-left: 4px solid #ffaa00;
-        }
-        
-        .offer-title {
-            font-weight: 700;
-            color: #856404;
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+            color: #1d1d1f;
         }
         
-        .offer-item {
-            font-size: 0.85rem;
-            color: #856404;
-            margin: 0.3rem 0;
+        .offer-specs {
+            font-size: 0.9rem;
+            color: #6e7485;
+            margin-bottom: 1rem;
         }
         
-        .gift-badge {
-            background: linear-gradient(135deg, var(--success), #00d9ff);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-left: 0.5rem;
-        }
-        
-        .pc-actions {
-            display: grid;
-            grid-template-columns: 1fr;
+        .offer-price {
+            display: flex;
+            align-items: center;
             gap: 0.8rem;
-            margin-top: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .price-old {
+            font-size: 1.1rem;
+            color: #6e7485;
+            text-decoration: line-through;
+        }
+        
+        .price-new {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #0066ff;
+        }
+        
+        .offer-actions {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 0.8rem;
         }
         
         .btn {
-            padding: 1rem;
+            padding: 0.9rem;
             border: none;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -464,14 +470,8 @@
         }
         
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .product-card:hover {
@@ -492,6 +492,11 @@
             z-index: 10;
         }
         
+        .badge-registered {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            top: 3.3rem;
+        }
+        
         .product-image {
             width: 100%;
             height: 150px;
@@ -510,6 +515,15 @@
             object-fit: contain;
         }
         
+        .product-brand {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
         .product-name {
             font-size: 1.1rem;
             font-weight: 700;
@@ -518,11 +532,42 @@
             min-height: 2.5rem;
         }
         
+        .product-specs {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+        }
+        
+        .spec-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .spec-value {
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
         .product-price {
             font-size: 1.8rem;
             font-weight: 900;
             color: var(--primary);
             margin: 1rem 0;
+        }
+        
+        .old-price {
+            font-size: 1rem;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
         }
         
         .product-actions {
@@ -540,8 +585,8 @@
         .coupon-section {
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 24px;
-            padding: 3rem;
-            margin: 4rem auto;
+            padding: 2.5rem;
+            margin: 3rem auto;
             max-width: 600px;
             text-align: center;
             box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
@@ -717,6 +762,7 @@
             font-size: 1.2rem;
             color: var(--success);
             margin-bottom: 0.5rem;
+            text-align: center;
         }
         
         .checkout-btn {
@@ -787,21 +833,12 @@
         }
         
         @keyframes slideInRight {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
         @keyframes slideOutRight {
-            to {
-                transform: translateX(400px);
-                opacity: 0;
-            }
+            to { transform: translateX(400px); opacity: 0; }
         }
         
         /* RESPONSIVE */
@@ -810,8 +847,8 @@
             .hero-subtitle { font-size: 1.2rem; }
             .nav { display: none; }
             .products-grid { grid-template-columns: 1fr; }
-            .featured-pcs { grid-template-columns: 1fr; }
-            .product-actions { grid-template-columns: 1fr; }
+            .ofertas-grid { grid-template-columns: 1fr; }
+            .product-actions, .offer-actions { grid-template-columns: 1fr; }
             .coupon-input-group { flex-direction: column; }
         }
     </style>
@@ -819,11 +856,10 @@
 <body>
     <div class="header">
         <div class="header-content">
-            <div class="logo" onclick="showHome()">⚡ GreyCell Store</div>
+            <div class="logo" onclick="showHome()">⚡ GreyCell</div>
             <nav class="nav">
                 <a class="nav-link" onclick="showSection('celulares')" id="nav-celulares">📱 Celulares</a>
-                <a class="nav-link" onclick="showSection('componentes')" id="nav-componentes">🔧 Componentes</a>
-                <a class="nav-link" onclick="showSection('monitores')" id="nav-monitores">🖥️ Monitores</a>
+                <a class="nav-link" onclick="showSection('computadoras')" id="nav-computadoras">💻 Computadoras</a>
             </nav>
             <div class="cart-icon" onclick="toggleCart()">
                 🛒
@@ -834,27 +870,35 @@
 
     <div class="hero" id="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">PCs Gaming<br>Arma Tu Setup Perfecto 🎮</h1>
-            <p class="hero-subtitle">Computadoras completas con las mejores ofertas del mercado</p>
+            <h1 class="hero-title">Tecnología Premium<br>a Tu Alcance 🚀</h1>
+            <p class="hero-subtitle">Las mejores ofertas en PCs y Celulares</p>
+            
+            <div class="hero-cta">
+                <button class="cta-btn cta-primary" onclick="showSection('celulares')">📱 Ver Celulares</button>
+                <button class="cta-btn cta-secondary" onclick="showSection('computadoras')">💻 Ver Computadoras</button>
+            </div>
         </div>
         
-        <div class="featured-pcs" id="featured-pcs"></div>
+        <div class="ofertas-grid" id="hero-ofertas"></div>
         
         <div class="coupon-section">
             <h3 class="coupon-title">🎁 ¿Tienes un Cupón?</h3>
-            <p class="coupon-subtitle">Ingresa tu código y obtén descuentos exclusivos</p>
+            <p class="coupon-subtitle">Ingresa tu código y obtén descuentos en TODOS los productos</p>
             <div class="coupon-input-group">
                 <input type="text" class="coupon-input" id="coupon-input" placeholder="CÓDIGO DE CUPÓN">
                 <button class="coupon-apply" onclick="applyCoupon()">Aplicar</button>
             </div>
             <div class="coupon-message" id="coupon-message"></div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
+                Cupones: GREYCELL10 (10%) • TECH2025 (15%) • GAMING (5%)
+            </p>
         </div>
     </div>
 
     <section id="celulares-section">
         <div class="section-header">
-            <h2 class="section-title">📱 Celulares Premium</h2>
-            <p class="section-subtitle">Los mejores smartphones del mercado</p>
+            <h2 class="section-title">📱 Todos los Celulares</h2>
+            <p class="section-subtitle">Encuentra tu smartphone ideal</p>
         </div>
 
         <div class="filters">
@@ -863,35 +907,40 @@
             <button class="filter-btn" data-brand="redmi">Redmi</button>
             <button class="filter-btn" data-brand="poco">Poco</button>
             <button class="filter-btn" data-brand="honor">Honor</button>
+            <button class="filter-btn" data-brand="realme">Realme</button>
+            <button class="filter-btn" data-brand="motorola">Motorola</button>
+            <button class="filter-btn" data-brand="magic">Magic</button>
         </div>
 
         <div class="products-grid" id="celulares-container"></div>
     </section>
 
-    <section id="componentes-section">
+    <section id="computadoras-section">
         <div class="section-header">
-            <h2 class="section-title">🔧 Componentes de PC</h2>
-            <p class="section-subtitle">Lo mejor para armar tu computadora</p>
+            <h2 class="section-title">💻 Computadoras</h2>
+            <p class="section-subtitle">PCs completas, componentes y monitores</p>
         </div>
 
         <div class="filters">
-            <button class="filter-btn active" data-category="procesadores">Procesadores</button>
-            <button class="filter-btn" data-category="placas">Placas Madre</button>
-            <button class="filter-btn" data-category="ram">Memoria RAM</button>
-            <button class="filter-btn" data-category="ssd">SSD/NVME</button>
-            <button class="filter-btn" data-category="cases">Cases</button>
+            <button class="filter-btn active" data-pc-category="pcs">PCs Completas</button>
+            <button class="filter-btn" data-pc-category="componentes">Componentes</button>
+            <button class="filter-btn" data-pc-category="monitores">Monitores</button>
         </div>
 
-        <div class="products-grid" id="componentes-container"></div>
-    </section>
-
-    <section id="monitores-section">
-        <div class="section-header">
-            <h2 class="section-title">🖥️ Monitores Gaming</h2>
-            <p class="section-subtitle">Pantallas de alta calidad para tu setup</p>
+        <div id="pc-subsections">
+            <div id="pcs-completas" class="products-grid"></div>
+            <div id="componentes-completas" style="display:none;">
+                <div class="filters" style="margin-top: 2rem;">
+                    <button class="filter-btn active" data-comp-category="procesadores">Procesadores</button>
+                    <button class="filter-btn" data-comp-category="placas">Placas Madre</button>
+                    <button class="filter-btn" data-comp-category="ram">RAM</button>
+                    <button class="filter-btn" data-comp-category="ssd">SSD/NVME</button>
+                    <button class="filter-btn" data-comp-category="cases">Cases</button>
+                </div>
+                <div class="products-grid" id="componentes-container"></div>
+            </div>
+            <div id="monitores-completas" class="products-grid" style="display:none;"></div>
         </div>
-
-        <div class="products-grid" id="monitores-container"></div>
     </section>
 
     <div class="cart-modal" id="cart-modal" onclick="closeCartIfOutside(event)">
@@ -914,7 +963,7 @@
             📲 Contáctanos por WhatsApp
         </a>
         <p style="opacity: 0.7; margin-top: 3rem;">
-            © 2025 GreyCell Store - Todos los derechos reservados
+            © 2025 GreyCell Store
         </p>
     </div>
 
@@ -922,7 +971,7 @@
 // CONFIGURACIÓN
 const REPO_URL = 'https://raw.githubusercontent.com/brayan-rr/tienda_cel_cliente_final/main/';
 
-// PCS COMPLETAS DESTACADAS
+// PCS COMPLETAS DESTACADAS (3)
 const featuredPCs = [
     {
         name: "PC Gaming Ryzen 5 5600GT",
@@ -933,10 +982,8 @@ const featuredPCs = [
         case: "Case Halion RGB",
         price: 1450,
         image: "mipc.jpeg",
-        offers: [
-            { text: "+ Monitor", addon: true },
-            { text: "🎁 REGALO: Combo Teros (Teclado + Mouse + Audífonos)", isGift: true }
-        ]
+        type: "pc",
+        offers: "+ Monitor • 🎁 REGALO: Combo Teros"
     },
     {
         name: "PC Gaming Ryzen 3",
@@ -947,68 +994,131 @@ const featuredPCs = [
         case: "Case Gamer RGB",
         price: 1250,
         image: "mipc2.jpeg",
-        offers: [
-            { text: "+ Monitor 22\" = S/ 1,569", addon: true, price: 319 },
-            { text: "🎁 REGALO: Combo Teros al añadir monitor", isGift: true }
-        ]
+        type: "pc",
+        offers: "+ Monitor 22\" = S/ 1,569 • 🎁 REGALO: Combo Teros"
     },
     {
-        name: "PC Gaming Intel i5 11va Gen + RX 580",
+        name: "PC Gaming Intel i5 + RX 580",
         processor: "Intel Core i5 11va Gen",
-        gpu: "AMD Radeon RX 580 8GB",
+        gpu: "AMD RX 580 8GB",
         ram: "16GB DDR4",
         storage: "SSD 512GB",
         power: "Fuente 500W 80+ Bronze",
         case: "Case Gamer RGB Premium",
         price: 1750,
         image: "mipc3.jpeg",
-        offers: [
-            { text: "+ Monitor 24\" 144Hz 1ms Teros = +S/ 350", addon: true, price: 350 },
-            { text: "🎁 REGALO: Combo Teros al añadir monitor", isGift: true }
-        ]
+        type: "pc",
+        offers: "+ Monitor 24\" 144Hz = +S/ 350 • 🎁 REGALO: Combo Teros"
     }
 ];
 
-// CELULARES (TOP 5 MÁS COMERCIALES)
-const celulares = [
-    {brand:"samsung",name:"Galaxy A06 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",price:455,offer:true,oldPrice:510,image:"SAMSUNG_A06.jpeg"},
-    {brand:"redmi",name:"Note 14 PRO",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,offer:true,oldPrice:1050,image:"redmi_14pro.jpeg"},
-    {brand:"honor",name:"Honor 400 LITE",ram:"256/12",screen:"6.7\"",camera:"108MP",price:1055,offer:true,oldPrice:1195,image:"honor_400lite.jpeg"},
-    {brand:"poco",name:"Poco X7 PRO",ram:"256/12",screen:"6.67\"",camera:"50MP",price:1265,image:"poco_x7pro.jpeg"},
-    {brand:"redmi",name:"Note 14",ram:"128/6",screen:"6.67\"",camera:"50MP",price:655,offer:true,oldPrice:755,image:"xiaomi-redmi-note-14-pro.jpg"}
+// TODOS LOS CELULARES (70+)
+const celulares=[
+    {brand:"samsung",name:"Galaxy A05",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:505,image:"SAMSUNG_A05.jpeg"},
+    {brand:"samsung",name:"Galaxy A05",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:425,image:"SAMSUNG_A05.jpeg"},
+    {brand:"samsung",name:"Galaxy A05S",ram:"128/6",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:595,image:"SAMSUNG_A05.jpeg"},
+    {brand:"samsung",name:"Galaxy A06 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:455,registered:true,offer:true,oldPrice:510,image:"SAMSUNG_A06.jpeg"},
+    {brand:"samsung",name:"Galaxy A06",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:525,image:"SAMSUNG_A06.jpeg"},
+    {brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:525,registered:true,image:"SAMSUNG_A07.jpeg"},
+    {brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:575,registered:true,image:"SAMSUNG_A07.jpeg"},
+    {brand:"samsung",name:"Galaxy A16",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:595,image:"SAMSUNG_A16.jpeg"},
+    {brand:"samsung",name:"Galaxy A16 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:625,registered:true,image:"SAMSUNG_A16.jpeg"},
+    {brand:"samsung",name:"Galaxy A16",ram:"128/6",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:685,image:"SAMSUNG_A16.jpeg"},
+    {brand:"samsung",name:"Galaxy A16",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:815,image:"SAMSUNG_A16.jpeg"},
+    {brand:"samsung",name:"Galaxy A17",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:905,image:"SAMSUNG_A17.jpeg"},
+    {brand:"samsung",name:"Galaxy A26",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:905,image:"SAMSUNG_A26.jpeg"},
+    {brand:"samsung",name:"Galaxy A36",ram:"256/8",screen:"6.6\"",camera:"50MP",battery:"5000 mAh",price:1195,image:"SAMSUNG_A36.jpeg"},
+    {brand:"samsung",name:"Galaxy A36",ram:"256/12",screen:"6.6\"",camera:"50MP",battery:"5000 mAh",price:1245,image:"SAMSUNG_A36.jpeg"},
+    {brand:"samsung",name:"Galaxy A56",ram:"256/8",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:1395,image:"SAMSUNG_A56.jpeg"},
+    {brand:"samsung",name:"Galaxy A56",ram:"256/12",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:1445,image:"SAMSUNG_A56.jpeg"},
+    {brand:"samsung",name:"Galaxy F17 5G",ram:"128/4",screen:"6.7\"",camera:"50MP",battery:"5000 mAh",price:725,image:"SAMSUNG_F17.jpeg"},
+    {brand:"samsung",name:"Galaxy S25 ULTRA",ram:"512/12",screen:"6.8\"",camera:"200MP",battery:"5000 mAh",price:4120,image:"SAMSUNG_S25.jpeg"},
+    {brand:"redmi",name:"Redmi A5",ram:"64/3",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:385,image:"REDMI_A5.jpeg"},
+    {brand:"redmi",name:"Redmi A5 REGISTRADO",ram:"64/3",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:425,registered:true,image:"REDMI_A5.jpeg"},
+    {brand:"redmi",name:"Redmi A5",ram:"128/4",screen:"6.71\"",camera:"8MP",battery:"5000 mAh",price:425,image:"REDMI_A5.jpeg"},
+    {brand:"redmi",name:"Redmi 9C",ram:"128/4",screen:"6.53\"",camera:"13MP",battery:"5000 mAh",price:525,image:"REDMI_9C.jpeg"},
+    {brand:"redmi",name:"Redmi 14C",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:485,image:"REDMI_14C.jpeg"},
+    {brand:"redmi",name:"Redmi 14C",ram:"256/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:515,image:"REDMI_14C.jpeg"},
+    {brand:"redmi",name:"Redmi 14C",ram:"256/8",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:565,image:"REDMI_14C.jpeg"},
+    {brand:"redmi",name:"Redmi 15",ram:"256/8",screen:"6.74\"",camera:"50MP",battery:"6000 mAh",price:755,image:"REDMI_15.jpeg"},
+    {brand:"redmi",name:"Redmi 15C",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:525,image:"REDMI_15C.jpeg"},
+    {brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"128/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:575,registered:true,image:"REDMI_15C.jpeg"},
+    {brand:"redmi",name:"Redmi 15C",ram:"256/8",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:595,image:"REDMI_15C.jpeg"},
+    {brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"256/4",screen:"6.88\"",camera:"50MP",battery:"5160 mAh",price:665,registered:true,image:"REDMI_15C.jpeg"},
+    {brand:"redmi",name:"Note 12",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:905,image:"REDMI_12.jpeg"},
+    {brand:"redmi",name:"Note 12 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5000 mAh",price:1295,image:"redmi_12 pro.jpeg"},
+    {brand:"redmi",name:"Note 13",ram:"128/6",screen:"6.67\"",camera:"108MP",battery:"5000 mAh",price:755,image:"redmi_13.jpeg"},
+    {brand:"redmi",name:"Note 13 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5100 mAh",price:1285,image:"redmi_13pro.jpeg"},
+    {brand:"redmi",name:"Note 14",ram:"128/6",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:655,offer:true,oldPrice:755,image:"xiaomi-redmi-note-14-pro.jpg"},
+    {brand:"redmi",name:"Note 14",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:735,image:"xiaomi-redmi-note-14-pro.jpg"},
+    {brand:"redmi",name:"Note 14S",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5110 mAh",price:905,image:"redmi_14s.jpeg"},
+    {brand:"redmi",name:"Note 14 PRO",ram:"256/8",screen:"6.67\"",camera:"50MP",battery:"5500 mAh",price:905,offer:true,oldPrice:1050,image:"redmi_14pro.jpeg"},
+    {brand:"redmi",name:"Note 14 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"5500 mAh",price:1015,image:"redmi_14pro.jpeg"},
+    {brand:"redmi",name:"Note 14 PRO 5G",ram:"512/12",screen:"6.67\"",camera:"200MP",battery:"5500 mAh",price:1145,image:"redmi_14pro.jpeg"},
+    {brand:"redmi",name:"Note 14 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",battery:"6200 mAh",price:1295,image:"redmi_note14pro plus.jpeg"},
+    {brand:"redmi",name:"Note 14 PRO PLUS",ram:"512/12",screen:"6.67\"",camera:"200MP",battery:"6200 mAh",price:1415,image:"redmi_note14pro plus.jpeg"},
+    {brand:"poco",name:"Poco X5",ram:"256/8",screen:"6.67\"",camera:"48MP",battery:"5000 mAh",price:1055,image:"poco_x5(2).jpeg"},
+    {brand:"poco",name:"Poco X7 PRO",ram:"256/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1265,image:"poco_x7pro.jpeg"},
+    {brand:"poco",name:"Poco X7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1415,image:"poco_x7pro.jpeg"},
+    {brand:"poco",name:"Poco M6 PRO",ram:"512/12",screen:"6.67\"",camera:"64MP",battery:"5000 mAh",price:1005,image:"poco_m6pro.jpeg"},
+    {brand:"poco",name:"Poco F7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",battery:"5000 mAh",price:1845,image:"poco_f7pro.jpeg"},
+    {brand:"realme",name:"Realme C21Y",ram:"64/4",screen:"6.5\"",camera:"13MP",battery:"5000 mAh",price:545,image:"realme_c21y.jpeg"},
+    {brand:"realme",name:"Realme C61",ram:"256/8",screen:"6.74\"",camera:"50MP",battery:"5000 mAh",price:675,image:"realme_c61.jpeg"},
+    {brand:"honor",name:"Honor X5C",ram:"64/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:425,image:"honor_x5c.jpeg"},
+    {brand:"honor",name:"Honor X5C",ram:"128/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:455,image:"honor_x5c.jpeg"},
+    {brand:"honor",name:"Honor X5C REGISTRADO",ram:"64/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:455,registered:true,image:"honor_x5c.jpeg"},
+    {brand:"honor",name:"Honor X6B",ram:"128/4",screen:"6.56\"",camera:"50MP",battery:"5200 mAh",price:505,image:"honor_x6b.jpeg"},
+    {brand:"honor",name:"Honor X6C",ram:"256/8",screen:"6.77\"",camera:"50MP",battery:"5200 mAh",price:605,image:"honor_x6c.jpeg"},
+    {brand:"honor",name:"Honor X6C REGISTRADO",ram:"256/8",screen:"6.77\"",camera:"50MP",battery:"5200 mAh",price:625,registered:true,image:"honor_x6c.jpeg"},
+    {brand:"honor",name:"Honor X7C",ram:"256/8",screen:"6.77\"",camera:"108MP",battery:"6000 mAh",price:715,image:"honor_x7c.jpeg"},
+    {brand:"honor",name:"Honor X7D",ram:"256/8",screen:"6.77\"",camera:"108MP",battery:"6000 mAh",price:745,image:"honor_x7d.jpeg"},
+    {brand:"honor",name:"Honor X8A",ram:"256/8",screen:"6.7\"",camera:"100MP",battery:"4500 mAh",price:885,image:"honor_x8a.jpeg"},
+    {brand:"honor",name:"Honor X8C",ram:"256/8",screen:"6.7\"",camera:"108MP",battery:"5330 mAh",price:875,image:"honor_x8c.jpeg"},
+    {brand:"honor",name:"Honor 200 LITE",ram:"256/8",screen:"6.7\"",camera:"108MP",battery:"4500 mAh",price:955,image:"honor_200lite.jpeg"},
+    {brand:"honor",name:"Honor 200",ram:"256/12",screen:"6.7\"",camera:"50MP",battery:"5200 mAh",price:1545,image:"honor_200.jpeg"},
+    {brand:"honor",name:"Honor 400",ram:"12/256",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1495,image:"honor_400.jpeg"},
+    {brand:"honor",name:"Honor 400",ram:"12/512",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1595,image:"honor_400.jpeg"},
+    {brand:"honor",name:"Honor 400 LITE",ram:"256/12",screen:"6.7\"",camera:"108MP",battery:"5200 mAh",price:1055,offer:true,oldPrice:1195,image:"honor_400lite.jpeg"},
+    {brand:"honor",name:"Honor 400 PRO",ram:"512/12",screen:"6.78\"",camera:"108MP",battery:"5200 mAh",price:2695,image:"honor_400pro.jpeg"},
+    {brand:"motorola",name:"Motorola G04 REGISTRADO",ram:"128/4",screen:"6.6\"",camera:"16MP",battery:"5000 mAh",price:475,registered:true,image:"motorola_g04.jpeg"},
+    {brand:"motorola",name:"Motorola E14 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",battery:"5000 mAh",price:395,registered:true,image:"motorola_e14.jpeg"},
+    {brand:"motorola",name:"Motorola E15 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",battery:"5000 mAh",price:425,registered:true,image:"motorola_e15.jpeg"},
+    {brand:"magic",name:"Magic 7 LITE",ram:"256/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1195,offer:true,oldPrice:1345,image:"honor magic 7 lite.jpeg"},
+    {brand:"magic",name:"Magic 7 LITE",ram:"512/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1295,image:"honor magic 7 lite.jpeg"},
+    {brand:"magic",name:"Magic 7 LITE REGISTRADO",ram:"256/8",screen:"6.78\"",camera:"108MP",battery:"6600 mAh",price:1325,registered:true,image:"honor magic 7 lite.jpeg"}
 ];
 
-// COMPONENTES (TOP 5 DE CADA CATEGORÍA)
-const componentes = {
-    procesadores: [
+// COMPONENTES (5 de cada categoría)
+const componentes={
+    procesadores:[
         {name:"AMD RYZEN 5 5600GT",price:499,category:"procesadores"},
         {name:"INTEL CORE i5 12400F",price:475,category:"procesadores"},
         {name:"AMD RYZEN 5 5500",price:305,category:"procesadores"},
         {name:"INTEL CORE i5 14400F",price:559,category:"procesadores"},
         {name:"AMD RYZEN 7 5700G",price:620,category:"procesadores"}
     ],
-    placas: [
+    placas:[
         {name:"MSI B550M-A PRO DDR4",price:279,category:"placas"},
         {name:"MSI B760M-E DDR4",price:325,category:"placas"},
         {name:"GIGABYTE B550M K DDR4",price:295,category:"placas"},
         {name:"MSI B760M-P 4DIMMs DDR4",price:399,category:"placas"},
         {name:"ASUS PRIME B760M-A DDR5",price:449,category:"placas"}
     ],
-    ram: [
+    ram:[
         {name:"PATRIOT 16GB DDR4 3200MHZ",price:199,category:"ram"},
         {name:"KINGSTON FURY 16GB DDR4",price:197,category:"ram"},
         {name:"XPG D35 16GB DDR4 3200MHz",price:195,category:"ram"},
         {name:"KINGSTON FURY 16GB DDR5",price:219,category:"ram"},
         {name:"PATRIOT 16GB DDR5 5200MHZ",price:195,category:"ram"}
     ],
-    ssd: [
+    ssd:[
         {name:"KINGSTON NV3 1TB PCIe 4.0",price:279,category:"ssd"},
         {name:"ADATA LEGEND 860 1TB GEN4",price:279,category:"ssd"},
         {name:"WD GREEN SN350 1TB NVME",price:235,category:"ssd"},
         {name:"LEXAR NM790 1TB PCI 4.0",price:279,category:"ssd"},
         {name:"PATRIOT P300 1TB PCIe 3.0",price:249,category:"ssd"}
     ],
-    cases: [
+    cases:[
         {name:"HALION LUNA 3 FANS RGB",price:79,category:"cases"},
         {name:"CYBERTEL ELEMENT+ WHITE",price:110,category:"cases"},
         {name:"HALION SNAKE WHITE",price:119,category:"cases"},
@@ -1017,8 +1127,8 @@ const componentes = {
     ]
 };
 
-// MONITORES (TOP 5 MÁS COMERCIALES)
-const monitores = [
+// MONITORES (5 top)
+const monitores=[
     {name:"TEROS 24\" 2417S 144HZ IPS",price:262},
     {name:"MICRONICS MF27FF 27P 144HZ",price:329},
     {name:"XIAOMI G24I 180HZ FHD IPS",price:389},
@@ -1027,315 +1137,115 @@ const monitores = [
 ];
 
 // CUPONES
-const coupons = {
-    "GREYCELL10": { discount: 0.10, description: "10% de descuento" },
-    "TECH2025": { discount: 0.15, description: "15% de descuento" },
-    "GAMING": { discount: 0.05, description: "5% de descuento" }
+const coupons={
+    "GREYCELL10":{discount:0.10,description:"10% de descuento"},
+    "TECH2025":{discount:0.15,description:"15% de descuento"},
+    "GAMING":{discount:0.05,description:"5% de descuento"}
 };
 
-let cart = [];
-let currentFilter = 'all';
-let currentComponentFilter = 'procesadores';
-let appliedCoupon = null;
+let cart=[];
+let currentFilter='all';
+let currentPCFilter='pcs';
+let currentComponentFilter='procesadores';
+let appliedCoupon=null;
 
-window.onload = function() {
+window.onload=function(){
     loadCart();
-    renderFeaturedPCs();
+    renderHeroOfertas();
     renderCelulares();
+    renderPCsCompletas();
     renderComponentes();
     renderMonitores();
     setupFilters();
 };
 
-function showHome() {
-    document.getElementById('hero-section').style.display = 'block';
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-    window.scrollTo({top: 0, behavior: 'smooth'});
+function showHome(){
+    document.getElementById('hero-section').style.display='block';
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function showSection(section) {
-    document.getElementById('hero-section').style.display = 'none';
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(section + '-section').classList.add('active');
-    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-    document.getElementById('nav-' + section)?.classList.add('active');
-    window.scrollTo({top: 0, behavior: 'smooth'});
+function showSection(section){
+    document.getElementById('hero-section').style.display='none';
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(section+'-section').classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));
+    document.getElementById('nav-'+section)?.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function renderFeaturedPCs() {
-    const container = document.getElementById('featured-pcs');
-    container.innerHTML = featuredPCs.map(pc => `
-        <div class="pc-featured-card">
-            <span class="pc-badge">💻 PC COMPLETA</span>
-            <div class="pc-image">
-                <img src="${REPO_URL}${pc.image}" alt="${pc.name}" onerror="this.parentElement.innerHTML='💻'">
-            </div>
-            <div class="pc-name">${pc.name}</div>
-            <div class="pc-specs">
-                <div class="pc-spec">
-                    <span class="spec-label">🔧 Procesador</span>
-                    <span class="spec-value">${pc.processor}</span>
-                </div>
-                ${pc.gpu ? `<div class="pc-spec">
-                    <span class="spec-label">🎮 GPU</span>
-                    <span class="spec-value">${pc.gpu}</span>
-                </div>` : ''}
-                <div class="pc-spec">
-                    <span class="spec-label">💾 RAM</span>
-                    <span class="spec-value">${pc.ram}</span>
-                </div>
-                <div class="pc-spec">
-                    <span class="spec-label">💽 Almacenamiento</span>
-                    <span class="spec-value">${pc.storage}</span>
-                </div>
-                <div class="pc-spec">
-                    <span class="spec-label">⚡ Fuente</span>
-                    <span class="spec-value">${pc.power}</span>
-                </div>
-                <div class="pc-spec">
-                    <span class="spec-label">📦 Case</span>
-                    <span class="spec-value">${pc.case}</span>
-                </div>
-            </div>
-            <div class="pc-price">S/ ${pc.price.toLocaleString()}</div>
-            <div class="pc-offers">
-                <div class="offer-title">🔥 OFERTAS ESPECIALES:</div>
-                ${pc.offers.map(offer => `
-                    <div class="offer-item">
-                        ${offer.text}
-                        ${offer.isGift ? '' : ''}
-                    </div>
-                `).join('')}
-            </div>
-            <div class="pc-actions">
-                <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(pc).replace(/"/g, "&quot;")}, "pc")'>🛒 Agregar al Carrito</button>
-                <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(pc).replace(/"/g, "&quot;")}, "pc")'>💬 Consultar</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-function renderCelulares() {
-    const container = document.getElementById('celulares-container');
-    let filtered = currentFilter === 'all' ? celulares : celulares.filter(c => c.brand === currentFilter);
-    container.innerHTML = filtered.map((c, i) => `
-        <div class="product-card" style="animation-delay: ${i * 0.1}s">
-            ${c.offer ? '<span class="product-badge">🔥 OFERTA</span>' : ''}
-            <div class="product-image">
-                <img src="${REPO_URL}${c.image}" alt="${c.name}" onerror="this.parentElement.innerHTML='📱'">
-            </div>
-            <div class="product-name">${c.brand.toUpperCase()} ${c.name}</div>
-            <div class="product-price">
-                ${c.offer ? `<span style="font-size:1rem;text-decoration:line-through;color:var(--gray);margin-right:0.5rem;">S/ ${c.oldPrice}</span>` : ''}
-                S/ ${c.price}
-            </div>
-            <div class="product-actions">
-                <button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(c).replace(/"/g, "&quot;")}, "celular")'>🛒 Agregar</button>
-                <button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(c).replace(/"/g, "&quot;")}, "celular")'>💬</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-function renderComponentes() {
-    const container = document.getElementById('componentes-container');
-    const products = componentes[currentComponentFilter];
-    container.innerHTML = products.map((p, i) => `
-        <div class="product-card" style="animation-delay: ${i * 0.1}s">
-            <div class="product-image">🔧</div>
-            <div class="product-name">${p.name}</div>
-            <div class="product-price">S/ ${p.price}</div>
-            <div class="product-actions">
-                <button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(p).replace(/"/g, "&quot;")}, "componente")'>🛒 Agregar</button>
-                <button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(p).replace(/"/g, "&quot;")}, "componente")'>💬</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-function renderMonitores() {
-    const container = document.getElementById('monitores-container');
-    container.innerHTML = monitores.map((m, i) => `
-        <div class="product-card" style="animation-delay: ${i * 0.1}s">
-            <div class="product-image">🖥️</div>
-            <div class="product-name">${m.name}</div>
-            <div class="product-price">S/ ${m.price}</div>
-            <div class="product-actions">
-                <button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(m).replace(/"/g, "&quot;")}, "monitor")'>🛒 Agregar</button>
-                <button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(m).replace(/"/g, "&quot;")}, "monitor")'>💬</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-function setupFilters() {
-    // Filtros de celulares
-    document.querySelectorAll('#celulares-section .filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('#celulares-section .filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentFilter = this.dataset.brand;
-            renderCelulares();
-        });
-    });
+function renderHeroOfertas(){
+    const container=document.getElementById('hero-ofertas');
+    const celularesOfertas=celulares.filter(c=>c.offer).slice(0,4);
+    const allOfertas=[...featuredPCs,...celularesOfertas];
     
-    // Filtros de componentes
-    document.querySelectorAll('#componentes-section .filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('#componentes-section .filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentComponentFilter = this.dataset.category;
-            renderComponentes();
-        });
-    });
-}
-
-function applyCoupon() {
-    const code = document.getElementById('coupon-input').value.toUpperCase().trim();
-    const message = document.getElementById('coupon-message');
-    
-    if (coupons[code]) {
-        appliedCoupon = {code, ...coupons[code]};
-        message.className = 'coupon-message success';
-        message.textContent = `✅ Cupón aplicado: ${coupons[code].description}`;
-        showNotification(`🎉 Cupón ${code} aplicado exitosamente`, 'var(--success)');
-        updateCartDisplay();
-    } else {
-        message.className = 'coupon-message error';
-        message.textContent = '❌ Cupón inválido';
-        showNotification('❌ Cupón no válido', 'var(--accent)');
-    }
-}
-
-function addToCart(product, type) {
-    cart.push({...product, type});
-    saveCart();
-    updateCartCount();
-    showNotification(`✅ ${product.name} agregado al carrito`, 'var(--success)');
-}
-
-function removeFromCart(index) {
-    const item = cart[index];
-    cart.splice(index, 1);
-    saveCart();
-    updateCartCount();
-    renderCart();
-    showNotification(`❌ ${item.name} eliminado`, 'var(--accent)');
-}
-
-function toggleCart() {
-    const modal = document.getElementById('cart-modal');
-    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-    if (modal.style.display === 'block') renderCart();
-}
-
-function closeCartIfOutside(event) {
-    if (event.target.id === 'cart-modal') toggleCart();
-}
-
-function renderCart() {
-    const container = document.getElementById('cart-items');
-    const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-    const discount = appliedCoupon ? subtotal * appliedCoupon.discount : 0;
-    const total = subtotal - discount;
-    
-    if (cart.length === 0) {
-        container.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--gray);">Tu carrito está vacío 🛒</div>';
-        document.getElementById('discount-amount').style.display = 'none';
-    } else {
-        container.innerHTML = cart.map((item, index) => `
-            <div class="cart-item">
-                <div>
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">S/ ${item.price.toLocaleString()}</div>
-                </div>
-                <button class="remove-btn" onclick="removeFromCart(${index})">🗑️</button>
-            </div>
-        `).join('');
-        
-        if (appliedCoupon) {
-            document.getElementById('discount-amount').style.display = 'block';
-            document.getElementById('discount-amount').textContent = `💰 Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}`;
-        } else {
-            document.getElementById('discount-amount').style.display = 'none';
+    container.innerHTML=allOfertas.map(p=>{
+        if(p.type==='pc'){
+            return`<div class="offer-card"><span class="offer-badge pc-badge">💻 PC COMPLETA</span><div class="offer-image"><img src="${REPO_URL}${p.image}" alt="${p.name}" onerror="this.parentElement.innerHTML='💻'"></div><div class="offer-name">${p.name}</div><div class="offer-specs">${p.processor}${p.gpu?' • '+p.gpu:''}</div><div class="offer-price"><span class="price-new">S/ ${p.price.toLocaleString()}</span></div><div style="background:#fff3cd;padding:0.8rem;border-radius:8px;margin:1rem 0;font-size:0.85rem;color:#856404;">${p.offers}</div><div class="offer-actions"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"pc")'>🛒 Agregar</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"pc")'>💬</button></div></div>`;
+        }else{
+            return`<div class="offer-card">${p.offer?'<span class="offer-badge">🔥 -'+Math.round(((p.oldPrice-p.price)/p.oldPrice)*100)+'%</span>':''}<div class="offer-image"><img src="${REPO_URL}${p.image}" alt="${p.name}" onerror="this.parentElement.innerHTML='📱'"></div><div class="offer-name">${p.name}</div><div class="offer-specs">${p.ram} GB • ${p.screen}</div><div class="offer-price">${p.offer?'<span class="price-old">S/ '+p.oldPrice+'</span>':''}<span class="price-new">S/ ${p.price}</span></div><div class="offer-actions"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"celular")'>🛒 Agregar</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"celular")'>💬</button></div></div>`;
         }
-    }
-    
-    document.getElementById('cart-total').textContent = `Total: S/ ${total.toLocaleString()}`;
+    }).join('');
 }
 
-function updateCartDisplay() {
-    if (document.getElementById('cart-modal').style.display === 'block') {
-        renderCart();
-    }
+function renderCelulares(){
+    const container=document.getElementById('celulares-container');
+    let filtered=currentFilter==='all'?celulares:celulares.filter(c=>c.brand===currentFilter);
+    container.innerHTML=filtered.map((c,i)=>`<div class="product-card" style="animation-delay:${i*0.05}s">${c.offer?'<span class="product-badge">🔥 OFERTA</span>':''}${c.registered?'<span class="product-badge badge-registered">✅ REGISTRADO</span>':''}<div class="product-image"><img src="${REPO_URL}${c.image}" alt="${c.name}" onerror="this.parentElement.innerHTML='📱'"></div><div class="product-brand">${c.brand}</div><div class="product-name">${c.name}</div><div class="product-specs"><div class="spec-row"><span class="spec-label">💾 ROM/RAM</span><span class="spec-value">${c.ram} GB</span></div><div class="spec-row"><span class="spec-label">📱 Pantalla</span><span class="spec-value">${c.screen}</span></div><div class="spec-row"><span class="spec-label">📷 Cámara</span><span class="spec-value">${c.camera}</span></div></div><div class="product-price">${c.offer?'<span class="old-price">S/ '+c.oldPrice+'</span>':''}S/ ${c.price}</div><div class="product-actions"><button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(c).replace(/"/g,"&quot;")},"celular")'>🛒 Agregar</button><button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(c).replace(/"/g,"&quot;")},"celular")'>💬</button></div></div>`).join('');
 }
 
-function updateCartCount() {
-    const count = document.getElementById('cart-count');
-    count.textContent = cart.length;
-    count.style.display = cart.length > 0 ? 'flex' : 'none';
+function renderPCsCompletas(){
+    const container=document.getElementById('pcs-completas');
+    container.innerHTML=featuredPCs.map((pc,i)=>`<div class="product-card" style="animation-delay:${i*0.1}s"><span class="product-badge pc-badge">💻 PC COMPLETA</span><div class="product-image"><img src="${REPO_URL}${pc.image}" alt="${pc.name}" onerror="this.parentElement.innerHTML='💻'"></div><div class="product-name">${pc.name}</div><div class="product-specs"><div class="spec-row"><span class="spec-label">🔧 CPU</span><span class="spec-value">${pc.processor}</span></div>${pc.gpu?'<div class="spec-row"><span class="spec-label">🎮 GPU</span><span class="spec-value">'+pc.gpu+'</span></div>':''}<div class="spec-row"><span class="spec-label">💾 RAM</span><span class="spec-value">${pc.ram}</span></div><div class="spec-row"><span class="spec-label">💽 Storage</span><span class="spec-value">${pc.storage}</span></div></div><div class="product-price">S/ ${pc.price.toLocaleString()}</div><div style="background:#fff3cd;padding:0.6rem;border-radius:8px;margin:1rem 0;font-size:0.8rem;color:#856404;">${pc.offers}</div><div class="product-actions"><button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(pc).replace(/"/g,"&quot;")},"pc")'>🛒 Agregar</button><button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(pc).replace(/"/g,"&quot;")},"pc")'>💬</button></div></div>`).join('');
 }
 
-function saveCart() {
-    localStorage.setItem('greycell_cart', JSON.stringify(cart));
+function renderComponentes(){
+    const container=document.getElementById('componentes-container');
+    const products=componentes[currentComponentFilter];
+    container.innerHTML=products.map((p,i)=>`<div class="product-card" style="animation-delay:${i*0.1}s"><div class="product-image">🔧</div><div class="product-name">${p.name}</div><div class="product-price">S/ ${p.price}</div><div class="product-actions"><button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"componente")'>🛒 Agregar</button><button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"componente")'>💬</button></div></div>`).join('');
 }
 
-function loadCart() {
-    const saved = localStorage.getItem('greycell_cart');
-    if (saved) {
-        cart = JSON.parse(saved);
-        updateCartCount();
-    }
+function renderMonitores(){
+    const container=document.getElementById('monitores-completas');
+    container.innerHTML=monitores.map((m,i)=>`<div class="product-card" style="animation-delay:${i*0.1}s"><div class="product-image">🖥️</div><div class="product-name">${m.name}</div><div class="product-price">S/ ${m.price}</div><div class="product-actions"><button class="btn btn-primary btn-small" onclick='addToCart(${JSON.stringify(m).replace(/"/g,"&quot;")},"monitor")'>🛒 Agregar</button><button class="btn btn-secondary btn-small" onclick='consultProduct(${JSON.stringify(m).replace(/"/g,"&quot;")},"monitor")'>💬</button></div></div>`).join('');
 }
 
-function checkout() {
-    if (cart.length === 0) {
-        showNotification('⚠️ Tu carrito está vacío', 'var(--accent)');
-        return;
-    }
-    
-    const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-    const discount = appliedCoupon ? subtotal * appliedCoupon.discount : 0;
-    const total = subtotal - discount;
-    
-    let message = '🛒 *PEDIDO - GREYCELL STORE*\n\n';
-    
-    cart.forEach((item, index) => {
-        message += `${index + 1}. *${item.name}*\n`;
-        message += `   💰 S/ ${item.price}\n\n`;
-    });
-    
-    message += `━━━━━━━━━━━━━━━\n`;
-    message += `Subtotal: S/ ${subtotal.toLocaleString()}\n`;
-    
-    if (appliedCoupon) {
-        message += `Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}\n`;
-    }
-    
-    message += `*TOTAL: S/ ${total.toLocaleString()}*\n\n`;
-    message += `¡Quiero confirmar mi pedido! 🎉`;
-    
-    window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`, '_blank');
+function setupFilters(){
+    document.querySelectorAll('#celulares-section .filter-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('#celulares-section .filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentFilter=this.dataset.brand;renderCelulares()})});
+    document.querySelectorAll('[data-pc-category]').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('[data-pc-category]').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentPCFilter=this.dataset.pcCategory;document.getElementById('pcs-completas').style.display=currentPCFilter==='pcs'?'grid':'none';document.getElementById('componentes-completas').style.display=currentPCFilter==='componentes'?'block':'none';document.getElementById('monitores-completas').style.display=currentPCFilter==='monitores'?'grid':'none'})});
+    document.querySelectorAll('[data-comp-category]').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('[data-comp-category]').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentComponentFilter=this.dataset.compCategory;renderComponentes()})});
 }
 
-function consultProduct(product, type) {
-    let message = `Hola! 👋\n\nQuiero consultar sobre:\n\n`;
-    message += `💻 *${product.name}*\n`;
-    message += `💰 Precio: S/ ${product.price}\n\n`;
-    message += `¿Está disponible?`;
-    
-    window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`, '_blank');
+function applyCoupon(){
+    const code=document.getElementById('coupon-input').value.toUpperCase().trim();
+    const message=document.getElementById('coupon-message');
+    if(coupons[code]){appliedCoupon={code,...coupons[code]};message.className='coupon-message success';message.textContent=`✅ Cupón aplicado: ${coupons[code].description}`;showNotification(`🎉 Cupón ${code} aplicado`,var(--success));updateCartDisplay()}else{message.className='coupon-message error';message.textContent='❌ Cupón inválido';showNotification('❌ Cupón no válido','var(--accent)')}
 }
 
-function showNotification(message, color) {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.borderLeftColor = color;
-    document.body.appendChild(notification);
-    setTimeout(() => notification.remove(), 3000);
-}
+function addToCart(product,type){cart.push({...product,type});saveCart();updateCartCount();showNotification(`✅ ${product.name} agregado`,'var(--success)')}
+
+function removeFromCart(index){const item=cart[index];cart.splice(index,1);saveCart();updateCartCount();renderCart();showNotification(`❌ ${item.name} eliminado`,'var(--accent)')}
+
+function toggleCart(){const modal=document.getElementById('cart-modal');modal.style.display=modal.style.display==='block'?'none':'block';if(modal.style.display==='block')renderCart()}
+
+function closeCartIfOutside(event){if(event.target.id==='cart-modal')toggleCart()}
+
+function renderCart(){const container=document.getElementById('cart-items');const subtotal=cart.reduce((sum,item)=>sum+item.price,0);const discount=appliedCoupon?subtotal*appliedCoupon.discount:0;const total=subtotal-discount;if(cart.length===0){container.innerHTML='<div style="text-align:center;padding:3rem;color:var(--gray);">Tu carrito está vacío 🛒</div>';document.getElementById('discount-amount').style.display='none'}else{container.innerHTML=cart.map((item,index)=>`<div class="cart-item"><div><div class="cart-item-name">${item.name}</div><div class="cart-item-price">S/ ${item.price.toLocaleString()}</div></div><button class="remove-btn" onclick="removeFromCart(${index})">🗑️</button></div>`).join('');if(appliedCoupon){document.getElementById('discount-amount').style.display='block';document.getElementById('discount-amount').textContent=`💰 Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}`}else{document.getElementById('discount-amount').style.display='none'}}document.getElementById('cart-total').textContent=`Total: S/ ${total.toLocaleString()}`}
+
+function updateCartDisplay(){if(document.getElementById('cart-modal').style.display==='block')renderCart()}
+
+function updateCartCount(){const count=document.getElementById('cart-count');count.textContent=cart.length;count.style.display=cart.length>0?'flex':'none'}
+
+function saveCart(){localStorage.setItem('greycell_cart',JSON.stringify(cart))}
+
+function loadCart(){const saved=localStorage.getItem('greycell_cart');if(saved){cart=JSON.parse(saved);updateCartCount()}}
+
+function checkout(){if(cart.length===0){showNotification('⚠️ Tu carrito está vacío','var(--accent)');return}const subtotal=cart.reduce((sum,item)=>sum+item.price,0);const discount=appliedCoupon?subtotal*appliedCoupon.discount:0;const total=subtotal-discount;let message='🛒 *PEDIDO - GREYCELL STORE*\n\n';cart.forEach((item,index)=>{message+=`${index+1}. *${item.name}*\n   💰 S/ ${item.price}\n\n`});message+=`━━━━━━━━━━━━━━━\nSubtotal: S/ ${subtotal.toLocaleString()}\n`;if(appliedCoupon)message+=`Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}\n`;message+=`*TOTAL: S/ ${total.toLocaleString()}*\n\n¡Quiero confirmar mi pedido! 🎉`;window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`,'_blank')}
+
+function consultProduct(product,type){let message=`Hola! 👋\n\nQuiero consultar sobre:\n\n💻 *${product.name}*\n💰 Precio: S/ ${product.price}\n\n¿Está disponible?`;window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`,'_blank')}
+
+function showNotification(message,color){const notification=document.createElement('div');notification.className='notification';notification.textContent=message;notification.style.borderLeftColor=color;document.body.appendChild(notification);setTimeout(()=>notification.remove(),3000)}
     </script>
 </body>
 </html>
