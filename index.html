@@ -3,1685 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ GreyCell Store - Tienda de Tecnología #1 en Puerto Maldonado</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>⚡ GreyCell Store - La Mejor Tienda de Tecnología</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap');
-        
-        :root {
-            --primary: #0066ff;
-            --secondary: #00d9ff;
-            --success: #00ff88;
-            --danger: #ff3b5c;
-            --warning: #ffaa00;
-            --dark: #1d1d1f;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, #0066ff, #00d9ff);
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --shadow-hover: 0 20px 40px rgba(0,102,255,0.2);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Animaciones */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px var(--primary); }
-            50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--secondary); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        /* Header */
-        .header {
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(20px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: pointer;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05) rotate(-2deg);
-        }
-        
-        .nav {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-        
-        .nav-link {
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 8px;
-        }
-        
-        .nav-link:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .cart-icon {
-            position: relative;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.8rem;
-            background: var(--gradient);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .cart-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--danger);
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            animation: pulse 2s infinite;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 60vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            padding-top: 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 3rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.8s ease;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        /* Ofertas Destacadas */
-        .featured-section {
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            padding: 4rem 3rem;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .featured-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 3rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .featured-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transform: translateY(0);
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .featured-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-        
-        .featured-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: linear-gradient(135deg, #ff3b5c, #ff6b6b);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 700;
-            z-index: 10;
-            animation: pulse 2s infinite;
-        }
-        
-        .featured-image {
-            width: 100%;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f5f7fa, #e9ecef);
-            font-size: 5rem;
-        }
-        
-        .featured-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .featured-info {
-            padding: 1.5rem;
-        }
-        
-        .featured-name {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        .featured-specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .spec-tag {
-            background: var(--gradient);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .featured-price {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .old-price {
-            font-size: 1.2rem;
-            color: #999;
-            text-decoration: line-through;
-        }
-        
-        .current-price {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--primary);
-        }
-        
-        .featured-actions {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        /* Store Info */
-        .store-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem auto;
-            max-width: 1000px;
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-        
-        .store-info-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .store-info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .store-info-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .store-info-label {
-            font-size: 0.9rem;
-            color: #6e7485;
-            font-weight: 500;
-        }
-        
-        .store-info-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        /* Cupones Section */
-        .coupon-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 3rem auto;
-            max-width: 600px;
-            box-shadow: var(--shadow);
-        }
-        
-        .coupon-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .coupon-input-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .coupon-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: 2px solid #e1e8ed;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-        
-        .coupon-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(0,102,255,0.1);
-        }
-        
-        .btn-apply-coupon {
-            padding: 1rem 2rem;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-apply-coupon:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .coupon-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ffd700, #ffaa00);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-left: 0.5rem;
-            animation: pulse 2s infinite;
-        }
-        
-        /* Product Cards */
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--danger);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            z-index: 10;
-            animation: pulse 2s infinite;
-        }
-        
-        .badge-registered {
-            background: var(--success);
-            left: auto;
-            right: 1rem;
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f5f7fa, #e9ecef);
-            font-size: 4rem;
-        }
-        
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .product-brand {
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin: 1rem 1rem 0.5rem 1rem;
-        }
-        
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin: 0 1rem 1rem 1rem;
-            min-height: 2.5rem;
-        }
-        
-        .product-specs {
-            padding: 0 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .spec-row {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-right: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .spec-label {
-            font-size: 1rem;
-        }
-        
-        .spec-value {
-            font-size: 0.85rem;
-            color: #4a5568;
-            font-weight: 600;
-        }
-        
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--dark);
-            padding: 0 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .product-actions {
-            display: flex;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-        }
-        
-        .btn {
-            flex: 1;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,102,255,0.3);
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Purchase Options Modal */
-        .purchase-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            animation: fadeIn 0.3s;
-        }
-        
-        .purchase-modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 20px;
-            position: relative;
-            animation: slideInUp 0.4s;
-        }
-        
-        .purchase-modal-header {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .purchase-modal-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .purchase-modal-subtitle {
-            color: #6e7485;
-            font-size: 1.1rem;
-        }
-        
-        .purchase-options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .purchase-option {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 3px solid transparent;
-        }
-        
-        .purchase-option:hover {
-            border-color: var(--primary);
-            transform: translateX(5px);
-            box-shadow: var(--shadow);
-        }
-        
-        .purchase-option.selected {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(0,102,255,0.05), rgba(0,217,255,0.05));
-        }
-        
-        .purchase-option-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .purchase-option-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .purchase-option-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .purchase-option-description {
-            color: #6e7485;
-            font-size: 0.95rem;
-            margin-left: 60px;
-        }
-        
-        .delivery-address {
-            display: none;
-            margin-top: 1rem;
-            margin-left: 60px;
-        }
-        
-        .delivery-input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e1e8ed;
-            border-radius: 10px;
-            font-size: 0.95rem;
-        }
-        
-        .btn-confirm-purchase {
-            width: 100%;
-            padding: 1.2rem;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-confirm-purchase:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        /* Cart Modal */
-        .cart-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-        }
-        
-        .cart-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f4f8;
-        }
-        
-        .cart-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--dark);
-        }
-        
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #6e7485;
-            transition: all 0.3s;
-        }
-        
-        .close-btn:hover {
-            color: var(--danger);
-            transform: rotate(90deg);
-        }
-        
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-        }
-        
-        .cart-item-name {
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .cart-item-price {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .remove-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 0.5rem 0.8rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .remove-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .cart-total {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-align: right;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 2px solid #e1e8ed;
-        }
-        
-        .discount-amount {
-            color: var(--success);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Sections */
-        .section {
-            padding: 4rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            color: #6e7485;
-            font-size: 1.1rem;
-        }
-        
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 0.8rem 1.5rem;
-            background: white;
-            border: 2px solid #e1e8ed;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .filter-btn:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        .filter-btn.active {
-            background: var(--gradient);
-            color: white;
-            border-color: transparent;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--success);
-            animation: slideInRight 0.3s;
-            z-index: 10000;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes slideInRight {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .featured-grid { grid-template-columns: 1fr; }
-            .store-info { flex-direction: column; gap: 1.5rem; }
-            .nav { display: none; }
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',-apple-system,sans-serif;background:#f8f9fa;color:#1d1d1f;line-height:1.6;overflow-x:hidden}
+        .header{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);position:fixed;top:0;left:0;right:0;z-index:9999;border-bottom:1px solid rgba(0,0,0,0.08);box-shadow:0 2px 20px rgba(0,0,0,0.05)}
+        .header-content{max-width:1400px;margin:0 auto;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.8rem;font-weight:800;color:#0066ff;cursor:pointer;transition:transform 0.3s}
+        .logo:hover{transform:scale(1.05)}
+        .nav{display:flex;gap:2.5rem;align-items:center}
+        .nav-link{color:#1d1d1f;text-decoration:none;font-size:0.95rem;font-weight:600;padding:0.5rem 0;position:relative;cursor:pointer;transition:all 0.3s}
+        .nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,#0066ff,#00d9ff);transition:width 0.3s}
+        .nav-link:hover::after,.nav-link.active::after{width:100%}
+        .cart-icon{position:relative;font-size:1.5rem;cursor:pointer;padding:0.8rem;background:linear-gradient(135deg,#0066ff,#00d9ff);border-radius:50%;color:white;transition:all 0.3s}
+        .cart-icon:hover{transform:scale(1.1) rotate(5deg);box-shadow:0 8px 25px rgba(0,102,255,0.4)}
+        .cart-count{position:absolute;top:-5px;right:-5px;background:#ff3b5c;color:white;border-radius:50%;width:22px;height:22px;display:none;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+        .hero{min-height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);padding-top:100px;padding-bottom:4rem;position:relative}
+        .hero-content{max-width:1400px;margin:0 auto;padding:0 3rem 3rem 3rem;text-align:center;position:relative}
+        .hero-title{font-size:4rem;font-weight:900;color:white;margin-bottom:1rem;text-shadow:0 4px 20px rgba(0,0,0,0.3);animation:fadeInUp 0.8s ease}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .hero-subtitle{font-size:1.5rem;color:rgba(255,255,255,0.95);margin-bottom:3rem;animation:fadeInUp 0.8s ease 0.2s both}
+        .hero-cta{display:flex;gap:1.5rem;justify-content:center;margin-bottom:4rem;animation:fadeInUp 0.8s ease 0.4s both}
+        .cta-btn{padding:1.2rem 3rem;font-size:1.1rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;transition:all 0.3s}
+        .cta-primary{background:white;color:#667eea;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+        .cta-primary:hover{transform:translateY(-3px) scale(1.05)}
+        .cta-secondary{background:transparent;color:white;border:3px solid white}
+        .cta-secondary:hover{background:white;color:#667eea}
+        .ofertas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1400px;margin:0 auto;animation:fadeInUp 0.8s ease 0.6s both}
+        .offer-card{background:white;border-radius:24px;padding:2rem;box-shadow:0 15px 40px rgba(0,0,0,0.2);transition:all 0.4s;position:relative;cursor:pointer}
+        .offer-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 25px 60px rgba(0,0,0,0.3)}
+        .offer-badge{position:absolute;top:1.5rem;right:1.5rem;background:linear-gradient(135deg,#ff3b5c,#ff6b6b);color:white;padding:0.5rem 1rem;border-radius:50px;font-weight:700;font-size:0.85rem;z-index:10}
+        .pc-badge{background:linear-gradient(135deg,#ff00cc,#3333ff)}
+        .offer-image{width:100%;height:180px;background:linear-gradient(135deg,#f5f7fa,#c3cfe2);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;overflow:hidden}
+        .offer-image img{width:100%;height:100%;object-fit:contain}
+        .offer-name{font-size:1.3rem;font-weight:700;margin-bottom:0.5rem}
+        .offer-specs{font-size:0.9rem;color:#6e7485;margin-bottom:1rem}
+        .offer-price{display:flex;align-items:center;gap:0.8rem;margin:1.5rem 0}
+        .price-old{font-size:1.1rem;color:#6e7485;text-decoration:line-through}
+        .price-new{font-size:2.2rem;font-weight:900;color:#0066ff}
+        .offer-actions{display:grid;grid-template-columns:2fr 1fr;gap:0.8rem}
+        .btn{padding:0.9rem;border:none;border-radius:12px;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.3s}
+        .btn-primary{background:linear-gradient(135deg,#0066ff,#00d9ff);color:white}
+        .btn-primary:hover{transform:translateY(-2px)}
+        .btn-secondary{background:white;color:#0066ff;border:2px solid #0066ff}
+        .btn-secondary:hover{background:#0066ff;color:white}
+        section{max-width:1400px;margin:4rem auto;padding:0 3rem;display:none}
+        section.active{display:block;animation:fadeIn 0.5s ease}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        .section-header{text-align:center;margin-bottom:3rem}
+        .section-title{font-size:3rem;font-weight:900;margin-bottom:0.5rem;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .section-subtitle{font-size:1.2rem;color:#6e7485}
+        .filters{display:flex;justify-content:center;gap:1rem;margin:3rem 0;flex-wrap:wrap}
+        .filter-btn{padding:0.8rem 1.8rem;background:white;border:2px solid #e0e0e0;color:#1d1d1f;border-radius:50px;cursor:pointer;font-weight:600;font-size:0.95rem;transition:all 0.3s}
+        .filter-btn:hover{transform:translateY(-2px)}
+        .filter-btn.active{background:linear-gradient(135deg,#0066ff,#00d9ff);color:white;border-color:transparent}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem}
+        .product-card{background:white;border-radius:20px;padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all 0.4s;cursor:pointer;position:relative}
+        .product-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,0.15)}
+        .product-badge{position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,#ff3b5c,#ff6b6b);color:white;padding:0.3rem 0.8rem;border-radius:50px;font-weight:700;font-size:0.7rem;z-index:10}
+        .badge-registered{background:linear-gradient(135deg,#00d2ff,#3a7bd5);top:3.3rem}
+        .product-image{width:100%;height:150px;background:linear-gradient(135deg,#f8f9fa,#e3f2fd);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden}
+        .product-image img{width:100%;height:100%;object-fit:contain}
+        .product-brand{font-size:0.85rem;font-weight:700;color:#0066ff;text-transform:uppercase;margin-bottom:0.5rem}
+        .product-name{font-size:1.1rem;font-weight:700;margin-bottom:0.8rem;min-height:2.5rem}
+        .product-specs{background:#f8f9fa;border-radius:12px;padding:0.8rem;margin:0.8rem 0;font-size:0.85rem}
+        .spec-row{display:flex;justify-content:space-between;padding:0.3rem 0}
+        .spec-label{color:#6e7485}
+        .spec-value{font-weight:700}
+        .product-price{font-size:1.8rem;font-weight:900;color:#0066ff;margin:1rem 0}
+        .old-price{font-size:1rem;color:#6e7485;text-decoration:line-through;margin-right:0.5rem}
+        .product-actions{display:grid;grid-template-columns:2fr 1fr;gap:0.6rem}
+        .coupon-section{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:24px;padding:2.5rem;margin:3rem auto;max-width:600px;text-align:center}
+        .coupon-title{font-size:2rem;font-weight:900;color:white;margin-bottom:1rem}
+        .coupon-subtitle{color:rgba(255,255,255,0.9);margin-bottom:2rem}
+        .coupon-input-group{display:flex;gap:1rem}
+        .coupon-input{flex:1;padding:1rem;border:none;border-radius:12px;font-size:1rem;font-weight:600;text-transform:uppercase}
+        .coupon-apply{padding:1rem 2rem;background:white;color:#0066ff;border:none;border-radius:12px;font-weight:700;cursor:pointer}
+        .coupon-message{color:white;font-weight:600;margin-top:1rem;padding:0.8rem;border-radius:8px;display:none}
+        .coupon-message.success{background:rgba(0,255,136,0.3);display:block}
+        .coupon-message.error{background:rgba(255,59,92,0.3);display:block}
+        .cart-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);z-index:100000}
+        .cart-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:24px;padding:2.5rem;max-width:600px;width:90%;max-height:85vh;overflow-y:auto}
+        .close-modal{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;cursor:pointer;color:#6e7485}
+        .cart-title{font-size:2.2rem;font-weight:900;margin-bottom:2rem;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .cart-item{background:#f8f9fa;padding:1.2rem;border-radius:14px;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center}
+        .cart-item-name{font-weight:700}
+        .cart-item-price{color:#0066ff;font-weight:700}
+        .remove-btn{background:linear-gradient(135deg,#ff3b5c,#ff6b6b);color:white;border:none;padding:0.6rem 1.2rem;border-radius:8px;cursor:pointer}
+        .cart-total{text-align:center;font-size:2.2rem;font-weight:900;margin:2rem 0;padding:1.5rem 0;border-top:2px solid #f8f9fa;color:#0066ff}
+        .discount-amount{font-size:1.2rem;color:#00ff88;text-align:center}
+        .checkout-btn{width:100%;padding:1.3rem;background:linear-gradient(135deg,#00ff88,#00d9ff);color:white;border:none;border-radius:14px;font-weight:700;font-size:1.1rem;cursor:pointer}
+        .footer{background:linear-gradient(135deg,#1e1e2e,#2d1b69);color:white;padding:4rem 3rem 2rem;text-align:center;margin-top:6rem}
+        .footer-logo{font-size:2.5rem;font-weight:900;margin-bottom:2rem}
+        .whatsapp-btn{display:inline-block;background:linear-gradient(135deg,#00ff88,#00d9ff);color:white;padding:1.2rem 3rem;border-radius:50px;text-decoration:none;font-weight:700;margin:2rem 0}
+        .notification{position:fixed;top:100px;right:30px;background:white;padding:1rem 1.5rem;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.2);z-index:100001;animation:slideInRight 0.4s,slideOutRight 0.4s 2.6s;border-left:4px solid}
+        @keyframes slideInRight{from{transform:translateX(400px)}to{transform:translateX(0)}}
+        @keyframes slideOutRight{to{transform:translateX(400px)}}
+        .detail-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);z-index:100002;animation:fadeIn 0.3s}
+        .detail-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:24px;padding:0;max-width:900px;width:90%;max-height:90vh;overflow-y:auto;animation:zoomIn 0.4s}
+        @keyframes zoomIn{from{transform:translate(-50%,-50%) scale(0.8);opacity:0}to{transform:translate(-50%,-50%) scale(1);opacity:1}}
+        .detail-header{position:relative;padding:2rem;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:24px 24px 0 0}
+        .detail-close{position:absolute;top:1rem;right:1rem;font-size:2rem;cursor:pointer;color:white;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all 0.3s}
+        .detail-close:hover{background:rgba(255,255,255,0.2);transform:rotate(90deg)}
+        .detail-body{padding:2rem}
+        .detail-image{width:100%;height:300px;background:linear-gradient(135deg,#f5f7fa,#c3cfe2);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;overflow:hidden}
+        .detail-image img{width:100%;height:100%;object-fit:contain}
+        .detail-title{font-size:2rem;font-weight:900;margin-bottom:1rem}
+        .detail-price{font-size:2.5rem;font-weight:900;color:#0066ff;margin:1.5rem 0}
+        .detail-specs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+        .detail-spec{background:#f8f9fa;padding:1rem;border-radius:12px}
+        .detail-spec-label{font-size:0.85rem;color:#6e7485;margin-bottom:0.3rem}
+        .detail-spec-value{font-size:1.1rem;font-weight:700}
+        .pc-offers-section{background:linear-gradient(135deg,#fff3cd,#ffe69c);padding:2rem;border-radius:16px;margin:2rem 0;border:3px solid #ffaa00;position:relative;overflow:hidden}
+        .pc-offers-section::before{content:'🎁';position:absolute;top:-20px;right:-20px;font-size:8rem;opacity:0.1;animation:rotate 20s linear infinite}
+        @keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        .offer-title{font-size:1.5rem;font-weight:900;color:#856404;margin-bottom:1.5rem;text-align:center;animation:bounce 2s infinite}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .offer-option{background:white;padding:1.5rem;border-radius:12px;margin:1rem 0;border:2px solid #ffaa00;transition:all 0.3s;cursor:pointer}
+        .offer-option:hover{transform:scale(1.02);box-shadow:0 8px 25px rgba(255,170,0,0.3)}
+        .offer-option-title{font-size:1.2rem;font-weight:700;color:#1d1d1f;margin-bottom:0.5rem}
+        .offer-option-price{font-size:1.8rem;font-weight:900;color:#0066ff;margin:0.5rem 0}
+        .offer-gift-badge{display:inline-block;background:linear-gradient(135deg,#00ff88,#00d9ff);color:white;padding:0.5rem 1rem;border-radius:50px;font-weight:700;font-size:0.9rem;margin-top:0.5rem;animation:pulse 2s infinite}
+        .detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+        .btn-large{padding:1.2rem;font-size:1.1rem}
+        @media (max-width:768px){.hero-title{font-size:2.5rem}.nav{display:none}.products-grid{grid-template-columns:1fr}.ofertas-grid{grid-template-columns:1fr}.coupon-input-group{flex-direction:column}.detail-content{width:95%}.detail-specs-grid{grid-template-columns:1fr}.detail-actions{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <div class="header">
         <div class="header-content">
-            <div class="logo">⚡ GreyCell Store</div>
+            <div class="logo" onclick="showHome()">⚡ GreyCell</div>
             <nav class="nav">
-                <a href="#ofertas" class="nav-link">🔥 Ofertas</a>
-                <a href="#celulares" class="nav-link">📱 Celulares</a>
-                <a href="#pcs" class="nav-link">💻 PC Gaming</a>
-                <div class="cart-icon" onclick="toggleCart()">
-                    🛒
-                    <span id="cart-count" class="cart-count">0</span>
-                </div>
+                <a class="nav-link" onclick="showSection('celulares')" id="nav-celulares">📱 Celulares</a>
+                <a class="nav-link" onclick="showSection('computadoras')" id="nav-computadoras">💻 Computadoras</a>
             </nav>
+            <div class="cart-icon" onclick="toggleCart()">🛒<span class="cart-count" id="cart-count">0</span></div>
         </div>
-    </header>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <div class="hero" id="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">⚡ TECNOLOGÍA PREMIUM</h1>
-            <p class="hero-subtitle">Los mejores equipos y componentes en Puerto Maldonado</p>
-        </div>
-    </section>
-
-    <!-- OFERTAS DESTACADAS -->
-    <section id="ofertas" class="featured-section">
-        <h2 class="featured-title">🔥 OFERTAS IMPERDIBLES 🔥</h2>
-        <div class="featured-grid" id="featured-container"></div>
-    </section>
-
-    <!-- Store Info -->
-    <div class="store-info">
-        <div class="store-info-item">
-            <div class="store-info-icon">
-                <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="store-info-text">
-                <span class="store-info-label">Ubicación</span>
-                <span class="store-info-value">Av. 2 de Mayo con Piura</span>
+            <h1 class="hero-title">Las Mejores Ofertas<br>en Tecnología 🔥</h1>
+            <p class="hero-subtitle">PCs Gaming y Celulares Premium</p>
+            <div class="hero-cta">
+                <button class="cta-btn cta-primary" onclick="showSection('celulares')">📱 Ver Celulares</button>
+                <button class="cta-btn cta-secondary" onclick="showSection('computadoras')">💻 Ver Computadoras</button>
             </div>
         </div>
-        <div class="store-info-item">
-            <div class="store-info-icon">
-                <i class="fas fa-phone"></i>
+        <div class="ofertas-grid" id="hero-ofertas"></div>
+        <div class="coupon-section">
+            <h3 class="coupon-title">🎁 Cupones</h3>
+            <p class="coupon-subtitle">Aplica a TODOS los productos</p>
+            <div class="coupon-input-group">
+                <input type="text" class="coupon-input" id="coupon-input" placeholder="CÓDIGO">
+                <button class="coupon-apply" onclick="applyCoupon()">Aplicar</button>
             </div>
-            <div class="store-info-text">
-                <span class="store-info-label">WhatsApp</span>
-                <span class="store-info-value">992 039 149</span>
-            </div>
-        </div>
-        <div class="store-info-item">
-            <div class="store-info-icon">
-                <i class="fas fa-clock"></i>
-            </div>
-            <div class="store-info-text">
-                <span class="store-info-label">Horario</span>
-                <span class="store-info-value">9AM - 9PM</span>
-            </div>
+            <div class="coupon-message" id="coupon-message"></div>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:1rem">GREYCELL10 (10%) • TECH2025 (15%) • GAMING (5%)</p>
         </div>
     </div>
 
-    <!-- Coupon Section -->
-    <div class="coupon-section">
-        <h3 class="coupon-title">🎁 CUPÓN DE DESCUENTO 5% OFF</h3>
-        <div class="coupon-input-group">
-            <input type="text" id="coupon-input" class="coupon-input" placeholder="INGRESA TU CUPÓN">
-            <button class="btn-apply-coupon" onclick="applyCoupon()">APLICAR</button>
-        </div>
-        <div id="coupon-message"></div>
-        <p style="text-align:center;color:#6e7485;margin-top:1rem">
-            Usa el código <strong>GREY5</strong> para obtener 5% de descuento en toda tu compra
-            <span class="coupon-badge">5% OFF</span>
-        </p>
-    </div>
-
-    <!-- Celulares Section -->
-    <section id="celulares" class="section">
+    <section id="celulares-section">
         <div class="section-header">
-            <h2 class="section-title">📱 CELULARES</h2>
-            <p class="section-subtitle">Smartphones con garantía oficial</p>
+            <h2 class="section-title">📱 Todos los Celulares</h2>
+            <p class="section-subtitle">Encuentra tu smartphone</p>
         </div>
-        
         <div class="filters">
             <button class="filter-btn active" data-brand="all">Todos</button>
             <button class="filter-btn" data-brand="samsung">Samsung</button>
-            <button class="filter-btn" data-brand="xiaomi">Xiaomi/Redmi</button>
+            <button class="filter-btn" data-brand="redmi">Redmi</button>
+            <button class="filter-btn" data-brand="poco">Poco</button>
             <button class="filter-btn" data-brand="honor">Honor</button>
-            <button class="filter-btn" data-brand="motorola">Motorola</button>
             <button class="filter-btn" data-brand="realme">Realme</button>
+            <button class="filter-btn" data-brand="motorola">Motorola</button>
             <button class="filter-btn" data-brand="magic">Magic</button>
         </div>
-        
-        <div id="celulares-container" class="products-grid"></div>
+        <div class="products-grid" id="celulares-container"></div>
     </section>
 
-    <!-- PC Gaming Section -->
-    <section id="pcs" class="section">
+    <section id="computadoras-section">
         <div class="section-header">
-            <h2 class="section-title">💻 PC GAMING & COMPONENTES</h2>
-            <p class="section-subtitle">Potencia extrema para gaming</p>
+            <h2 class="section-title">💻 Computadoras</h2>
+            <p class="section-subtitle">PCs, Componentes y Monitores</p>
         </div>
-        
         <div class="filters">
-            <button class="filter-btn active" data-pc-cat="pcs">PC Completas</button>
+            <button class="filter-btn active" data-pc-cat="pcs">PCs Completas</button>
             <button class="filter-btn" data-pc-cat="componentes">Componentes</button>
             <button class="filter-btn" data-pc-cat="monitores">Monitores</button>
         </div>
-        
-        <div id="pcs-section" class="products-grid"></div>
-        
-        <!-- Componentes -->
+        <div id="pcs-section" class="products-grid" style="display:grid"></div>
         <div id="componentes-section" style="display:none">
-            <div class="filters">
-                <button class="filter-btn active" data-comp="cpu">Procesadores</button>
-                <button class="filter-btn" data-comp="mb">Placas Madre</button>
+            <div class="filters" style="margin-top:2rem">
+                <button class="filter-btn active" data-comp="procesadores">Procesadores</button>
+                <button class="filter-btn" data-comp="placas">Placas Madre</button>
                 <button class="filter-btn" data-comp="ram">RAM</button>
-                <button class="filter-btn" data-comp="ssd">SSD</button>
-                <button class="filter-btn" data-comp="case">Cases</button>
-                <button class="filter-btn" data-comp="psu">Fuentes</button>
-                <button class="filter-btn" data-comp="cooler">Coolers</button>
+                <button class="filter-btn" data-comp="ssd">SSD/NVME</button>
+                <button class="filter-btn" data-comp="cases">Cases</button>
             </div>
-            <div id="componentes-container" class="products-grid"></div>
+            <div class="products-grid" id="componentes-container"></div>
         </div>
-        
-        <!-- Monitores -->
         <div id="monitores-section" class="products-grid" style="display:none"></div>
     </section>
 
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="cart-modal" onclick="closeCartIfOutside(event)">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2 class="cart-title">🛒 Tu Carrito</h2>
-                <button class="close-btn" onclick="toggleCart()">✕</button>
-            </div>
-            
+    <div class="cart-modal" id="cart-modal" onclick="closeCartIfOutside(event)">
+        <div class="cart-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="toggleCart()">✕</span>
+            <h2 class="cart-title">🛒 Tu Carrito</h2>
             <div id="cart-items"></div>
-            
-            <div id="discount-amount" class="discount-amount" style="display:none"></div>
-            <div id="cart-total" class="cart-total">Total: S/ 0</div>
-            
-            <button class="btn-confirm-purchase" onclick="openPurchaseOptions()" style="margin-top:1.5rem">
-                Proceder al Pago
-            </button>
+            <div class="discount-amount" id="discount-amount"></div>
+            <div class="cart-total" id="cart-total">Total: S/ 0</div>
+            <button class="checkout-btn" onclick="checkout()">💬 Comprar WhatsApp</button>
         </div>
     </div>
 
-    <!-- Purchase Options Modal -->
-    <div id="purchase-modal" class="purchase-modal">
-        <div class="purchase-modal-content">
-            <div class="purchase-modal-header">
-                <h2 class="purchase-modal-title">¿Cómo deseas recibir tu pedido?</h2>
-                <p class="purchase-modal-subtitle">Selecciona el método más conveniente para ti</p>
+    <div class="detail-modal" id="detail-modal" onclick="closeDetailIfOutside(event)">
+        <div class="detail-content" onclick="event.stopPropagation()">
+            <div class="detail-header">
+                <span class="detail-close" onclick="closeDetail()">✕</span>
+                <div class="detail-title" id="detail-title"></div>
+                <div class="detail-price" id="detail-price"></div>
             </div>
-            
-            <div class="purchase-options">
-                <div class="purchase-option" onclick="selectPurchaseOption('pickup')">
-                    <div class="purchase-option-header">
-                        <div class="purchase-option-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <div class="purchase-option-title">RECOJO EN TIENDA</div>
-                    </div>
-                    <div class="purchase-option-description">
-                        Retira tu pedido directamente en nuestra tienda: Av. 2 de Mayo con Piura
-                    </div>
-                </div>
-                
-                <div class="purchase-option" onclick="selectPurchaseOption('appointment')">
-                    <div class="purchase-option-header">
-                        <div class="purchase-option-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="purchase-option-title">AGENDAR CITA</div>
-                    </div>
-                    <div class="purchase-option-description">
-                        Ven a ver y probar el producto antes de comprarlo
-                    </div>
-                </div>
-                
-                <div class="purchase-option" onclick="selectPurchaseOption('delivery')">
-                    <div class="purchase-option-header">
-                        <div class="purchase-option-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div class="purchase-option-title">DELIVERY EN PUERTO MALDONADO</div>
-                    </div>
-                    <div class="purchase-option-description">
-                        Envío a domicilio dentro de la ciudad
-                    </div>
-                    <div class="delivery-address" id="delivery-address">
-                        <input type="text" class="delivery-input" id="delivery-input" 
-                               placeholder="Ingresa tu dirección completa">
-                    </div>
+            <div class="detail-body">
+                <div class="detail-image" id="detail-image"></div>
+                <div id="detail-specs"></div>
+                <div id="detail-offers"></div>
+                <div class="detail-actions">
+                    <button class="btn btn-primary btn-large" id="detail-add-cart">🛒 Agregar al Carrito</button>
+                    <button class="btn btn-secondary btn-large" id="detail-consult">💬 Consultar</button>
                 </div>
             </div>
-            
-            <button class="btn-confirm-purchase" onclick="confirmPurchase()">
-                CONFIRMAR PEDIDO
-            </button>
-            
-            <button class="close-btn" onclick="closePurchaseModal()" 
-                    style="position:absolute;top:1rem;right:1rem">✕</button>
         </div>
     </div>
 
-    <script>
-    const REPO_URL = 'https://raw.githubusercontent.com/dongreysell/timagen/main/';
-    
-    // Ofertas Destacadas REALES (aparecen al inicio)
-    const featuredOffers = [
-        {name:"Redmi Note 14 PRO",brand:"redmi",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,oldPrice:1050,image:"redmi_14pro.jpeg",offer:true},
-        {name:"Honor 400 LITE",brand:"honor",ram:"256/12",screen:"6.7\"",camera:"108MP",price:1055,oldPrice:1195,image:"honor_400lite.jpeg",offer:true},
-        {name:"Magic 7 LITE",brand:"magic",ram:"256/8",screen:"6.78\"",camera:"108MP",price:1195,oldPrice:1345,image:"honor magic 7 lite.jpeg",offer:true},
-        {name:"Redmi Note 14",brand:"redmi",ram:"128/6",screen:"6.67\"",camera:"50MP",price:655,oldPrice:755,image:"redmi_14.jpeg",offer:true},
-        {name:"Samsung Galaxy A06 REGISTRADO",brand:"samsung",ram:"64/4",screen:"6.7\"",camera:"50MP",price:455,oldPrice:510,registered:true,image:"SAMSUNG_A06.jpeg",offer:true}
-    ];
-    
-    // Celulares REALES del archivo original
-    const celulares = [
-        {brand:"samsung",name:"Galaxy A05",ram:"128/4",screen:"6.7\"",camera:"50MP",price:505,image:"SAMSUNG_A05.jpeg"},
-        {brand:"samsung",name:"Galaxy A05",ram:"64/4",screen:"6.7\"",camera:"50MP",price:425,image:"SAMSUNG_A05.jpeg"},
-        {brand:"samsung",name:"Galaxy A05S",ram:"128/6",screen:"6.7\"",camera:"50MP",price:595,image:"SAMSUNG_A05.jpeg"},
-        {brand:"samsung",name:"Galaxy A06 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",price:455,registered:true,offer:true,oldPrice:510,image:"SAMSUNG_A06.jpeg"},
-        {brand:"samsung",name:"Galaxy A06",ram:"128/4",screen:"6.7\"",camera:"50MP",price:525,image:"SAMSUNG_A06.jpeg"},
-        {brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",price:525,registered:true,image:"SAMSUNG_A07.jpeg"},
-        {brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",price:575,registered:true,image:"SAMSUNG_A07.jpeg"},
-        {brand:"samsung",name:"Galaxy A16",ram:"128/4",screen:"6.7\"",camera:"50MP",price:595,image:"SAMSUNG_A16.jpeg"},
-        {brand:"samsung",name:"Galaxy A16 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",price:625,registered:true,image:"SAMSUNG_A16.jpeg"},
-        {brand:"samsung",name:"Galaxy A16",ram:"128/6",screen:"6.7\"",camera:"50MP",price:685,image:"SAMSUNG_A16.jpeg"},
-        {brand:"samsung",name:"Galaxy A16",ram:"256/8",screen:"6.7\"",camera:"50MP",price:815,image:"SAMSUNG_A16.jpeg"},
-        {brand:"samsung",name:"Galaxy A17",ram:"256/8",screen:"6.7\"",camera:"50MP",price:905,image:"SAMSUNG_A17.jpeg"},
-        {brand:"samsung",name:"Galaxy A26",ram:"256/8",screen:"6.7\"",camera:"50MP",price:905,image:"SAMSUNG_A26.jpeg"},
-        {brand:"samsung",name:"Galaxy A36",ram:"256/8",screen:"6.6\"",camera:"50MP",price:1195,image:"SAMSUNG_A36.jpeg"},
-        {brand:"samsung",name:"Galaxy A36",ram:"256/12",screen:"6.6\"",camera:"50MP",price:1245,image:"SAMSUNG_A36.jpeg"},
-        {brand:"samsung",name:"Galaxy A56",ram:"256/8",screen:"6.7\"",camera:"50MP",price:1395,image:"SAMSUNG_A56.jpeg"},
-        {brand:"samsung",name:"Galaxy A56",ram:"256/12",screen:"6.7\"",camera:"50MP",price:1445,image:"SAMSUNG_A56.jpeg"},
-        {brand:"samsung",name:"Galaxy F17 5G",ram:"128/4",screen:"6.7\"",camera:"50MP",price:725,image:"SAMSUNG_F17.jpeg"},
-        {brand:"samsung",name:"Galaxy S25 ULTRA",ram:"512/12",screen:"6.8\"",camera:"200MP",price:4120,image:"SAMSUNG_S25.jpeg"},
-        {brand:"xiaomi",name:"Redmi A5",ram:"64/3",screen:"6.71\"",camera:"8MP",price:385,image:"REDMI_A5.jpeg"},
-        {brand:"xiaomi",name:"Redmi A5 REGISTRADO",ram:"64/3",screen:"6.71\"",camera:"8MP",price:425,registered:true,image:"REDMI_A5.jpeg"},
-        {brand:"xiaomi",name:"Redmi A5",ram:"128/4",screen:"6.71\"",camera:"8MP",price:425,image:"REDMI_A5.jpeg"},
-        {brand:"xiaomi",name:"Redmi 9C",ram:"128/4",screen:"6.53\"",camera:"13MP",price:525,image:"REDMI_9C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 14C",ram:"128/4",screen:"6.88\"",camera:"50MP",price:485,image:"REDMI_14C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 14C",ram:"256/4",screen:"6.88\"",camera:"50MP",price:515,image:"REDMI_14C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 14C",ram:"256/8",screen:"6.88\"",camera:"50MP",price:565,image:"REDMI_14C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 15",ram:"256/8",screen:"6.74\"",camera:"50MP",price:755,image:"REDMI_15.jpeg"},
-        {brand:"xiaomi",name:"Redmi 15C",ram:"128/4",screen:"6.88\"",camera:"50MP",price:525,image:"REDMI_15C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 15C REGISTRADO",ram:"128/4",screen:"6.88\"",camera:"50MP",price:575,registered:true,image:"REDMI_15C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 15C",ram:"256/8",screen:"6.88\"",camera:"50MP",price:595,image:"REDMI_15C.jpeg"},
-        {brand:"xiaomi",name:"Redmi 15C REGISTRADO",ram:"256/4",screen:"6.88\"",camera:"50MP",price:665,registered:true,image:"REDMI_15C.jpeg"},
-        {brand:"xiaomi",name:"Note 12",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,image:"REDMI_12.jpeg"},
-        {brand:"xiaomi",name:"Note 12 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1295,image:"redmi_12 pro.jpeg"},
-        {brand:"xiaomi",name:"Note 13",ram:"128/6",screen:"6.67\"",camera:"108MP",price:755,image:"redmi_13.jpeg"},
-        {brand:"xiaomi",name:"Note 13 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1285,image:"redmi_13pro.jpeg"},
-        {brand:"xiaomi",name:"Note 14",ram:"128/6",screen:"6.67\"",camera:"50MP",price:655,offer:true,oldPrice:755,image:"redmi_14.jpeg"},
-        {brand:"xiaomi",name:"Note 14",ram:"256/8",screen:"6.67\"",camera:"50MP",price:735,image:"redmi_14.jpeg"},
-        {brand:"xiaomi",name:"Note 14S",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,image:"redmi_14s.jpeg"},
-        {brand:"xiaomi",name:"Note 14 PRO",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,offer:true,oldPrice:1050,image:"redmi_14pro.jpeg"},
-        {brand:"xiaomi",name:"Note 14 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1015,image:"redmi_14pro.jpeg"},
-        {brand:"xiaomi",name:"Note 14 PRO 5G",ram:"512/12",screen:"6.67\"",camera:"200MP",price:1145,image:"redmi_14pro.jpeg"},
-        {brand:"xiaomi",name:"Note 14 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1295,image:"redmi_note14pro plus.jpeg"},
-        {brand:"xiaomi",name:"Note 14 PRO PLUS",ram:"512/12",screen:"6.67\"",camera:"200MP",price:1415,image:"redmi_note14pro plus.jpeg"},
-        {brand:"xiaomi",name:"Poco X5",ram:"256/8",screen:"6.67\"",camera:"48MP",price:1055,image:"poco_x5(2).jpeg"},
-        {brand:"xiaomi",name:"Poco X7 PRO",ram:"256/12",screen:"6.67\"",camera:"50MP",price:1265,image:"poco_x7pro.jpeg"},
-        {brand:"xiaomi",name:"Poco X7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",price:1415,image:"poco_x7pro.jpeg"},
-        {brand:"xiaomi",name:"Poco M6 PRO",ram:"512/12",screen:"6.67\"",camera:"64MP",price:1005,image:"poco_m6pro.jpeg"},
-        {brand:"xiaomi",name:"Poco F7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",price:1845,image:"poco_f7pro.jpeg"},
-        {brand:"realme",name:"Realme C21Y",ram:"64/4",screen:"6.5\"",camera:"13MP",price:545,image:"realme_c21y.jpeg"},
-        {brand:"realme",name:"Realme C61",ram:"256/8",screen:"6.74\"",camera:"50MP",price:675,image:"realme_c61.jpeg"},
-        {brand:"honor",name:"Honor X5C",ram:"64/4",screen:"6.56\"",camera:"50MP",price:425,image:"honor_x5c.jpeg"},
-        {brand:"honor",name:"Honor X5C",ram:"128/4",screen:"6.56\"",camera:"50MP",price:455,image:"honor_x5c.jpeg"},
-        {brand:"honor",name:"Honor X5C REGISTRADO",ram:"64/4",screen:"6.56\"",camera:"50MP",price:455,registered:true,image:"honor_x5c.jpeg"},
-        {brand:"honor",name:"Honor X6B",ram:"128/4",screen:"6.56\"",camera:"50MP",price:505,image:"honor_x6b.jpeg"},
-        {brand:"honor",name:"Honor X6C",ram:"256/8",screen:"6.77\"",camera:"50MP",price:605,image:"honor_x6c.jpeg"},
-        {brand:"honor",name:"Honor X6C REGISTRADO",ram:"256/8",screen:"6.77\"",camera:"50MP",price:625,registered:true,image:"honor_x6c.jpeg"},
-        {brand:"honor",name:"Honor X7C",ram:"256/8",screen:"6.77\"",camera:"108MP",price:715,image:"honor_x7c.jpeg"},
-        {brand:"honor",name:"Honor X7D",ram:"256/8",screen:"6.77\"",camera:"108MP",price:745,image:"honor_x7d.jpeg"},
-        {brand:"honor",name:"Honor X8A",ram:"256/8",screen:"6.7\"",camera:"100MP",price:885,image:"honor_x8a.jpeg"},
-        {brand:"honor",name:"Honor X8C",ram:"256/8",screen:"6.7\"",camera:"108MP",price:875,image:"honor_x8c.jpeg"},
-        {brand:"honor",name:"Honor 200 LITE",ram:"256/8",screen:"6.7\"",camera:"108MP",price:955,image:"honor_200lite.jpeg"},
-        {brand:"honor",name:"Honor 200",ram:"256/12",screen:"6.7\"",camera:"50MP",price:1545,image:"honor_200.jpeg"},
-        {brand:"honor",name:"Honor 400",ram:"12/256",screen:"6.7\"",camera:"108MP",price:1495,image:"honor_400.jpeg"},
-        {brand:"honor",name:"Honor 400",ram:"12/512",screen:"6.7\"",camera:"108MP",price:1595,image:"honor_400.jpeg"},
-        {brand:"honor",name:"Honor 400 LITE",ram:"256/12",screen:"6.7\"",camera:"108MP",price:1055,offer:true,oldPrice:1195,image:"honor_400lite.jpeg"},
-        {brand:"honor",name:"Honor 400 PRO",ram:"512/12",screen:"6.78\"",camera:"108MP",price:2695,image:"honor_400pro.jpeg"},
-        {brand:"motorola",name:"Motorola G04 REGISTRADO",ram:"128/4",screen:"6.6\"",camera:"16MP",price:475,registered:true,image:"motorola_g04.jpeg"},
-        {brand:"motorola",name:"Motorola E14 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",price:395,registered:true,image:"motorola_e14.jpeg"},
-        {brand:"motorola",name:"Motorola E15 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",price:425,registered:true,image:"motorola_e15.jpeg"},
-        {brand:"magic",name:"Magic 7 LITE",ram:"256/8",screen:"6.78\"",camera:"108MP",price:1195,offer:true,oldPrice:1345,image:"honor magic 7 lite.jpeg"},
-        {brand:"magic",name:"Magic 7 LITE",ram:"512/8",screen:"6.78\"",camera:"108MP",price:1295,image:"honor magic 7 lite.jpeg"},
-        {brand:"magic",name:"Magic 7 LITE REGISTRADO",ram:"256/8",screen:"6.78\"",camera:"108MP",price:1325,registered:true,image:"honor magic 7 lite.jpeg"}
-    ];
+    <div class="footer">
+        <div class="footer-logo">⚡ GreyCell</div>
+        <p style="opacity:0.9;margin-bottom:1rem">Tu tienda de tecnología 🇵🇪</p>
+        <a href="https://wa.me/51992039149" class="whatsapp-btn" target="_blank">📲 WhatsApp</a>
+        <p style="opacity:0.7;margin-top:3rem">© 2025 GreyCell</p>
+    </div>
 
-    // PCs Completas (sin cambio de precio)
-    const featuredPCs = [
-        {name:"PC Ryzen 5 5600GT",processor:"Ryzen 5 5600GT",gpu:"Gráficos Integrados",ram:"16GB DDR4",storage:"M.2 256GB",power:"500W",price:1450,image:"mipc.jpeg",offers:"+ Monitor 🎁 Combo Teros (Teclado + Mouse + Audífonos)"},
-        {name:"PC Ryzen 3",processor:"Ryzen 3",gpu:"Gráficos Integrados",ram:"8GB DDR4",storage:"M.2 256GB",power:"450W",price:1250,image:"mipc2.jpeg",offers:"+ Monitor 22\" S/ 1,569 🎁 Combo Gaming"}
-    ];
-
-    // Componentes con precios +20%
-    const componentes = {
-        cpu: [
-            {name:"AMD RYZEN 5 5600GT",price:599,image:"ryzen_5_5600gt.jpeg"}, // 499 + 20%
-            {name:"INTEL CORE i5 12400F",price:570,image:"intel_i5_12400f.jpeg"}, // 475 + 20%
-            {name:"AMD RYZEN 5 5500",price:366,image:"ryzen_5_5500.jpeg"}, // 305 + 20%
-            {name:"INTEL CORE i5 14400F",price:671,image:"intel_i5_14400f.jpeg"}, // 559 + 20%
-            {name:"AMD RYZEN 7 5700G",price:744,image:"ryzen_7_5700g.jpeg"} // 620 + 20%
-        ],
-        mb: [
-            {name:"MSI B550M-A PRO DDR4",price:335,image:"msi_b550m.jpeg"}, // 279 + 20%
-            {name:"MSI B760M-E DDR4",price:390,image:"msi_b760m_e.jpeg"}, // 325 + 20%
-            {name:"GIGABYTE B550M K DDR4",price:354,image:"gigabyte_b550m.jpeg"}, // 295 + 20%
-            {name:"MSI B760M-P 4DIMMs DDR4",price:479,image:"msi_b760m_p.jpeg"}, // 399 + 20%
-            {name:"ASUS PRIME B760M-A DDR5",price:539,image:"asus_b760m.jpeg"} // 449 + 20%
-        ],
-        ram: [
-            {name:"PATRIOT 16GB DDR4 3200MHZ",price:239,image:"patriot_16gb_ddr4.jpeg"}, // 199 + 20%
-            {name:"KINGSTON FURY 16GB DDR4",price:236,image:"kingston_fury_ddr4.jpeg"}, // 197 + 20%
-            {name:"XPG D35 16GB DDR4",price:234,image:"xpg_d35.jpeg"}, // 195 + 20%
-            {name:"KINGSTON FURY 16GB DDR5",price:263,image:"kingston_fury_ddr5.jpeg"}, // 219 + 20%
-            {name:"PATRIOT 16GB DDR5 5200MHZ",price:234,image:"patriot_16gb_ddr5.jpeg"} // 195 + 20%
-        ],
-        ssd: [
-            {name:"KINGSTON NV3 1TB PCIe 4.0",price:335,image:"kingston_nv3.jpeg"}, // 279 + 20%
-            {name:"ADATA LEGEND 860 1TB GEN4",price:335,image:"adata_legend_860.jpeg"}, // 279 + 20%
-            {name:"WD GREEN SN350 1TB NVME",price:282,image:"wd_green.jpeg"}, // 235 + 20%
-            {name:"LEXAR NM790 1TB PCI 4.0",price:335,image:"lexar_nm790.jpeg"}, // 279 + 20%
-            {name:"PATRIOT P300 1TB PCIe 3.0",price:299,image:"patriot_p300.jpeg"} // 249 + 20%
-        ],
-        case: [
-            {name:"HALION LUNA 3 FANS RGB",price:95,image:"halion_luna.jpeg"}, // 79 + 20%
-            {name:"CYBERTEL ELEMENT+ WHITE",price:132,image:"cybertel_element.jpeg"}, // 110 + 20%
-            {name:"HALION SNAKE WHITE",price:143,image:"halion_snake.jpeg"}, // 119 + 20%
-            {name:"MICRONIC WARRIOR WHITE",price:179,image:"micronic_warrior.jpeg"}, // 149 + 20%
-            {name:"CASE GAMER CYBERTEL TRAN ROBOT",price:198,image:"halion_polaris.jpeg"} // 165 + 20%
-        ],
-        psu: [
-            {name:"Fuente 450W Certificada",price:180,image:"psu_450.jpeg"},
-            {name:"Fuente 500W 80+ Bronze",price:240,image:"psu_500.jpeg"},
-            {name:"Fuente 650W 80+ Bronze",price:360,image:"psu_650.jpeg"}
-        ],
-        cooler: [
-            {name:"Cooler CPU Stock AMD",price:60,image:"cooler_amd.jpeg"},
-            {name:"Cooler Tower RGB",price:120,image:"cooler_tower.jpeg"},
-            {name:"Liquid Cooling 240mm",price:300,image:"cooler_liquid.jpeg"}
-        ]
-    };
-
-    // Monitores (sin cambio de precio)
-    const monitores = [
-        {name:"TEROS 24\" 144HZ IPS",price:262,image:"teros_24.jpeg"},
-        {name:"MICRONICS 27P 144HZ",price:329,image:"micronics_27.jpeg"},
-        {name:"XIAOMI G24I 180HZ",price:389,image:"xiaomi_g24i.jpeg"},
-        {name:"MSI MAG 242C 180HZ",price:430,image:"msi_mag_242c.jpeg"},
-        {name:"TEROS 27P QHD 200Hz",price:579,image:"teros_27_qhd.jpeg"}
-    ];
-
-    // State
-    let cart = [];
-    let currentFilter = 'all';
-    let currentPCCat = 'pcs';
-    let currentComp = 'cpu';
-    let appliedCoupon = null;
-    let selectedPurchaseOption = null;
-    
-    // Coupons
-    const coupons = {
-        'GREY5': {discount: 0.05, description: '¡5% de descuento aplicado!'},
-        'NUEVO': {discount: 0.05, description: '¡5% descuento nuevo cliente!'},
-        'TECH5': {discount: 0.05, description: '¡5% de descuento en toda la tienda!'}
-    };
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-        loadCart();
-        renderFeatured();
-        renderCelulares();
-        renderPCs();
-        setupFilters();
-        renderComponentes();
-        renderMonitores();
-    });
-
-    function renderFeatured() {
-        const container = document.getElementById('featured-container');
-        container.innerHTML = featuredOffers.map(p => `
-            <div class="featured-card">
-                <span class="featured-badge">🔥 OFERTA ESPECIAL</span>
-                <div class="featured-image">
-                    <img src="${REPO_URL}${p.image}" onerror="this.parentElement.innerHTML='📱'">
-                </div>
-                <div class="featured-info">
-                    <div class="featured-name">${p.name}</div>
-                    <div class="featured-specs">
-                        <span class="spec-tag">💾 ${p.ram}</span>
-                        <span class="spec-tag">📱 ${p.screen}</span>
-                        <span class="spec-tag">📷 ${p.camera}</span>
-                    </div>
-                    <div class="featured-price">
-                        <span class="old-price">S/ ${p.oldPrice}</span>
-                        <span class="current-price">S/ ${p.price}</span>
-                    </div>
-                    <div class="featured-actions">
-                        <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'>
-                            <i class="fas fa-shopping-cart"></i> Agregar
-                        </button>
-                        <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/'/g,"&apos;")})'>
-                            <i class="fab fa-whatsapp"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function renderCelulares() {
-        const container = document.getElementById('celulares-container');
-        let filtered = currentFilter === 'all' ? celulares : celulares.filter(c => c.brand === currentFilter);
-        
-        container.innerHTML = filtered.map(c => `
-            <div class="product-card">
-                ${c.offer ? '<span class="product-badge">🔥 OFERTA</span>' : ''}
-                ${c.registered ? '<span class="product-badge badge-registered">✅ REG</span>' : ''}
-                <div class="product-image">
-                    <img src="${REPO_URL}${c.image}" onerror="this.parentElement.innerHTML='📱'">
-                </div>
-                <div class="product-brand">${c.brand}</div>
-                <div class="product-name">${c.name}</div>
-                <div class="product-specs">
-                    <div class="spec-row">
-                        <span class="spec-label">💾</span>
-                        <span class="spec-value">${c.ram} GB</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">📱</span>
-                        <span class="spec-value">${c.screen}</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">📷</span>
-                        <span class="spec-value">${c.camera}</span>
-                    </div>
-                </div>
-                <div class="product-price">
-                    ${c.offer ? '<span class="old-price">S/ '+c.oldPrice+'</span> ' : ''}
-                    S/ ${c.price}
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(c).replace(/'/g,"&apos;")})'>
-                        🛒
-                    </button>
-                    <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(c).replace(/'/g,"&apos;")})'>
-                        💬
-                    </button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function renderPCs() {
-        const container = document.getElementById('pcs-section');
-        container.innerHTML = featuredPCs.map(pc => `
-            <div class="product-card">
-                <span class="product-badge" style="background:linear-gradient(135deg,#667eea,#764ba2)">💻 GAMING</span>
-                <div class="product-image">
-                    <img src="${REPO_URL}${pc.image}" onerror="this.parentElement.innerHTML='💻'">
-                </div>
-                <div class="product-name">${pc.name}</div>
-                <div class="product-specs">
-                    <div class="spec-row">
-                        <span class="spec-label">🔧</span>
-                        <span class="spec-value">${pc.processor}</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">💾</span>
-                        <span class="spec-value">${pc.ram}</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">💽</span>
-                        <span class="spec-value">${pc.storage}</span>
-                    </div>
-                </div>
-                <div class="product-price">S/ ${pc.price.toLocaleString()}</div>
-                <div style="background:#fff3cd;padding:0.6rem;border-radius:8px;font-size:0.8rem;color:#856404;margin:0.8rem 1rem">
-                    ${pc.offers}
-                </div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(pc).replace(/'/g,"&apos;")})'>🛒</button>
-                    <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(pc).replace(/'/g,"&apos;")})'>💬</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function renderComponentes() {
-        const container = document.getElementById('componentes-container');
-        const products = componentes[currentComp];
-        container.innerHTML = products.map(p => `
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="${REPO_URL}${p.image}" onerror="this.parentElement.innerHTML='🔧'">
-                </div>
-                <div class="product-name">${p.name}</div>
-                <div class="product-price">S/ ${p.price}</div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'>🛒</button>
-                    <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/'/g,"&apos;")})'>💬</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function renderMonitores() {
-        const container = document.getElementById('monitores-section');
-        container.innerHTML = monitores.map(m => `
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="${REPO_URL}${m.image}" onerror="this.parentElement.innerHTML='🖥️'">
-                </div>
-                <div class="product-name">${m.name}</div>
-                <div class="product-price">S/ ${m.price}</div>
-                <div class="product-actions">
-                    <button class="btn btn-primary" onclick='addToCart(${JSON.stringify(m).replace(/'/g,"&apos;")})'>🛒</button>
-                    <button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(m).replace(/'/g,"&apos;")})'>💬</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function setupFilters() {
-        // Celulares filters
-        document.querySelectorAll('#celulares .filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('#celulares .filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.brand;
-                renderCelulares();
-            });
-        });
-
-        // PC filters
-        document.querySelectorAll('[data-pc-cat]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('[data-pc-cat]').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentPCCat = this.dataset.pcCat;
-                
-                document.getElementById('pcs-section').style.display = currentPCCat === 'pcs' ? 'grid' : 'none';
-                document.getElementById('componentes-section').style.display = currentPCCat === 'componentes' ? 'block' : 'none';
-                document.getElementById('monitores-section').style.display = currentPCCat === 'monitores' ? 'grid' : 'none';
-            });
-        });
-
-        // Component filters
-        document.querySelectorAll('[data-comp]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('[data-comp]').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentComp = this.dataset.comp;
-                renderComponentes();
-            });
-        });
-    }
-
-    function applyCoupon() {
-        const code = document.getElementById('coupon-input').value.toUpperCase().trim();
-        const message = document.getElementById('coupon-message');
-        
-        if (coupons[code]) {
-            appliedCoupon = {code, ...coupons[code]};
-            message.innerHTML = `<div style="color:var(--success);font-weight:700;margin-top:1rem">
-                ✅ ${coupons[code].description}
-            </div>`;
-            showNotification('🎉 Cupón aplicado correctamente', '#00ff88');
-            updateCartDisplay();
-        } else {
-            message.innerHTML = `<div style="color:var(--danger);font-weight:700;margin-top:1rem">
-                ❌ Cupón inválido
-            </div>`;
-            showNotification('❌ Cupón no válido', '#ff3b5c');
-        }
-        
-        setTimeout(() => message.innerHTML = '', 3000);
-    }
-
-    function addToCart(product) {
-        cart.push({...product, id: Date.now()});
-        saveCart();
-        updateCartCount();
-        showNotification('✅ Agregado al carrito', '#00ff88');
-    }
-
-    function removeFromCart(id) {
-        cart = cart.filter(item => item.id !== id);
-        saveCart();
-        updateCartCount();
-        renderCart();
-        showNotification('❌ Eliminado', '#ff3b5c');
-    }
-
-    function toggleCart() {
-        const modal = document.getElementById('cart-modal');
-        modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-        if (modal.style.display === 'block') renderCart();
-    }
-
-    function closeCartIfOutside(event) {
-        if (event.target.id === 'cart-modal') toggleCart();
-    }
-
-    function renderCart() {
-        const container = document.getElementById('cart-items');
-        const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-        const discount = appliedCoupon ? subtotal * appliedCoupon.discount : 0;
-        const total = subtotal - discount;
-        
-        if (cart.length === 0) {
-            container.innerHTML = '<div style="text-align:center;padding:3rem;color:#6e7485">Carrito vacío 🛒</div>';
-            document.getElementById('discount-amount').style.display = 'none';
-        } else {
-            container.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <div>
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">S/ ${item.price.toLocaleString()}</div>
-                    </div>
-                    <button class="remove-btn" onclick="removeFromCart(${item.id})">🗑️</button>
-                </div>
-            `).join('');
-            
-            if (appliedCoupon) {
-                document.getElementById('discount-amount').style.display = 'block';
-                document.getElementById('discount-amount').textContent = 
-                    `💰 Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}`;
-            } else {
-                document.getElementById('discount-amount').style.display = 'none';
-            }
-        }
-        
-        document.getElementById('cart-total').textContent = `Total: S/ ${total.toLocaleString()}`;
-    }
-
-    function updateCartDisplay() {
-        if (document.getElementById('cart-modal').style.display === 'block') renderCart();
-    }
-
-    function updateCartCount() {
-        const count = document.getElementById('cart-count');
-        count.textContent = cart.length;
-        count.style.display = cart.length > 0 ? 'flex' : 'none';
-    }
-
-    function saveCart() {
-        localStorage.setItem('greycell_cart', JSON.stringify(cart));
-    }
-
-    function loadCart() {
-        const saved = localStorage.getItem('greycell_cart');
-        if (saved) {
-            cart = JSON.parse(saved);
-            updateCartCount();
-        }
-    }
-
-    function selectPurchaseOption(option) {
-        selectedPurchaseOption = option;
-        
-        document.querySelectorAll('.purchase-option').forEach(opt => {
-            opt.classList.remove('selected');
-        });
-        event.currentTarget.classList.add('selected');
-        
-        document.getElementById('delivery-address').style.display = 
-            option === 'delivery' ? 'block' : 'none';
-    }
-
-    function openPurchaseOptions() {
-        if (cart.length === 0) {
-            showNotification('⚠️ Carrito vacío', '#ffaa00');
-            return;
-        }
-        
-        document.getElementById('purchase-modal').style.display = 'block';
-        toggleCart();
-    }
-
-    function closePurchaseModal() {
-        document.getElementById('purchase-modal').style.display = 'none';
-        selectedPurchaseOption = null;
-    }
-
-    function confirmPurchase() {
-        if (!selectedPurchaseOption) {
-            showNotification('⚠️ Selecciona un método de compra', '#ffaa00');
-            return;
-        }
-        
-        const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-        const discount = appliedCoupon ? subtotal * appliedCoupon.discount : 0;
-        const total = subtotal - discount;
-        
-        let message = '🛒 *PEDIDO - GREYCELL STORE*\n\n';
-        
-        // Método de compra
-        if (selectedPurchaseOption === 'pickup') {
-            message += '📍 *MÉTODO: RECOJO EN TIENDA*\n';
-            message += '🏪 Dirección: Av. 2 de Mayo con Piura\n\n';
-        } else if (selectedPurchaseOption === 'appointment') {
-            message += '📅 *MÉTODO: CITA PARA VER PRODUCTO*\n';
-            message += '🏪 Tienda: Av. 2 de Mayo con Piura\n\n';
-        } else if (selectedPurchaseOption === 'delivery') {
-            const address = document.getElementById('delivery-input').value;
-            message += '🚚 *MÉTODO: DELIVERY*\n';
-            message += `📍 Dirección: ${address || 'Por confirmar'}\n`;
-            message += '🌆 Ciudad: Puerto Maldonado\n\n';
-        }
-        
-        message += '━━━━━━━━━━━━━━━\n';
-        message += '*PRODUCTOS:*\n\n';
-        
-        cart.forEach((item, index) => {
-            message += `${index + 1}. *${item.name}*\n`;
-            message += `   S/ ${item.price}\n\n`;
-        });
-        
-        message += '━━━━━━━━━━━━━━━\n';
-        message += `Subtotal: S/ ${subtotal.toLocaleString()}\n`;
-        
-        if (appliedCoupon) {
-            message += `Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}\n`;
-        }
-        
-        message += `*TOTAL: S/ ${total.toLocaleString()}*\n\n`;
-        message += '¡Confirmar pedido! 🎉';
-        
-        window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`, '_blank');
-        
-        cart = [];
-        saveCart();
-        updateCartCount();
-        closePurchaseModal();
-        
-        showNotification('✅ Pedido enviado por WhatsApp', '#00ff88');
-    }
-
-    function consultProduct(product) {
-        let message = `Hola! 👋\n\n`;
-        message += `*${product.name}*\n`;
-        message += `S/ ${product.price}\n\n`;
-        message += `¿Disponible? ¿Stock?\n`;
-        message += `📍 Av. 2 de Mayo con Piura`;
-        
-        window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    function showNotification(message, color) {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        notification.style.borderLeftColor = color;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => notification.remove(), 3000);
-    }
-    </script>
+<script>
+const REPO_URL='https://raw.githubusercontent.com/brayan-rr/tienda_cel_cliente_final/main/';
+const featuredPCs=[{name:"PC Ryzen 5 5600GT",processor:"Ryzen 5 5600GT",ram:"16GB DDR4",storage:"M.2 256GB",price:1450,image:"mipc.jpeg",offers:"+ Monitor • 🎁 Combo Teros"},{name:"PC Ryzen 3",processor:"Ryzen 3",ram:"8GB DDR4",storage:"M.2 256GB",price:1250,image:"mipc2.jpeg",offers:"+ Monitor 22\" S/ 1,569 • 🎁 Combo"}];
+const celulares=[{brand:"samsung",name:"Galaxy A05",ram:"128/4",screen:"6.7\"",camera:"50MP",price:505,image:"SAMSUNG_A05.jpeg"},{brand:"samsung",name:"Galaxy A05",ram:"64/4",screen:"6.7\"",camera:"50MP",price:425,image:"SAMSUNG_A05.jpeg"},{brand:"samsung",name:"Galaxy A05S",ram:"128/6",screen:"6.7\"",camera:"50MP",price:595,image:"SAMSUNG_A05.jpeg"},{brand:"samsung",name:"Galaxy A06 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",price:455,registered:true,offer:true,oldPrice:510,image:"SAMSUNG_A06.jpeg"},{brand:"samsung",name:"Galaxy A06",ram:"128/4",screen:"6.7\"",camera:"50MP",price:525,image:"SAMSUNG_A06.jpeg"},{brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"64/4",screen:"6.7\"",camera:"50MP",price:525,registered:true,image:"SAMSUNG_A07.jpeg"},{brand:"samsung",name:"Galaxy A07 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",price:575,registered:true,image:"SAMSUNG_A07.jpeg"},{brand:"samsung",name:"Galaxy A16",ram:"128/4",screen:"6.7\"",camera:"50MP",price:595,image:"SAMSUNG_A16.jpeg"},{brand:"samsung",name:"Galaxy A16 REGISTRADO",ram:"128/4",screen:"6.7\"",camera:"50MP",price:625,registered:true,image:"SAMSUNG_A16.jpeg"},{brand:"samsung",name:"Galaxy A16",ram:"128/6",screen:"6.7\"",camera:"50MP",price:685,image:"SAMSUNG_A16.jpeg"},{brand:"samsung",name:"Galaxy A16",ram:"256/8",screen:"6.7\"",camera:"50MP",price:815,image:"SAMSUNG_A16.jpeg"},{brand:"samsung",name:"Galaxy A17",ram:"256/8",screen:"6.7\"",camera:"50MP",price:905,image:"SAMSUNG_A17.jpeg"},{brand:"samsung",name:"Galaxy A26",ram:"256/8",screen:"6.7\"",camera:"50MP",price:905,image:"SAMSUNG_A26.jpeg"},{brand:"samsung",name:"Galaxy A36",ram:"256/8",screen:"6.6\"",camera:"50MP",price:1195,image:"SAMSUNG_A36.jpeg"},{brand:"samsung",name:"Galaxy A36",ram:"256/12",screen:"6.6\"",camera:"50MP",price:1245,image:"SAMSUNG_A36.jpeg"},{brand:"samsung",name:"Galaxy A56",ram:"256/8",screen:"6.7\"",camera:"50MP",price:1395,image:"SAMSUNG_A56.jpeg"},{brand:"samsung",name:"Galaxy A56",ram:"256/12",screen:"6.7\"",camera:"50MP",price:1445,image:"SAMSUNG_A56.jpeg"},{brand:"samsung",name:"Galaxy F17 5G",ram:"128/4",screen:"6.7\"",camera:"50MP",price:725,image:"SAMSUNG_F17.jpeg"},{brand:"samsung",name:"Galaxy S25 ULTRA",ram:"512/12",screen:"6.8\"",camera:"200MP",price:4120,image:"SAMSUNG_S25.jpeg"},{brand:"redmi",name:"Redmi A5",ram:"64/3",screen:"6.71\"",camera:"8MP",price:385,image:"REDMI_A5.jpeg"},{brand:"redmi",name:"Redmi A5 REGISTRADO",ram:"64/3",screen:"6.71\"",camera:"8MP",price:425,registered:true,image:"REDMI_A5.jpeg"},{brand:"redmi",name:"Redmi A5",ram:"128/4",screen:"6.71\"",camera:"8MP",price:425,image:"REDMI_A5.jpeg"},{brand:"redmi",name:"Redmi 9C",ram:"128/4",screen:"6.53\"",camera:"13MP",price:525,image:"REDMI_9C.jpeg"},{brand:"redmi",name:"Redmi 14C",ram:"128/4",screen:"6.88\"",camera:"50MP",price:485,image:"REDMI_14C.jpeg"},{brand:"redmi",name:"Redmi 14C",ram:"256/4",screen:"6.88\"",camera:"50MP",price:515,image:"REDMI_14C.jpeg"},{brand:"redmi",name:"Redmi 14C",ram:"256/8",screen:"6.88\"",camera:"50MP",price:565,image:"REDMI_14C.jpeg"},{brand:"redmi",name:"Redmi 15",ram:"256/8",screen:"6.74\"",camera:"50MP",price:755,image:"REDMI_15.jpeg"},{brand:"redmi",name:"Redmi 15C",ram:"128/4",screen:"6.88\"",camera:"50MP",price:525,image:"REDMI_15C.jpeg"},{brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"128/4",screen:"6.88\"",camera:"50MP",price:575,registered:true,image:"REDMI_15C.jpeg"},{brand:"redmi",name:"Redmi 15C",ram:"256/8",screen:"6.88\"",camera:"50MP",price:595,image:"REDMI_15C.jpeg"},{brand:"redmi",name:"Redmi 15C REGISTRADO",ram:"256/4",screen:"6.88\"",camera:"50MP",price:665,registered:true,image:"REDMI_15C.jpeg"},{brand:"redmi",name:"Note 12",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,image:"REDMI_12.jpeg"},{brand:"redmi",name:"Note 12 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1295,image:"redmi_12 pro.jpeg"},{brand:"redmi",name:"Note 13",ram:"128/6",screen:"6.67\"",camera:"108MP",price:755,image:"redmi_13.jpeg"},{brand:"redmi",name:"Note 13 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1285,image:"redmi_13pro.jpeg"},{brand:"redmi",name:"Note 14",ram:"128/6",screen:"6.67\"",camera:"50MP",price:655,offer:true,oldPrice:755,image:"redmi_14.jpeg"},{brand:"redmi",name:"Note 14",ram:"256/8",screen:"6.67\"",camera:"50MP",price:735,image:"redmi_14.jpeg"},{brand:"redmi",name:"Note 14S",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,image:"redmi_14s.jpeg"},{brand:"redmi",name:"Note 14 PRO",ram:"256/8",screen:"6.67\"",camera:"50MP",price:905,offer:true,oldPrice:1050,image:"redmi_14pro.jpeg"},{brand:"redmi",name:"Note 14 PRO 5G",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1015,image:"redmi_14pro.jpeg"},{brand:"redmi",name:"Note 14 PRO 5G",ram:"512/12",screen:"6.67\"",camera:"200MP",price:1145,image:"redmi_14pro.jpeg"},{brand:"redmi",name:"Note 14 PRO PLUS",ram:"256/8",screen:"6.67\"",camera:"200MP",price:1295,image:"redmi_note14pro plus.jpeg"},{brand:"redmi",name:"Note 14 PRO PLUS",ram:"512/12",screen:"6.67\"",camera:"200MP",price:1415,image:"redmi_note14pro plus.jpeg"},{brand:"poco",name:"Poco X5",ram:"256/8",screen:"6.67\"",camera:"48MP",price:1055,image:"poco_x5(2).jpeg"},{brand:"poco",name:"Poco X7 PRO",ram:"256/12",screen:"6.67\"",camera:"50MP",price:1265,image:"poco_x7pro.jpeg"},{brand:"poco",name:"Poco X7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",price:1415,image:"poco_x7pro.jpeg"},{brand:"poco",name:"Poco M6 PRO",ram:"512/12",screen:"6.67\"",camera:"64MP",price:1005,image:"poco_m6pro.jpeg"},{brand:"poco",name:"Poco F7 PRO",ram:"512/12",screen:"6.67\"",camera:"50MP",price:1845,image:"poco_f7pro.jpeg"},{brand:"realme",name:"Realme C21Y",ram:"64/4",screen:"6.5\"",camera:"13MP",price:545,image:"realme_c21y.jpeg"},{brand:"realme",name:"Realme C61",ram:"256/8",screen:"6.74\"",camera:"50MP",price:675,image:"realme_c61.jpeg"},{brand:"honor",name:"Honor X5C",ram:"64/4",screen:"6.56\"",camera:"50MP",price:425,image:"honor_x5c.jpeg"},{brand:"honor",name:"Honor X5C",ram:"128/4",screen:"6.56\"",camera:"50MP",price:455,image:"honor_x5c.jpeg"},{brand:"honor",name:"Honor X5C REGISTRADO",ram:"64/4",screen:"6.56\"",camera:"50MP",price:455,registered:true,image:"honor_x5c.jpeg"},{brand:"honor",name:"Honor X6B",ram:"128/4",screen:"6.56\"",camera:"50MP",price:505,image:"honor_x6b.jpeg"},{brand:"honor",name:"Honor X6C",ram:"256/8",screen:"6.77\"",camera:"50MP",price:605,image:"honor_x6c.jpeg"},{brand:"honor",name:"Honor X6C REGISTRADO",ram:"256/8",screen:"6.77\"",camera:"50MP",price:625,registered:true,image:"honor_x6c.jpeg"},{brand:"honor",name:"Honor X7C",ram:"256/8",screen:"6.77\"",camera:"108MP",price:715,image:"honor_x7c.jpeg"},{brand:"honor",name:"Honor X7D",ram:"256/8",screen:"6.77\"",camera:"108MP",price:745,image:"honor_x7d.jpeg"},{brand:"honor",name:"Honor X8A",ram:"256/8",screen:"6.7\"",camera:"100MP",price:885,image:"honor_x8a.jpeg"},{brand:"honor",name:"Honor X8C",ram:"256/8",screen:"6.7\"",camera:"108MP",price:875,image:"honor_x8c.jpeg"},{brand:"honor",name:"Honor 200 LITE",ram:"256/8",screen:"6.7\"",camera:"108MP",price:955,image:"honor_200lite.jpeg"},{brand:"honor",name:"Honor 200",ram:"256/12",screen:"6.7\"",camera:"50MP",price:1545,image:"honor_200.jpeg"},{brand:"honor",name:"Honor 400",ram:"12/256",screen:"6.7\"",camera:"108MP",price:1495,image:"honor_400.jpeg"},{brand:"honor",name:"Honor 400",ram:"12/512",screen:"6.7\"",camera:"108MP",price:1595,image:"honor_400.jpeg"},{brand:"honor",name:"Honor 400 LITE",ram:"256/12",screen:"6.7\"",camera:"108MP",price:1055,offer:true,oldPrice:1195,image:"honor_400lite.jpeg"},{brand:"honor",name:"Honor 400 PRO",ram:"512/12",screen:"6.78\"",camera:"108MP",price:2695,image:"honor_400pro.jpeg"},{brand:"motorola",name:"Motorola G04 REGISTRADO",ram:"128/4",screen:"6.6\"",camera:"16MP",price:475,registered:true,image:"motorola_g04.jpeg"},{brand:"motorola",name:"Motorola E14 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",price:395,registered:true,image:"motorola_e14.jpeg"},{brand:"motorola",name:"Motorola E15 REGISTRADO",ram:"64/2",screen:"6.56\"",camera:"13MP",price:425,registered:true,image:"motorola_e15.jpeg"},{brand:"magic",name:"Magic 7 LITE",ram:"256/8",screen:"6.78\"",camera:"108MP",price:1195,offer:true,oldPrice:1345,image:"honor magic 7 lite.jpeg"},{brand:"magic",name:"Magic 7 LITE",ram:"512/8",screen:"6.78\"",camera:"108MP",price:1295,image:"honor magic 7 lite.jpeg"},{brand:"magic",name:"Magic 7 LITE REGISTRADO",ram:"256/8",screen:"6.78\"",camera:"108MP",price:1325,registered:true,image:"honor magic 7 lite.jpeg"}];
+const componentes={procesadores:[{name:"AMD RYZEN 5 5600GT",price:499,image:"ryzen_5_5600gt.jpeg"},{name:"INTEL CORE i5 12400F",price:475,image:"intel_i5_12400f.jpeg"},{name:"AMD RYZEN 5 5500",price:305,image:"ryzen_5_5500.jpeg"},{name:"INTEL CORE i5 14400F",price:559,image:"intel_i5_14400f.jpeg"},{name:"AMD RYZEN 7 5700G",price:620,image:"ryzen_7_5700g.jpeg"}],placas:[{name:"MSI B550M-A PRO DDR4",price:279,image:"msi_b550m.jpeg"},{name:"MSI B760M-E DDR4",price:325,image:"msi_b760m_e.jpeg"},{name:"GIGABYTE B550M K DDR4",price:295,image:"gigabyte_b550m.jpeg"},{name:"MSI B760M-P 4DIMMs DDR4",price:399,image:"msi_b760m_p.jpeg"},{name:"ASUS PRIME B760M-A DDR5",price:449,image:"asus_b760m.jpeg"}],ram:[{name:"PATRIOT 16GB DDR4 3200MHZ",price:199,image:"patriot_16gb_ddr4.jpeg"},{name:"KINGSTON FURY 16GB DDR4",price:197,image:"kingston_fury_ddr4.jpeg"},{name:"XPG D35 16GB DDR4",price:195,image:"xpg_d35.jpeg"},{name:"KINGSTON FURY 16GB DDR5",price:219,image:"kingston_fury_ddr5.jpeg"},{name:"PATRIOT 16GB DDR5 5200MHZ",price:195,image:"patriot_16gb_ddr5.jpeg"}],ssd:[{name:"KINGSTON NV3 1TB PCIe 4.0",price:279,image:"kingston_nv3.jpeg"},{name:"ADATA LEGEND 860 1TB GEN4",price:279,image:"adata_legend_860.jpeg"},{name:"WD GREEN SN350 1TB NVME",price:235,image:"wd_green.jpeg"},{name:"LEXAR NM790 1TB PCI 4.0",price:279,image:"lexar_nm790.jpeg"},{name:"PATRIOT P300 1TB PCIe 3.0",price:249,image:"patriot_p300.jpeg"}],cases:[{name:"HALION LUNA 3 FANS RGB",price:79,image:"halion_luna.jpeg"},{name:"CYBERTEL ELEMENT+ WHITE",price:110,image:"cybertel_element.jpeg"},{name:"HALION SNAKE WHITE",price:119,image:"halion_snake.jpeg"},{name:"MICRONIC WARRIOR WHITE",price:149,image:"micronic_warrior.jpeg"},{name:"CASE GAMER, CYBERTEL TRAN ROBOT  ",price:165,image:"halion_polaris.jpeg"}]};
+const monitores=[{name:"TEROS 24\" 144HZ IPS",price:262,image:"teros_24.jpeg"},{name:"MICRONICS 27P 144HZ",price:329,image:"micronics_27.jpeg"},{name:"XIAOMI G24I 180HZ",price:389,image:"xiaomi_g24i.jpeg"},{name:"MSI MAG 242C 180HZ",price:430,image:"msi_mag_242c.jpeg"},{name:"TEROS 27P QHD 200Hz",price:579,image:"teros_27_qhd.jpeg"}];
+const coupons={"GREYCELL10":{discount:0.10,description:"10%"},"TECH2025":{discount:0.15,description:"15%"},"GAMING":{discount:0.05,description:"5%"}};
+let cart=[],currentFilter='all',currentPCCat='pcs',currentComp='procesadores',appliedCoupon=null;
+window.onload=function(){loadCart();renderHeroOfertas();renderCelulares();renderPCs();renderComponentes();renderMonitores();setupFilters()};
+function showHome(){document.getElementById('hero-section').style.display='block';document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})}
+function showSection(section){document.getElementById('hero-section').style.display='none';document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(section+'-section').classList.add('active');document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));document.getElementById('nav-'+section)?.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function renderHeroOfertas(){const container=document.getElementById('hero-ofertas');const celOfertas=celulares.filter(c=>c.offer).slice(0,4);const allOfertas=[...featuredPCs,...celOfertas];container.innerHTML=allOfertas.map(p=>{if(p.processor)return`<div class="offer-card"><span class="offer-badge pc-badge">💻 PC</span><div class="offer-image"><img src="${REPO_URL}${p.image}" onerror="this.parentElement.innerHTML='💻'"></div><div class="offer-name">${p.name}</div><div class="offer-specs">${p.processor} • ${p.ram}</div><div class="offer-price"><span class="price-new">S/ ${p.price.toLocaleString()}</span></div><div style="background:#fff3cd;padding:0.8rem;border-radius:8px;margin:0.8rem 0;font-size:0.85rem;color:#856404">${p.offers}</div><div class="offer-actions"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"pc")'>🛒</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"pc")'>💬</button></div></div>`;else return`<div class="offer-card">${p.offer?'<span class="offer-badge">🔥 -'+Math.round(((p.oldPrice-p.price)/p.oldPrice)*100)+'%</span>':''}<div class="offer-image"><img src="${REPO_URL}${p.image}" onerror="this.parentElement.innerHTML='📱'"></div><div class="offer-name">${p.name}</div><div class="offer-specs">${p.ram} • ${p.screen}</div><div class="offer-price">${p.offer?'<span class="price-old">S/ '+p.oldPrice+'</span>':''}<span class="price-new">S/ ${p.price}</span></div><div class="offer-actions"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"celular")'>🛒</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"celular")'>💬</button></div></div>`}).join('')}
+function renderCelulares(){const container=document.getElementById('celulares-container');let filtered=currentFilter==='all'?celulares:celulares.filter(c=>c.brand===currentFilter);container.innerHTML=filtered.map(c=>`<div class="product-card" onclick='showDetail(${JSON.stringify(c).replace(/"/g,"&quot;")},"celular")'>${c.offer?'<span class="product-badge">🔥 OFERTA</span>':''}${c.registered?'<span class="product-badge badge-registered">✅ REG</span>':''}<div class="product-image"><img src="${REPO_URL}${c.image}" onerror="this.parentElement.innerHTML='📱'"></div><div class="product-brand">${c.brand}</div><div class="product-name">${c.name}</div><div class="product-specs"><div class="spec-row"><span class="spec-label">💾</span><span class="spec-value">${c.ram} GB</span></div><div class="spec-row"><span class="spec-label">📱</span><span class="spec-value">${c.screen}</span></div><div class="spec-row"><span class="spec-label">📷</span><span class="spec-value">${c.camera}</span></div></div><div class="product-price">${c.offer?'<span class="old-price">S/ '+c.oldPrice+'</span>':''}S/ ${c.price}</div><div class="product-actions" onclick="event.stopPropagation()"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(c).replace(/"/g,"&quot;")},"celular")'>🛒</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(c).replace(/"/g,"&quot;")},"celular")'>💬</button></div></div>`).join('')}
+function renderPCs(){const container=document.getElementById('pcs-section');container.innerHTML=featuredPCs.map(pc=>`<div class="product-card" onclick='showDetail(${JSON.stringify(pc).replace(/"/g,"&quot;")},"pc")'><span class="product-badge pc-badge">💻 PC</span><div class="product-image"><img src="${REPO_URL}${pc.image}" onerror="this.parentElement.innerHTML='💻'"></div><div class="product-name">${pc.name}</div><div class="product-specs"><div class="spec-row"><span class="spec-label">🔧</span><span class="spec-value">${pc.processor}</span></div><div class="spec-row"><span class="spec-label">💾</span><span class="spec-value">${pc.ram}</span></div><div class="spec-row"><span class="spec-label">💽</span><span class="spec-value">${pc.storage}</span></div></div><div class="product-price">S/ ${pc.price.toLocaleString()}</div><div style="background:#fff3cd;padding:0.6rem;border-radius:8px;font-size:0.8rem;color:#856404;margin:0.8rem 0">${pc.offers}</div><div class="product-actions" onclick="event.stopPropagation()"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(pc).replace(/"/g,"&quot;")},"pc")'>🛒</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(pc).replace(/"/g,"&quot;")},"pc")'>💬</button></div></div>`).join('')}
+function renderComponentes(){const container=document.getElementById('componentes-container');const products=componentes[currentComp];container.innerHTML=products.map(p=>`<div class="product-card" onclick='showDetail(${JSON.stringify(p).replace(/"/g,"&quot;")},"componente")'><div class="product-image"><img src="${REPO_URL}${p.image}" onerror="this.parentElement.innerHTML='🔧'"></div><div class="product-name">${p.name}</div><div class="product-price">S/ ${p.price}</div><div class="product-actions" onclick="event.stopPropagation()"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(p).replace(/"/g,"&quot;")},"componente")'>🛒</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(p).replace(/"/g,"&quot;")},"componente")'>💬</button></div></div>`).join('')}
+function renderMonitores(){const container=document.getElementById('monitores-section');container.innerHTML=monitores.map(m=>`<div class="product-card" onclick='showDetail(${JSON.stringify(m).replace(/"/g,"&quot;")},"monitor")'><div class="product-image"><img src="${REPO_URL}${m.image}" onerror="this.parentElement.innerHTML='🖥️'"></div><div class="product-name">${m.name}</div><div class="product-price">S/ ${m.price}</div><div class="product-actions" onclick="event.stopPropagation()"><button class="btn btn-primary" onclick='addToCart(${JSON.stringify(m).replace(/"/g,"&quot;")},"monitor")'>🛒</button><button class="btn btn-secondary" onclick='consultProduct(${JSON.stringify(m).replace(/"/g,"&quot;")},"monitor")'>💬</button></div></div>`).join('')}
+function setupFilters(){document.querySelectorAll('#celulares-section .filter-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('#celulares-section .filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentFilter=this.dataset.brand;renderCelulares()})});document.querySelectorAll('[data-pc-cat]').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('[data-pc-cat]').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentPCCat=this.dataset.pcCat;document.getElementById('pcs-section').style.display=currentPCCat==='pcs'?'grid':'none';document.getElementById('componentes-section').style.display=currentPCCat==='componentes'?'block':'none';document.getElementById('monitores-section').style.display=currentPCCat==='monitores'?'grid':'none'})});document.querySelectorAll('[data-comp]').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('[data-comp]').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentComp=this.dataset.comp;renderComponentes()})});}
+function applyCoupon(){const code=document.getElementById('coupon-input').value.toUpperCase().trim();const message=document.getElementById('coupon-message');if(coupons[code]){appliedCoupon={code,...coupons[code]};message.className='coupon-message success';message.textContent=`✅ ${coupons[code].description}`;showNotification('🎉 Cupón aplicado','#00ff88');updateCartDisplay()}else{message.className='coupon-message error';message.textContent='❌ Inválido';showNotification('❌ Cupón no válido','#ff3b5c')}}
+function addToCart(product,type){cart.push({...product,type});saveCart();updateCartCount();showNotification('✅ Agregado','#00ff88')}
+function removeFromCart(index){cart.splice(index,1);saveCart();updateCartCount();renderCart();showNotification('❌ Eliminado','#ff3b5c')}
+function toggleCart(){const modal=document.getElementById('cart-modal');modal.style.display=modal.style.display==='block'?'none':'block';if(modal.style.display==='block')renderCart()}
+function closeCartIfOutside(event){if(event.target.id==='cart-modal')toggleCart()}
+function renderCart(){const container=document.getElementById('cart-items');const subtotal=cart.reduce((sum,item)=>sum+item.price,0);const discount=appliedCoupon?subtotal*appliedCoupon.discount:0;const total=subtotal-discount;if(cart.length===0){container.innerHTML='<div style="text-align:center;padding:3rem;color:#6e7485">Carrito vacío 🛒</div>';document.getElementById('discount-amount').style.display='none'}else{container.innerHTML=cart.map((item,i)=>`<div class="cart-item"><div><div class="cart-item-name">${item.name}</div><div class="cart-item-price">S/ ${item.price.toLocaleString()}</div></div><button class="remove-btn" onclick="removeFromCart(${i})">🗑️</button></div>`).join('');if(appliedCoupon){document.getElementById('discount-amount').style.display='block';document.getElementById('discount-amount').textContent=`💰 Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}`}else{document.getElementById('discount-amount').style.display='none'}}document.getElementById('cart-total').textContent=`Total: S/ ${total.toLocaleString()}`}
+function updateCartDisplay(){if(document.getElementById('cart-modal').style.display==='block')renderCart()}
+function updateCartCount(){const count=document.getElementById('cart-count');count.textContent=cart.length;count.style.display=cart.length>0?'flex':'none'}
+function saveCart(){localStorage.setItem('greycell_cart',JSON.stringify(cart))}
+function loadCart(){const saved=localStorage.getItem('greycell_cart');if(saved){cart=JSON.parse(saved);updateCartCount()}}
+function checkout(){if(cart.length===0){showNotification('⚠️ Carrito vacío','#ffaa00');return}const subtotal=cart.reduce((sum,item)=>sum+item.price,0);const discount=appliedCoupon?subtotal*appliedCoupon.discount:0;const total=subtotal-discount;let message='🛒 *PEDIDO - GREYCELL*\n\n';cart.forEach((item,index)=>{message+=`${index+1}. *${item.name}*\n   S/ ${item.price}\n\n`});message+=`━━━━━━━━━━━━━━━\nSubtotal: S/ ${subtotal.toLocaleString()}\n`;if(appliedCoupon)message+=`Descuento (${appliedCoupon.code}): -S/ ${discount.toFixed(2)}\n`;message+=`*TOTAL: S/ ${total.toLocaleString()}*\n\n¡Confirmar! 🎉`;window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`,'_blank')}
+function consultProduct(product,type){let message=`Hola! 👋\n\n*${product.name}*\nS/ ${product.price}\n\n¿Disponible?`;window.open(`https://wa.me/51992039149?text=${encodeURIComponent(message)}`,'_blank')}
+function showDetail(product,type){const modal=document.getElementById('detail-modal');document.getElementById('detail-title').textContent=product.name;document.getElementById('detail-price').innerHTML=product.offer?`<span style="font-size:1.5rem;color:#6e7485;text-decoration:line-through;margin-right:1rem">S/ ${product.oldPrice}</span>S/ ${product.price.toLocaleString()}`:`S/ ${product.price.toLocaleString()}`;const imgContainer=document.getElementById('detail-image');imgContainer.innerHTML=`<img src="${REPO_URL}${product.image}" onerror="this.parentElement.innerHTML='${type==='celular'?'📱':type==='pc'?'💻':type==='monitor'?'🖥️':'🔧'}'">`;const specsContainer=document.getElementById('detail-specs');if(type==='celular'){specsContainer.innerHTML=`<div class="detail-specs-grid"><div class="detail-spec"><div class="detail-spec-label">Marca</div><div class="detail-spec-value">${product.brand.toUpperCase()}</div></div><div class="detail-spec"><div class="detail-spec-label">ROM / RAM</div><div class="detail-spec-value">${product.ram} GB</div></div><div class="detail-spec"><div class="detail-spec-label">Pantalla</div><div class="detail-spec-value">${product.screen}</div></div><div class="detail-spec"><div class="detail-spec-label">Cámara</div><div class="detail-spec-value">${product.camera}</div></div>${product.battery?`<div class="detail-spec"><div class="detail-spec-label">Batería</div><div class="detail-spec-value">${product.battery}</div></div>`:''}</div>${product.registered?'<div style="background:linear-gradient(135deg,#00d2ff,#3a7bd5);color:white;padding:1rem;border-radius:12px;text-align:center;font-weight:700;margin:1rem 0">✅ EQUIPO REGISTRADO EN OSIPTEL</div>':''}`}else if(type==='pc'){specsContainer.innerHTML=`<div class="detail-specs-grid"><div class="detail-spec"><div class="detail-spec-label">Procesador</div><div class="detail-spec-value">${product.processor}</div></div>${product.gpu?`<div class="detail-spec"><div class="detail-spec-label">Tarjeta Gráfica</div><div class="detail-spec-value">${product.gpu}</div></div>`:''}<div class="detail-spec"><div class="detail-spec-label">Memoria RAM</div><div class="detail-spec-value">${product.ram}</div></div><div class="detail-spec"><div class="detail-spec-label">Almacenamiento</div><div class="detail-spec-value">${product.storage}</div></div>${product.power?`<div class="detail-spec"><div class="detail-spec-label">Fuente</div><div class="detail-spec-value">${product.power}</div></div>`:''}</div>`;document.getElementById('detail-offers').innerHTML=`<div class="pc-offers-section"><div class="offer-title">🔥 OFERTAS ESPECIALES 🔥</div><div class="offer-option" onclick="addToCartWithMonitor(${JSON.stringify(product).replace(/"/g,'&quot;')})"><div class="offer-option-title">📺 Añadir Monitor 24" 144Hz</div><div class="offer-option-price">+ S/ 350</div><div class="offer-gift-badge">🎁 REGALO: Combo Teros (Teclado + Mouse + Audífonos)</div></div><div style="text-align:center;padding:1rem;background:white;border-radius:12px;margin-top:1rem"><p style="font-size:0.9rem;color:#6e7485;margin-bottom:0.5rem">O cómprala sin monitor</p><div class="offer-gift-badge">🎁 También incluye Combo Teros al añadir cualquier monitor</div></div></div>`}else if(type==='monitor'){specsContainer.innerHTML=`<div class="detail-specs-grid"><div class="detail-spec"><div class="detail-spec-label">Producto</div><div class="detail-spec-value">${product.name}</div></div></div>`;document.getElementById('detail-offers').innerHTML=''}else{specsContainer.innerHTML=`<div class="detail-specs-grid"><div class="detail-spec"><div class="detail-spec-label">Componente</div><div class="detail-spec-value">${product.name}</div></div></div>`;document.getElementById('detail-offers').innerHTML=''}document.getElementById('detail-add-cart').onclick=function(){addToCart(product,type);closeDetail()};document.getElementById('detail-consult').onclick=function(){consultProduct(product,type)};modal.style.display='block'}
+function addToCartWithMonitor(pc){const pcWithMonitor={...pc,name:pc.name+' + Monitor 24" 144Hz + 🎁 Combo Teros',price:pc.price+350};addToCart(pcWithMonitor,'pc');closeDetail()}
+function closeDetail(){document.getElementById('detail-modal').style.display='none'}
+function closeDetailIfOutside(event){if(event.target.id==='detail-modal')closeDetail()}
+function showNotification(message,color){const notification=document.createElement('div');notification.className='notification';notification.textContent=message;notification.style.borderLeftColor=color;document.body.appendChild(notification);setTimeout(()=>notification.remove(),3000)}
+</script>
 </body>
 </html>
